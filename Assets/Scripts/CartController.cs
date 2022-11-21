@@ -7,7 +7,7 @@ public class CartController : MonoBehaviour
 {
     CinemachineDollyCart cart;
     float baseSpeed;
-    private float boostModifier;
+    float boostModifier = 1f;
     [SerializeField] float trackSwitchSafety = 100f;
     [SerializeField] CinemachinePath mainTrack;
     [SerializeField] List<SideTrack> altTracks;
@@ -18,7 +18,6 @@ public class CartController : MonoBehaviour
     {
         cart = GetComponent<CinemachineDollyCart>();
         baseSpeed = cart.m_Speed;
-        boostModifier = 1f;
     }
 
     void Update()
