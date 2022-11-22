@@ -19,8 +19,6 @@ public class DolphinMovement : MonoBehaviour
     private void Start()
     {
         availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
-
-        CheckForAvailableInputHandler();
     }
     //Arduino is priority so you can only play with keyboard when arduino is NOT connected.
     private void CheckForAvailableInputHandler()
@@ -39,6 +37,7 @@ public class DolphinMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckForAvailableInputHandler();
         GetInput();
         AvoidColisions();
         Movement();

@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class ArduinoValuesFacade : MonoBehaviour
 {
-    private Unity_recive_data_from_Arduino arduinoLibraryHandler;
+    private ArduinoControls arduinoLibraryHandler;
 
     private void Start()
     {
-        arduinoLibraryHandler = GetComponent<Unity_recive_data_from_Arduino>();
+        arduinoLibraryHandler = GetComponent<ArduinoControls>();
     }
 
     public bool CheckIfConnected()
     {
-        return arduinoLibraryHandler.isConnected;
+        return arduinoLibraryHandler.isConnected();
     }
     public float GetSpeed()
     {
-        return arduinoLibraryHandler.speed;
+        return arduinoLibraryHandler.Speed;
     }
     public float GetDirection()
     {
-        return arduinoLibraryHandler.direction;
+        Debug.Log(arduinoLibraryHandler.Roll);
+        return arduinoLibraryHandler.Roll;
     }
     public float GetHeight()
     {
-        return arduinoLibraryHandler.height;
+        return arduinoLibraryHandler.Pitch;
     }
 }
