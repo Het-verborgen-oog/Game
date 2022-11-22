@@ -25,7 +25,7 @@ Material:
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -51,9 +51,9 @@ Material:
     - _NoiseScale: 5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ShearSpeed: 3
+    - _ShearSpeed: 5
     m_Colors:
     - _Center: {r: 0.5, g: 0, b: 0, a: 0}
-    - _Color: {r: 3.9999995, g: 3.9999995, b: 3.9999995, a: 0}
+    - _Color: {r: 0.490566, g: 0.490566, b: 0.490566, a: 0}
     - _ShearStrength: {r: 20, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
