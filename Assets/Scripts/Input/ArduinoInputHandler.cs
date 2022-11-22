@@ -7,34 +7,22 @@ public class ArduinoInputHandler : MonoBehaviour, IInputHandler
     [SerializeField]
     private ArduinoValuesFacade facade;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public bool CheckIfConnected()
     {
         return facade.CheckIfConnected();
     }
 
-    public int GetSpeed()
+    public float GetSpeed()
     {
         return facade.GetSpeed();
     }
 
-    public int GetXMovement()
+    public float GetXMovement()
     {
         return facade.GetDirection();
     }
 
-    public int GetYMovement()
+    public float GetYMovement()
     {
         return facade.GetHeight();
     }

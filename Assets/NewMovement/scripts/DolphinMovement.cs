@@ -1,15 +1,40 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DolphinMovement : MonoBehaviour
 {
+    [SerializeField] private GameObject gameObjectWithInputHandlers;
+    private List<IInputHandler> availableInputHandlers;
     [SerializeField] public float horizontalMovmentSpeed = 5;
     [SerializeField] public float verticalMovmentSpeed = 5;
 
     private float horizontalInput;
     private float verticalInput;
+
+    private IInputHandler desiredInputHandler;
+
+    private void Start()
+    {
+        availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
+
+        CheckForAvailableInputHandler();
+    }
+    //Arduino is priority so you can only play with keyboard when arduino is NOT connected.
+    private void CheckForAvailableInputHandler()
+    {
+        foreach (IInputHandler inputHandler in availableInputHandlers)
+        {
+            bool isConnected = inputHandler.CheckIfConnected();
+            if (isConnected)
+            {
+                desiredInputHandler = inputHandler;
+                break;
+            }
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,18 +46,8 @@ public class DolphinMovement : MonoBehaviour
 
     public void GetInput()
     {
-
-        //TODO check if ardunio is online
-        if (false)
-        {
-
-        }
-        else
-        {
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-        }
-        
+        horizontalInput = desiredInputHandler.GetXMovement();
+        verticalInput = desiredInputHandler.GetYMovement();        
     }
 
 

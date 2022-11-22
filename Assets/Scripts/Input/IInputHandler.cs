@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IInputHandler
 {
     bool CheckIfConnected();
-    int GetSpeed();
-    int GetXMovement();
-    int GetYMovement();
+    float GetSpeed();
+    float GetXMovement();
+    float GetYMovement();
 }

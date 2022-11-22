@@ -5,35 +5,26 @@ using UnityEngine;
 public class KeyboardInputHandler : MonoBehaviour, IInputHandler
 {
     private bool isConnected = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public bool CheckIfConnected()
     {
         return isConnected;
     }
 
-    public int GetSpeed()
+    public float GetSpeed()
     {
-        return 0;
+        return 2;
     }
 
-    public int GetXMovement()
+    public float GetXMovement()
     {
-        return 0;
+        float xMovement = Input.GetAxis("Horizontal");
+        return xMovement;
     }
 
-    public int GetYMovement()
+    public float GetYMovement()
     {
-        return 0;
+        float yMovement = Input.GetAxis("Vertical");
+        return yMovement;
     }
 }

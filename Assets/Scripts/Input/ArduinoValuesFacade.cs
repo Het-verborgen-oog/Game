@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ArduinoValuesFacade : MonoBehaviour
 {
-    
     private Unity_recive_data_from_Arduino arduinoLibraryHandler;
 
     private void Start()
@@ -16,15 +15,15 @@ public class ArduinoValuesFacade : MonoBehaviour
     {
         return arduinoLibraryHandler.isConnected;
     }
-    public int GetSpeed()
+    public float GetSpeed()
     {
         return arduinoLibraryHandler.speed;
     }
-    public int GetDirection()
+    public float GetDirection()
     {
         return arduinoLibraryHandler.direction;
     }
-    public int GetHeight()
+    public float GetHeight()
     {
         return arduinoLibraryHandler.height;
     }
