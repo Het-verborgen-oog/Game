@@ -23,15 +23,19 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     private string[] Message;
 
     public Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
-    int HorizontalTilt, VerticalTilt, Rotations;
+    private int HorizontalTilt, VerticalTilt, Rotations;
 
     private string inboundMessage;
 
-    public int Roll { get { return keyValuePairs["HRZ"]; } }
 
-    public int Pitch { get { return keyValuePairs["VER"]; } }
+    const float MinimumTilt = -1f, MaximumTilt = 1f, MinimumSpeed = 1f, MaximumSpeed = 2.5f;
+    const float ExpectedMinimumTilt = 0f, ExpectedMaximumTilt = 1024f, ExpectedMinumumSpeed = 0f, ExpectedMaximumSpeed = 5f;
 
-    public int Speed { get { return keyValuePairs["SPD"]; } }
+    public float Roll { get { return (keyValuePairs["HRZ"] - ExpectedMinimumTilt) / (ExpectedMaximumTilt - ExpectedMinimumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
+
+    public float Pitch { get { return (keyValuePairs["VER"] - ExpectedMinimumTilt) / (ExpectedMaximumTilt - ExpectedMinimumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
+
+    public float Speed { get { return (keyValuePairs["SPD"] - ExpectedMinumumSpeed) / (ExpectedMaximumSpeed - ExpectedMinumumSpeed) * (MaximumSpeed - MinimumSpeed) + MinimumSpeed; } }
 
     public void Start()
     {
