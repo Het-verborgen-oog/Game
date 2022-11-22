@@ -29,12 +29,13 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
 
 
     const float MinimumTilt = -1f, MaximumTilt = 1f, MinimumSpeed = 1f, MaximumSpeed = 2.5f;
+    const float ExpectedMinimumTilt = 0f, ExpectedMaximumTilt = 1024f, ExpectedMinumumSpeed = 0f, ExpectedMaximumSpeed = 5f;
 
-    public float Roll { get { return Mathf.Clamp(keyValuePairs["HRZ"], MinimumTilt, MaximumTilt); } }
+    public float Roll { get { return (keyValuePairs["HRZ"] - ExpectedMinimumTilt) / (ExpectedMinimumTilt - ExpectedMaximumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
 
-    public float Pitch { get { return Mathf.Clamp(keyValuePairs["VER"], MinimumTilt, MaximumTilt); } }
+    public float Pitch { get { return (keyValuePairs["HRZ"] - ExpectedMinimumTilt) / (ExpectedMinimumTilt - ExpectedMaximumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
 
-    public float Speed { get { return Mathf.Clamp(keyValuePairs["SPD"], MinimumSpeed, MaximumSpeed); } }
+    public float Speed { get { return (keyValuePairs["SPD"] - ExpectedMinumumSpeed) / (ExpectedMinumumSpeed - ExpectedMaximumSpeed) * (MaximumSpeed - MinimumSpeed) + MinimumSpeed; } }
 
     public void Start()
     {
