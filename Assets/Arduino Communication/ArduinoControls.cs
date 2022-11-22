@@ -33,7 +33,7 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
 
     public float Roll { get { return (keyValuePairs["HRZ"] - ExpectedMinimumTilt) / (ExpectedMaximumTilt - ExpectedMinimumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
 
-    public float Pitch { get { return (keyValuePairs["HRZ"] - ExpectedMinimumTilt) / (ExpectedMaximumTilt - ExpectedMinimumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
+    public float Pitch { get { return (keyValuePairs["VER"] - ExpectedMinimumTilt) / (ExpectedMaximumTilt - ExpectedMinimumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
 
     public float Speed { get { return (keyValuePairs["SPD"] - ExpectedMinumumSpeed) / (ExpectedMaximumSpeed - ExpectedMinumumSpeed) * (MaximumSpeed - MinimumSpeed) + MinimumSpeed; } }
 
