@@ -27,11 +27,11 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
 
     private string inboundMessage;
 
-    public int Roll { get { return keyValuePairs["HRZ"]; } }
+    public float Roll { get { return keyValuePairs["HRZ"]; } }
 
-    public int Pitch { get { return keyValuePairs["VER"]; } }
+    public float Pitch { get { return keyValuePairs["VER"]; } }
 
-    public int Speed { get { return keyValuePairs["SPD"]; } }
+    public float Speed { get { return keyValuePairs["SPD"]; } }
 
     public void Start()
     {
