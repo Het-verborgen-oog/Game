@@ -27,9 +27,9 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
 
     private string inboundMessage;
 
-    public float Roll { get { return keyValuePairs["HRZ"]; } }
+    public float Roll { get { return Mathf.Clamp(keyValuePairs["HRZ"], -1f, 1f); } }
 
-    public float Pitch { get { return keyValuePairs["VER"]; } }
+    public float Pitch { get { return Mathf.Clamp(keyValuePairs["VER"], -1f, 1f); } }
 
     public float Speed { get { return keyValuePairs["SPD"]; } }
 
