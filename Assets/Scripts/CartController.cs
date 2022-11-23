@@ -7,17 +7,18 @@ public class CartController : MonoBehaviour
 {
     CinemachineDollyCart cart;
     float baseSpeed;
-    float boostModifier = 1f;
     [SerializeField] float trackSwitchSafety = 100f;
     [SerializeField] CinemachinePath mainTrack;
     [SerializeField] List<SideTrack> altTracks;
     private SideTrack currentSideTrack;
     private TrackSide cartDirection;
+    private ArduinoControls arduinoControls;
 
     void Start()
     {
         cart = GetComponent<CinemachineDollyCart>();
         baseSpeed = cart.m_Speed;
+        arduinoControls = FindObjectOfType<ArduinoControls>();
     }
 
     void Update()
@@ -35,7 +36,7 @@ public class CartController : MonoBehaviour
         }
 
         //set the speed of the cart
-        cart.m_Speed = baseSpeed * boostModifier;
+        cart.m_Speed = baseSpeed * arduinoControls.Speed;
 
         //check if the player is at the end of a sidetrack
         if (cart.m_Path != mainTrack && cart.m_Position == currentSideTrack.track.PathLength)
@@ -61,12 +62,6 @@ public class CartController : MonoBehaviour
     public void SetDirection(TrackSide newCartdirection)
     {
         cartDirection = newCartdirection;
-    }
-
-    //function to set the boost modifier
-    public void SetBoostModifier(float newBoostModifier)
-    {
-        boostModifier = newBoostModifier;
     }
 
     //check if you can switch to the chosen sidetrack whilst moving in a given direction
