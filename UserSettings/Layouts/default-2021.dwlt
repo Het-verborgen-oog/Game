@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 58
+  controlID: 28
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 95
+  controlID: 29
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 86
+  controlID: 30
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -269,8 +269,8 @@ MonoBehaviour:
     y: 0
     width: 453
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -400,24 +400,24 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 1086}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8cf6ffffc4faffff
+      m_ExpandedIDs: be6be9ffcc6be9ffd06be9ffe06be9ffd46ce9ff2a6de9ff667decfff2e7ecff78f6efff1ea4f0fff0c1f3ff843ef4ff324df7ff8e15f8ff5a6cfbff7a89fbfffa8bfbff5ce5fbff542effffb6a1ffff18fbffff64790000688a0000968c0000faf91100f6061200d40a12004a1512006cd82000141e2700ca2b2700da332700863c2700b43e2700ec4627000e1b28003a1e2800588f2800
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Kelp
+        m_OriginalName: Kelp
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -1479388
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -653,9 +653,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -85.0309, y: -34.352158, z: 817.7528}
+    m_Target: {x: -474.68564, y: -93.13585, z: 99.31468}
     speed: 2
-    m_Value: {x: 581.48285, y: 14.849956, z: 153.32341}
+    m_Value: {x: -474.68564, y: -93.13585, z: 99.31468}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -702,20 +702,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.0816266, y: 0.070160724, z: -0.005647573, w: 0.99421746}
+    m_Target: {x: 0.071914285, y: 0.89718914, z: 0.15814798, w: -0.4064424}
     speed: 2
-    m_Value: {x: -0.27464366, y: 0.45074522, z: -0.14829214, w: -0.836364}
+    m_Value: {x: 0.07251172, y: 0.89680463, z: 0.15946773, w: -0.40626788}
   m_Size:
-    m_Target: 325.8645
+    m_Target: 20.011368
     speed: 2
-    m_Value: 7.586129
+    m_Value: 20.011368
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 1
-    m_SpeedNormalized: 0.5
+    m_Speed: 2
+    m_SpeedNormalized: 1
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -775,22 +775,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Ventuar/UnderwaterPack/Prefabs/Rocks/Large Rocks
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Ventuar/UnderwaterPack/Prefabs/Rocks/Large Rocks
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\School\Semester 4\Industry Project\New Group\Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 8e6c0000
-    m_LastClickedID: 27790
-    m_ExpandedIDs: 00000000d06a000000ca9a3b
+    scrollPos: {x: 0, y: 930}
+    m_SelectedIDs: ea280600
+    m_LastClickedID: 403690
+    m_ExpandedIDs: 00000000c2a4000058a600005aa600005ca600005ea6000066a6000068a600006aa600006ca6000076a6000082a60000ba920300dc920300569b03005c9b0300a29b0300be9b0300c89b0300ca9b0300de9b0300e09b03004029060042290600c612070000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -818,7 +818,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d06a0000
+    m_ExpandedIDs: 00000000c2a40000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -846,7 +846,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000
+    m_ExpandedInstanceIDs: c623000096990000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
