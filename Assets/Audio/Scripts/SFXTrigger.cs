@@ -16,11 +16,11 @@ public class SFXTrigger : MonoBehaviour
 
     [SerializeField]
     [Tooltip("SFX to play on entering the trigger. If left empty, no entering-SFX will be played")]
-    private SFX enterSFX = new SFX {minPitch = 0.5f, maxPitch = 1.5f };
+    private SFXCollection enterSFX = new SFXCollection {minPitch = 0.5f, maxPitch = 1.5f };
 
     [SerializeField]
     [Tooltip("SFX to play on exiting the trigger. If left empty, no exit-SFX will be played")]
-    private SFX exitSFX = new SFX {minPitch = 0.5f, maxPitch = 1.5f };
+    private SFXCollection exitSFX = new SFXCollection {minPitch = 0.5f, maxPitch = 1.5f };
 
 
     // MonoBehaviour Methods
@@ -42,8 +42,9 @@ public class SFXTrigger : MonoBehaviour
 
 
     // Private Methods
-    private void PlaySFX(SFX playSFX)
+    private void PlaySFX(SFXCollection playSFX)
     {
+        if (playSFX.audioClips.Length == 0) { return; }
         audioSource.pitch = Random.Range(playSFX.minPitch, playSFX.maxPitch);
 
         int selectedSound = Random.Range(1, playSFX.audioClips.Length) * System.Convert.ToInt32(playSFX.audioClips.Length > 1);
@@ -52,14 +53,5 @@ public class SFXTrigger : MonoBehaviour
         playSFX.audioClips[selectedSound] = playSFX.audioClips[0];
         playSFX.audioClips[0] = audioSource.clip;
         audioSource.Play();
-    }
-
-
-    // Support Classes
-    [System.Serializable]
-    public struct SFX {
-        public AudioClip[] audioClips;
-        public float minPitch;
-        public float maxPitch;
     }
 }
