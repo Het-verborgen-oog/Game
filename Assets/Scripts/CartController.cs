@@ -36,7 +36,8 @@ public class CartController : MonoBehaviour
         }
 
         //set the speed of the cart
-        cart.m_Speed = baseSpeed * arduinoControls.Speed;
+        if(arduinoControls.isConnected()) cart.m_Speed = baseSpeed * arduinoControls.Speed;
+        else cart.m_Speed = baseSpeed;
 
         //check if the player is at the end of a sidetrack
         if (cart.m_Path != mainTrack && cart.m_Position == currentSideTrack.track.PathLength)
@@ -44,7 +45,7 @@ public class CartController : MonoBehaviour
             //set followed path & position
             cart.m_Path = currentSideTrack.trackToSwitchBackTo;
             cart.m_Position = currentSideTrack.transferBackPos;
-            if (cart.m_Path != mainTrack)
+            if (cart.m_Path != mainTrack) //cart is on sidetrack
             {
                 //set currentSideTrack to the new track
                 foreach (var altTrack in altTracks)
