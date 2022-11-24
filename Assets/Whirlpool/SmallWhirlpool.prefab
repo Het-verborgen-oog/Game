@@ -92,6 +92,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6387328469140207160}
+  - component: {fileID: 873878921}
+  - component: {fileID: 873878920}
   m_Layer: 6
   m_Name: SmallWhirlpool
   m_TagString: Untagged
@@ -119,6 +121,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &873878921
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6387328469140207163}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5784912, y: 20.83936, z: 7.6362}
+  m_Center: {x: 1.23703, y: 9.91968, z: 0.42726135}
+--- !u!114 &873878920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6387328469140207163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71566ba9cd0ffa9478433bc8cfb8e564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6949408940057593266
 GameObject:
   m_ObjectHideFlags: 0
