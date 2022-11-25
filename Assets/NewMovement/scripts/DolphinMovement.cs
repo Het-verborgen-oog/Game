@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DolphinMovement : MonoBehaviour
 {
+    [SerializeField] private GameObject gameObjectWithInputHandlers;
+    private List<IInputHandler> availableInputHandlers;
     [SerializeField] public float horizontalMovmentSpeed = 5;
     [SerializeField] public float verticalMovmentSpeed = 5;
     [SerializeField] public float raycastAngle = 45;
@@ -19,16 +22,35 @@ public class DolphinMovement : MonoBehaviour
     private Vector3 upRay;
     private Vector3 downRay;
 
+    private IInputHandler desiredInputHandler;
+
     private void Start()
     {
+        availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
         leftRay = Quaternion.AngleAxis(-raycastAngle, transform.up) * transform.forward;
         rightRay = Quaternion.AngleAxis(raycastAngle, transform.up) * transform.forward;
         upRay = Quaternion.AngleAxis(-raycastAngle, transform.right) * transform.forward;
         downRay = Quaternion.AngleAxis(raycastAngle, transform.right) * transform.forward;
     }
+    
+    //Arduino is priority so you can only play with keyboard when arduino is NOT connected.
+    private void CheckForAvailableInputHandler()
+    {
+        foreach (IInputHandler inputHandler in availableInputHandlers)
+        {
+            bool isConnected = inputHandler.CheckIfConnected();
+            if (isConnected)
+            {
+                desiredInputHandler = inputHandler;
+                break;
+            }
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
+        CheckForAvailableInputHandler();
         //gets input
         GetInput();
         //changes horizonatal input or verticalinput if the raycasts hit somethings
@@ -40,11 +62,11 @@ public class DolphinMovement : MonoBehaviour
 
     public void GetInput()
     {
-
         //TODO check if ardunio is online
         if (false)
         {
-
+            horizontalInput = desiredInputHandler.GetXMovement();
+            verticalInput = desiredInputHandler.GetYMovement();
         }
         else
         {
@@ -53,7 +75,6 @@ public class DolphinMovement : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
         }
-        
     }
 
 

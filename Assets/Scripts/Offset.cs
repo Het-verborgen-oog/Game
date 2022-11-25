@@ -15,6 +15,8 @@ public class Offset : MonoBehaviour
     [SerializeField]
     GameObject playerModel;
 
+    IInputHandler inputHandler;
+
     [SerializeField] float offsetValue = 0.05f;
     [SerializeField] float maxOffset = 25f;
 
@@ -85,7 +87,7 @@ public class Offset : MonoBehaviour
         {
             //arduino controls
             GetPotValues();
-            Movement();
+            MovementArduino();
             //arrow controls
             if (Input.GetKey("up") || Input.GetKey("down") || Input.GetKey("left") || Input.GetKey("right") || Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d") || Input.GetKey("space"))
             {
@@ -93,6 +95,22 @@ public class Offset : MonoBehaviour
             }
         }
 
+    }
+
+    private void Movement()
+    {
+        float offsetY = inputHandler.GetYMovement();
+        float offsetX = inputHandler.GetXMovement();
+        float targetSpeed = inputHandler.GetSpeed();
+
+        PlayerRotation(offsetX, offsetY);
+
+        newPositionPlayer.x += offsetX;
+        newPositionPlayer.y += offsetY;
+        CheckOffset();
+
+        trackCart.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed = targetSpeed;
+        SetMovement();
     }
 
     //if Arduino is not implemented
@@ -194,7 +212,7 @@ public class Offset : MonoBehaviour
     }
 
     //if Arduino is implemented
-    public void Movement()
+    public void MovementArduino()
     {
         float offsetY = 0f;
         float offsetX = 0f;
