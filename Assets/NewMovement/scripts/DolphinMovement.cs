@@ -51,30 +51,22 @@ public class DolphinMovement : MonoBehaviour
     void Update()
     {
         CheckForAvailableInputHandler();
+
         //gets input
         GetInput();
+
         //changes horizonatal input or verticalinput if the raycasts hit somethings
         LockMovement();
         AvoidColisions();
+
         //moves the player acording to the inputs
         Movement();
     }
 
     public void GetInput()
     {
-        //TODO check if ardunio is online
-        if (false)
-        {
-            horizontalInput = desiredInputHandler.GetXMovement();
-            verticalInput = desiredInputHandler.GetYMovement();
-        }
-        else
-        {
-
-            //up = -1 and down = 1
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-        }
+        horizontalInput = desiredInputHandler.GetXMovement();
+        verticalInput = desiredInputHandler.GetYMovement();
     }
 
 
@@ -94,6 +86,8 @@ public class DolphinMovement : MonoBehaviour
 
     private void AvoidColisions()
     {
+        Vector3 offset = new(0, 10, 0);
+
         if (Physics.Raycast(transform.position, leftRay, raycastLength))
         {
             Debug.Log("left Ray");
@@ -156,10 +150,11 @@ public class DolphinMovement : MonoBehaviour
 
     private void OnDrawGizmos()//used to see Ray in editor without update function
     {
+        Vector3 offset = new(0, 0, 5);
         //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
-        Debug.DrawRay(transform.position, leftRay * raycastLength, Color.red);
-        Debug.DrawRay(transform.position, rightRay * raycastLength, Color.red);
-        Debug.DrawRay(transform.position, upRay * raycastLength, Color.green);
-        Debug.DrawRay(transform.position, downRay * raycastLength, Color.green);
+        Debug.DrawRay(transform.position + offset, leftRay * raycastLength, Color.red);
+        Debug.DrawRay(transform.position + offset, rightRay * raycastLength, Color.red);
+        Debug.DrawRay(transform.position + offset, upRay * raycastLength, Color.green);
+        Debug.DrawRay(transform.position + offset, downRay * raycastLength, Color.green);
     }
 }
