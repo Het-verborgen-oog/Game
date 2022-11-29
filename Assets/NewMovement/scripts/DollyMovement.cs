@@ -9,6 +9,6 @@ public class DollyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * 10 * Time.deltaTime;
+        transform.position += transform.forward * 20 * Time.deltaTime;
     }
 }
