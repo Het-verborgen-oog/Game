@@ -10,8 +10,8 @@ public class DolphinMovement : MonoBehaviour
     //must be child of object with this script
     [SerializeField] private GameObject dolphinObject;
     private List<IInputHandler> availableInputHandlers;
-    [SerializeField] public float horizontalMovmentSpeed = 5;
-    [SerializeField] public float verticalMovmentSpeed = 5;
+    [SerializeField] public float horizontalMovementSpeed = 5;
+    [SerializeField] public float verticalMovementSpeed = 5;
     [SerializeField] public float raycastAngle = 45;
     [SerializeField] public float raycastLength = 5;
     [SerializeField] public float raycastFarLength = 6;
@@ -29,7 +29,6 @@ public class DolphinMovement : MonoBehaviour
     private void Start()
     {
         availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
-        
     }
     
     //Arduino is priority so you can only play with keyboard when arduino is NOT connected.
@@ -56,7 +55,7 @@ public class DolphinMovement : MonoBehaviour
 
         //changes horizonatal input or verticalinput if the raycasts hit somethings
         LockMovement();
-        AvoidColisions();
+        AvoidCollisions();
 
         //moves the player acording to the inputs
         Movement();
@@ -82,14 +81,11 @@ public class DolphinMovement : MonoBehaviour
         float roll = Mathf.Lerp(0, 30, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
 
         //Move the dolphin
-        //transform.position += transform.up * verticalInput * Time.deltaTime;
-        //transform.position += transform.right * horizontalInput * Time.deltaTime;
         dolphinObject.transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch + Vector3.forward * roll);
-        //transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch);
-        transform.localPosition += new Vector3(horizontalInput * Time.deltaTime * horizontalMovmentSpeed, (verticalInput * -1f) * Time.deltaTime * verticalMovmentSpeed, 0);
+        transform.localPosition += new Vector3(horizontalInput * Time.deltaTime * horizontalMovementSpeed, (verticalInput * -1f) * Time.deltaTime * verticalMovementSpeed, 0);
     }
 
-    private void AvoidColisions()
+    private void AvoidCollisions()
     {
         //Vector3 offset = new(0, 10, 0);
         Ray downRay = new(transform.position, downVector);
@@ -100,25 +96,21 @@ public class DolphinMovement : MonoBehaviour
 
         if (Physics.Raycast(leftRay, out hit, raycastLength))
         {
-            Debug.Log("left Ray");
             horizontalInput = 1 * Math.Min(5, 5 / hit.distance);
         }
 
         if (Physics.Raycast(rightRay, out hit, raycastLength))
         {
-            Debug.Log("right Ray");
             horizontalInput = -1f * Math.Min(5, 5 / hit.distance);
         }
 
         if (Physics.Raycast(upRay, out hit, raycastLength))
         {
-            Debug.Log("up Ray");
             verticalInput = 1f * Math.Min(10, 10 / hit.distance);
         }
 
         if (Physics.Raycast(downRay, out hit, raycastLength))
         {
-            Debug.Log("down Ray");
             verticalInput = -1f * Math.Min(10, 10 / hit.distance);
         }
     }
@@ -160,15 +152,9 @@ public class DolphinMovement : MonoBehaviour
 
     private void OnDrawGizmos()//used to see Ray in editor without update function
     {
-        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
         Debug.DrawRay(transform.position, leftVector * raycastLength, Color.red);
         Debug.DrawRay(transform.position, rightVector * raycastLength, Color.red);
         Debug.DrawRay(transform.position, upVector * raycastLength, Color.green);
         Debug.DrawRay(transform.position, downVector * raycastLength, Color.green);
-
-        //Debug.DrawRay(transform.position, transform.up * raycastLength, Color.blue);
-        //Debug.DrawRay(transform.position, -transform.up * raycastLength, Color.blue);
-        //Debug.DrawRay(transform.position, transform.right * raycastLength, Color.blue);
-        //Debug.DrawRay(transform.position, -transform.right * raycastLength, Color.blue);
     }
 }
