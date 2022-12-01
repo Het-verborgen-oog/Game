@@ -22,7 +22,6 @@ public class IdleBehaviour : MonoBehaviour
 
     private List<float> pitchMeasurements;
     private List<float> rollMeasurements;
-    private List<float> speedMeasurements;
 
     private ArduinoControls arduinoControls;
 
@@ -39,7 +38,6 @@ public class IdleBehaviour : MonoBehaviour
     private void OnEnable() {
         pitchMeasurements = new List<float>();
         rollMeasurements = new List<float>();
-        speedMeasurements = new List<float>();
 
         arduinoControls = GetComponent<ArduinoControls>();
         StartCoroutine(GetMeasurments());
@@ -53,12 +51,10 @@ public class IdleBehaviour : MonoBehaviour
 
         float pitch = arduinoControls.Pitch;
         float roll = arduinoControls.Roll;
-        float speed = arduinoControls.Speed;
 
         if (
             IsWithinRange(pitch, GetAverage(pitchMeasurements), AllowedDeviation) &&
-            IsWithinRange(roll, GetAverage(rollMeasurements), AllowedDeviation) &&
-            IsWithinRange(speed, GetAverage(speedMeasurements), AllowedDeviation)
+            IsWithinRange(roll, GetAverage(rollMeasurements), AllowedDeviation)
         ) 
         {
             // Controller is not moving
@@ -89,12 +85,10 @@ public class IdleBehaviour : MonoBehaviour
             {
                 pitchMeasurements.RemoveAt(0);
                 rollMeasurements.RemoveAt(0);
-                speedMeasurements.RemoveAt(0);
             }
 
             pitchMeasurements.Add(arduinoControls.Pitch);
             rollMeasurements.Add(arduinoControls.Roll);
-            speedMeasurements.Add(arduinoControls.Speed);
 
             yield return new WaitForSeconds(1 / SamplesPerSecond);
         }
