@@ -7,9 +7,11 @@ using UnityEngine;
 public class DolphinMovement : MonoBehaviour
 {
     [SerializeField] private GameObject gameObjectWithInputHandlers;
+    //must be child of object with this script
+    [SerializeField] private GameObject dolphinObject;
     private List<IInputHandler> availableInputHandlers;
-    [SerializeField] public float horizontalMovmentSpeed = 5;
-    [SerializeField] public float verticalMovmentSpeed = 5;
+    [SerializeField] public float horizontalMovementSpeed = 5;
+    [SerializeField] public float verticalMovementSpeed = 5;
     [SerializeField] public float raycastAngle = 45;
     [SerializeField] public float raycastLength = 5;
     [SerializeField] public float raycastFarLength = 6;
@@ -17,20 +19,16 @@ public class DolphinMovement : MonoBehaviour
 
     private float horizontalInput;
     private float verticalInput;
-    private Vector3 leftRay;
-    private Vector3 rightRay;
-    private Vector3 upRay;
-    private Vector3 downRay;
+    private Vector3 leftVector;
+    private Vector3 rightVector;
+    private Vector3 upVector;
+    private Vector3 downVector;
 
     private IInputHandler desiredInputHandler;
 
     private void Start()
     {
         availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
-        leftRay = Quaternion.AngleAxis(-raycastAngle, transform.up) * transform.forward;
-        rightRay = Quaternion.AngleAxis(raycastAngle, transform.up) * transform.forward;
-        upRay = Quaternion.AngleAxis(-raycastAngle, transform.right) * transform.forward;
-        downRay = Quaternion.AngleAxis(raycastAngle, transform.right) * transform.forward;
     }
     
     //Arduino is priority so you can only play with keyboard when arduino is NOT connected.
@@ -57,7 +55,7 @@ public class DolphinMovement : MonoBehaviour
 
         //changes horizonatal input or verticalinput if the raycasts hit somethings
         LockMovement();
-        AvoidColisions();
+        AvoidCollisions();
 
         //moves the player acording to the inputs
         Movement();
@@ -67,6 +65,11 @@ public class DolphinMovement : MonoBehaviour
     {
         horizontalInput = desiredInputHandler.GetXMovement();
         verticalInput = desiredInputHandler.GetYMovement();
+
+        leftVector = Quaternion.AngleAxis(-60, transform.up) * transform.forward;
+        rightVector = Quaternion.AngleAxis(60, transform.up) * transform.forward;
+        upVector = Quaternion.AngleAxis(-raycastAngle, transform.right) * transform.forward;
+        downVector = Quaternion.AngleAxis(raycastAngle, transform.right) * transform.forward;
     }
 
 
@@ -76,46 +79,45 @@ public class DolphinMovement : MonoBehaviour
         float yaw = Mathf.Lerp(0, 20, Mathf.Abs(horizontalInput)) * Mathf.Sign(horizontalInput);
         float pitch = Mathf.Lerp(0, 20, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
         float roll = Mathf.Lerp(0, 30, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
-        transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch + Vector3.forward * roll);
 
         //Move the dolphin
-        //transform.position += transform.up * verticalInput * Time.deltaTime;
-        //transform.position += transform.right * horizontalInput * Time.deltaTime;
-        transform.position += new Vector3(horizontalInput * Time.deltaTime * horizontalMovmentSpeed, (verticalInput * -1f) * Time.deltaTime * verticalMovmentSpeed, 0);
+        dolphinObject.transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch + Vector3.forward * roll);
+        transform.localPosition += new Vector3(horizontalInput * Time.deltaTime * horizontalMovementSpeed, (verticalInput * -1f) * Time.deltaTime * verticalMovementSpeed, 0);
     }
 
-    private void AvoidColisions()
+    private void AvoidCollisions()
     {
-        Vector3 offset = new(0, 10, 0);
+        //Vector3 offset = new(0, 10, 0);
+        Ray downRay = new(transform.position, downVector);
+        Ray upRay = new(transform.position, upVector);
+        Ray leftRay = new(transform.position, leftVector);
+        Ray rightRay = new(transform.position, rightVector);
+        RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, leftRay, raycastLength))
+        if (Physics.Raycast(leftRay, out hit, raycastLength))
         {
-            Debug.Log("left Ray");
-            horizontalInput = 1 * speedMultiplier;
+            horizontalInput = 1 * Math.Min(5, 5 / hit.distance);
         }
 
-        if (Physics.Raycast(transform.position, rightRay, raycastLength))
+        if (Physics.Raycast(rightRay, out hit, raycastLength))
         {
-            Debug.Log("right Ray");
-            horizontalInput = -1f * speedMultiplier;
+            horizontalInput = -1f * Math.Min(5, 5 / hit.distance);
         }
 
-        if (Physics.Raycast(transform.position, upRay, raycastLength))
+        if (Physics.Raycast(upRay, out hit, raycastLength))
         {
-            Debug.Log("up Ray");
-            verticalInput = 1f * speedMultiplier;
+            verticalInput = 1f * Math.Min(10, 10 / hit.distance);
         }
 
-        if (Physics.Raycast(transform.position, downRay, raycastLength))
+        if (Physics.Raycast(downRay, out hit, raycastLength))
         {
-            Debug.Log("down Ray");
-            verticalInput = -1f * speedMultiplier;
+            verticalInput = -1f * Math.Min(10, 10 / hit.distance);
         }
     }
 
     private void LockMovement()
     {
-        if (Physics.Raycast(transform.position, leftRay, raycastFarLength))
+        if (Physics.Raycast(transform.position, leftVector, raycastFarLength))
         {
             if (horizontalInput < 0)
             {
@@ -123,7 +125,7 @@ public class DolphinMovement : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, rightRay, raycastFarLength))
+        if (Physics.Raycast(transform.position, rightVector, raycastFarLength))
         {
             if (horizontalInput > 0)
             {
@@ -131,7 +133,7 @@ public class DolphinMovement : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, upRay, raycastFarLength))
+        if (Physics.Raycast(transform.position, upVector, raycastFarLength))
         {
             if (verticalInput < 0)
             {
@@ -139,7 +141,7 @@ public class DolphinMovement : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, downRay, raycastFarLength))
+        if (Physics.Raycast(transform.position, downVector, raycastFarLength))
         {
             if (verticalInput > 0)
             {
@@ -150,11 +152,9 @@ public class DolphinMovement : MonoBehaviour
 
     private void OnDrawGizmos()//used to see Ray in editor without update function
     {
-        Vector3 offset = new(0, 0, 5);
-        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
-        Debug.DrawRay(transform.position + offset, leftRay * raycastLength, Color.red);
-        Debug.DrawRay(transform.position + offset, rightRay * raycastLength, Color.red);
-        Debug.DrawRay(transform.position + offset, upRay * raycastLength, Color.green);
-        Debug.DrawRay(transform.position + offset, downRay * raycastLength, Color.green);
+        Debug.DrawRay(transform.position, leftVector * raycastLength, Color.red);
+        Debug.DrawRay(transform.position, rightVector * raycastLength, Color.red);
+        Debug.DrawRay(transform.position, upVector * raycastLength, Color.green);
+        Debug.DrawRay(transform.position, downVector * raycastLength, Color.green);
     }
 }
