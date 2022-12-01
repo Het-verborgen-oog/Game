@@ -17,6 +17,8 @@ public class DolphinMovement : MonoBehaviour
     [SerializeField] public float raycastFarLength = 6;
     [SerializeField] public float speedMultiplier = 2;
 
+    [SerializeField] public IdleBehaviour idleBehaviour;
+
     private float horizontalInput;
     private float verticalInput;
     private Vector3 leftVector;
@@ -63,8 +65,14 @@ public class DolphinMovement : MonoBehaviour
 
     public void GetInput()
     {
-        horizontalInput = desiredInputHandler.GetXMovement();
-        verticalInput = desiredInputHandler.GetYMovement();
+        if (idleBehaviour != null && !idleBehaviour.IsIdle)
+        {
+            horizontalInput = desiredInputHandler.GetXMovement();
+            verticalInput = desiredInputHandler.GetYMovement();            
+        } else {
+            horizontalInput = 0;
+            verticalInput = 0;
+        }
 
         leftVector = Quaternion.AngleAxis(-60, transform.up) * transform.forward;
         rightVector = Quaternion.AngleAxis(60, transform.up) * transform.forward;
