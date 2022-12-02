@@ -19,12 +19,15 @@ public class IdleBehaviour : MonoBehaviour
     [Tooltip("Percentile allowed deviation")]
     public float AllowedDeviation = 5f;
 
-
+    [SerializeField]
     private List<float> pitchMeasurements;
+
+    [SerializeField]
     private List<float> rollMeasurements;
 
     private ArduinoControls arduinoControls;
 
+    [SerializeField]
     private bool stationairy;
     private float timeSinceStationairy;
 
@@ -108,6 +111,6 @@ public class IdleBehaviour : MonoBehaviour
 
     private bool IsWithinRange(float value, float comparedValue, float allowedDeviation)
     {
-        return value >= (comparedValue - (comparedValue * allowedDeviation)) && value <= comparedValue + (comparedValue * allowedDeviation);
+        return value >= (comparedValue - (allowedDeviation / 100)) && value <= comparedValue + (allowedDeviation / 100);
     }
 }

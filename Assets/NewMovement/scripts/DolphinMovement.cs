@@ -65,13 +65,13 @@ public class DolphinMovement : MonoBehaviour
 
     public void GetInput()
     {
-        if (idleBehaviour != null && !idleBehaviour.IsIdle)
+        if (idleBehaviour != null && idleBehaviour.IsIdle)
         {
-            horizontalInput = desiredInputHandler.GetXMovement();
-            verticalInput = desiredInputHandler.GetYMovement();            
-        } else {
             horizontalInput = 0;
-            verticalInput = 0;
+            verticalInput = 0;                      
+        } else {
+            horizontalInput = desiredInputHandler.GetXMovement();
+            verticalInput = desiredInputHandler.GetYMovement();  
         }
 
         leftVector = Quaternion.AngleAxis(-60, transform.up) * transform.forward;
@@ -89,8 +89,13 @@ public class DolphinMovement : MonoBehaviour
         float roll = Mathf.Lerp(0, 30, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
 
         //Move the dolphin
+        if (idleBehaviour != null && idleBehaviour.IsIdle)
+        {
+            transform.localPosition = Vector3.zero;
+        } else {                        
+            transform.localPosition += new Vector3(horizontalInput * Time.deltaTime * horizontalMovementSpeed, (verticalInput * -1f) * Time.deltaTime * verticalMovementSpeed, 0);
+        }
         dolphinObject.transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch + Vector3.forward * roll);
-        transform.localPosition += new Vector3(horizontalInput * Time.deltaTime * horizontalMovementSpeed, (verticalInput * -1f) * Time.deltaTime * verticalMovementSpeed, 0);
     }
 
     private void AvoidCollisions()
