@@ -33,6 +33,8 @@ public class Offset : MonoBehaviour
     private Vector3 positionLastFrame;
     private Vector3 speedLastFrame;
 
+    bool hasInputEnabled = true;
+
     public Vector3 newPositionPlayer = new Vector3();
     [SerializeField]
     private string layerName;
@@ -83,6 +85,7 @@ public class Offset : MonoBehaviour
 
         if (!CheckCollision())
         {
+            if (!hasInputEnabled) return;
             //arduino controls
             GetPotValues();
             Movement();
@@ -93,6 +96,10 @@ public class Offset : MonoBehaviour
             }
         }
 
+    }
+    public void ChangeInputAccessibility(bool currentStatus)
+    {
+        hasInputEnabled = currentStatus;
     }
 
     //if Arduino is not implemented
