@@ -178,10 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc57de84ae81bef4cb55ba0de88911b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IdleParticle: {fileID: 5014816745005908932, guid: bb3ce03d7571e2b4d986c215d7598910,
+  HitParticle: {fileID: 1382557174936957044, guid: 9a46ebbd7fe6e06408d7aef3d35d916d,
     type: 3}
-  animator: {fileID: 0}
-  RespawnDelay: 5
+  ResetDelay: 5
+  score: 20
 --- !u!1001 &5211731674326970101
 PrefabInstance:
   m_ObjectHideFlags: 0
