@@ -106,7 +106,7 @@ MonoBehaviour:
   gradientBlending: 1
   gradientOffset: 0
   clampMinMax: {x: -0.1, y: 3}
-  randomizationPercent: 30
+  randomizationPercent: 0
 --- !u!205 &-7614574314712665613
 LODGroup:
   m_ObjectHideFlags: 0
@@ -117,12 +117,12 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: -0.87632793, y: 13.398174, z: -0.25929606}
   m_Size: 26.818584
-  m_FadeMode: 1
+  m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.14930531
+  - screenRelativeHeight: 0.14942038
     fadeTransitionWidth: 0.5
     renderers:
     - renderer: {fileID: 3317797230131107835}
-  m_Enabled: 0
+  m_Enabled: 1
