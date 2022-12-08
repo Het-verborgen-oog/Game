@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pinger : MonoBehaviour, IObjective
+public class Pinger : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject pingerObject;
