@@ -9,7 +9,7 @@ public static class ScoreManager
     public static void Add(int amount)
     {
         Score += amount;
-        GameObject.Find("Score").GetComponent<TextMeshPro>().text = "Score: " + Score;
+        Debug.Log(Score);
     }
 
     public static void Reset()
