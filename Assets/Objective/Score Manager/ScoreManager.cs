@@ -9,7 +9,6 @@ public static class ScoreManager
     public static void Add(int amount)
     {
         Score += amount;
-        Debug.Log(Score);
     }
 
     public static void Reset()
