@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public static class ScoreManager
@@ -8,7 +9,6 @@ public static class ScoreManager
     public static void Add(int amount)
     {
         Score += amount;
-        Debug.Log($"Score: {Score}");
     }
 
     public static void Reset()

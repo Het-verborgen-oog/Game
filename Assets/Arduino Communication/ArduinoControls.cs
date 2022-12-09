@@ -144,7 +144,7 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     /// <returns>Whether it was successful.</returns>
     public bool ReadMessage()
     {
-        if (serialPort.IsOpen == true && serialPort.BytesToRead > 0)
+        if (serialPort != null && serialPort.IsOpen == true && serialPort.BytesToRead > 0)
         {
             string readMessage = serialPort.ReadExisting();
 
