@@ -34,7 +34,8 @@ public class CartController : MonoBehaviour
         }
 
         //set the speed of the cart
-        if(arduinoControls.isConnected()) cart.m_Speed = baseSpeed * arduinoControls.Speed;
+        if(arduinoControls != null && arduinoControls.isConnected()) cart.m_Speed = baseSpeed * arduinoControls.Speed;
+        else if (Input.GetButton("Jump")) cart.m_Speed = baseSpeed * 2;
         else cart.m_Speed = baseSpeed;
 
         //check if the player is at the end of a sidetrack
