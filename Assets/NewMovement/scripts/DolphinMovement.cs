@@ -86,7 +86,7 @@ public class DolphinMovement : MonoBehaviour
         TrackSide trackSideVertical;
         TrackSide trackSideHorizontal;
 
-        if (horizontalInput > 0) {
+        if (horizontalInput < 0) {
             trackSideHorizontal = TrackSide.left;
         } else {
             trackSideHorizontal = TrackSide.right;
@@ -97,7 +97,7 @@ public class DolphinMovement : MonoBehaviour
         } else {
             trackSideVertical = TrackSide.up;
         }
-        cartController.SetDirection(trackSideHorizontal, trackSideVertical);
+        cartController.SetDirection(trackSideVertical, trackSideHorizontal);
     }
 
 
