@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -15,7 +16,10 @@ public class Crate : MonoBehaviour, IScore, IInteractable
     float ResetDelay = 5f;
     [SerializeField]
     int score = 20;
-    
+
+    [SerializeField]
+    TextMeshProUGUI scoreField;
+
     public int Score { get { return score; }}
 
     private bool Triggered = false;
@@ -29,6 +33,7 @@ public class Crate : MonoBehaviour, IScore, IInteractable
     {
         animator = GetComponent<Animator>();
         animator.Play(IdleAnimation);
+        scoreField = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,12 +44,12 @@ public class Crate : MonoBehaviour, IScore, IInteractable
         }
     }
 
-
     public void Trigger()
     {
         Triggered = true;
 
         ScoreManager.Add(Score);
+        scoreField.text = "Score: " + ScoreManager.Score;
         animator.Play(CollideAnimation);
         SpawnParticles();
         GetComponent<AudioSource>().Play();

@@ -12,6 +12,8 @@ public class DolphinMovement : MonoBehaviour
     private List<IInputHandler> availableInputHandlers;
     [SerializeField] public float horizontalMovementSpeed = 5;
     [SerializeField] public float verticalMovementSpeed = 5;
+    [SerializeField] public float horizontalMovementLimit = 20;
+    [SerializeField] public float verticalMovementLimit = 20;
     [SerializeField] public float raycastAngle = 45;
     [SerializeField] public float raycastLength = 5;
     [SerializeField] public float raycastFarLength = 6;
@@ -130,7 +132,7 @@ public class DolphinMovement : MonoBehaviour
 
     private void LockMovement()
     {
-        if (Physics.Raycast(transform.position, leftVector, raycastFarLength))
+        if (Physics.Raycast(transform.position, leftVector, raycastFarLength) || transform.localPosition.x <= horizontalMovementLimit * -1f)
         {
             if (horizontalInput < 0)
             {
@@ -138,7 +140,7 @@ public class DolphinMovement : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, rightVector, raycastFarLength))
+        if (Physics.Raycast(transform.position, rightVector, raycastFarLength) || transform.localPosition.x >= horizontalMovementLimit )
         {
             if (horizontalInput > 0)
             {
@@ -146,7 +148,7 @@ public class DolphinMovement : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, upVector, raycastFarLength))
+        if (Physics.Raycast(transform.position, upVector, raycastFarLength) || transform.localPosition.y >= verticalMovementLimit)
         {
             if (verticalInput < 0)
             {
@@ -154,7 +156,7 @@ public class DolphinMovement : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, downVector, raycastFarLength))
+        if (Physics.Raycast(transform.position, downVector, raycastFarLength) || transform.localPosition.y <= verticalMovementLimit * -1f)
         {
             if (verticalInput > 0)
             {

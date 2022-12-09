@@ -28,9 +28,7 @@ public class CartController : MonoBehaviour
         {
             if (CheckTrackSwitchable(altTrack, cartDirection))
             {
-                cart.m_Path = altTrack.track;
-                cart.m_Position = 0f;
-                currentSideTrack = altTrack;
+                SetAltTrackAsMainTrack(altTrack);
                 break;
             }
         }
@@ -57,6 +55,13 @@ public class CartController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetAltTrackAsMainTrack(SideTrack altTrack)
+    {
+        cart.m_Path = altTrack.track;
+        cart.m_Position = 0f;
+        currentSideTrack = altTrack;
     }
 
     //function to set the direction the cart is going
