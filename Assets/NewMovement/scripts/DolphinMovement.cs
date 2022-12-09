@@ -29,10 +29,12 @@ public class DolphinMovement : MonoBehaviour
     private Vector3 downVector;
 
     private IInputHandler desiredInputHandler;
+    private CartController cartController;
 
     private void Start()
     {
         availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
+        cartController = FindObjectOfType<CartController>();
     }
     
     //Arduino is priority so you can only play with keyboard when arduino is NOT connected.
@@ -80,6 +82,22 @@ public class DolphinMovement : MonoBehaviour
         rightVector = Quaternion.AngleAxis(60, transform.up) * transform.forward;
         upVector = Quaternion.AngleAxis(-raycastAngle, transform.right) * transform.forward;
         downVector = Quaternion.AngleAxis(raycastAngle, transform.right) * transform.forward;
+
+        TrackSide trackSideVertical;
+        TrackSide trackSideHorizontal;
+
+        if (horizontalInput > 0) {
+            trackSideHorizontal = TrackSide.left;
+        } else {
+            trackSideHorizontal = TrackSide.right;
+        }
+
+        if (verticalInput > 0) {
+            trackSideVertical = TrackSide.down;
+        } else {
+            trackSideVertical = TrackSide.up;
+        }
+        cartController.SetDirection(trackSideHorizontal, trackSideVertical);
     }
 
 
