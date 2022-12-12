@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using System;
 
 public class SideTrack : MonoBehaviour
 {
@@ -19,5 +20,6 @@ public enum TrackSide
     left,
     right,
     up,
-    down
+    down,
+    none
 }
