@@ -21,7 +21,6 @@ public class ArduinoValuesFacade : MonoBehaviour
     }
     public float GetDirection()
     {
-        Debug.Log(arduinoLibraryHandler.Roll);
         return arduinoLibraryHandler.Roll;
     }
     public float GetHeight()
