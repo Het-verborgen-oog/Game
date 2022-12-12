@@ -23,11 +23,13 @@ public class DolphinMovement : MonoBehaviour
 
     private float horizontalInput;
     private float verticalInput;
+    
     private Vector3 leftVector;
     private Vector3 rightVector;
     private Vector3 upVector;
     private Vector3 downVector;
-
+    private bool overrideMovement = false;
+    
     private IInputHandler desiredInputHandler;
     private CartController cartController;
 
@@ -67,9 +69,14 @@ public class DolphinMovement : MonoBehaviour
         Movement();
     }
 
+    public void ToggleMovement(bool _enabled)
+    {
+        overrideMovement = !_enabled;
+    }
+
     public void GetInput()
     {
-        if (idleBehaviour != null && idleBehaviour.IsIdle)
+        if ((idleBehaviour != null && idleBehaviour.IsIdle) || overrideMovement)
         {
             horizontalInput = 0;
             verticalInput = 0;                      
