@@ -390,6 +390,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuoyantBarrel (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8506302037978785333, guid: 225cc751d9f28eb40a51bc1b92e0c492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 9027364358247185551, guid: 225cc751d9f28eb40a51bc1b92e0c492,
         type: 3}
       propertyPath: m_RootOrder
@@ -545,10 +550,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4420242877923132912, guid: 8c4715556738dc145b56b72e2aa97ca3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732524847673629138, guid: 8c4715556738dc145b56b72e2aa97ca3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6534338628520747987, guid: 8c4715556738dc145b56b72e2aa97ca3,
         type: 3}
       propertyPath: m_Name
       value: BuoyantCrate02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534338628520747987, guid: 8c4715556738dc145b56b72e2aa97ca3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c4715556738dc145b56b72e2aa97ca3, type: 3}
@@ -1095,6 +1115,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuoyantBarrel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8506302037978785333, guid: 225cc751d9f28eb40a51bc1b92e0c492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 9027364358247185551, guid: 225cc751d9f28eb40a51bc1b92e0c492,
         type: 3}
       propertyPath: m_RootOrder
@@ -1275,6 +1300,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuoyantBarrel (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8506302037978785333, guid: 225cc751d9f28eb40a51bc1b92e0c492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 9027364358247185551, guid: 225cc751d9f28eb40a51bc1b92e0c492,
         type: 3}
       propertyPath: m_RootOrder
@@ -1364,6 +1394,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuoyantBarrel (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506302037978785333, guid: 225cc751d9f28eb40a51bc1b92e0c492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9027364358247185551, guid: 225cc751d9f28eb40a51bc1b92e0c492,
         type: 3}
@@ -1544,6 +1579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuoyantBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506302037978785333, guid: 225cc751d9f28eb40a51bc1b92e0c492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9027364358247185551, guid: 225cc751d9f28eb40a51bc1b92e0c492,
         type: 3}
@@ -1880,10 +1920,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4420242877923132912, guid: 8c4715556738dc145b56b72e2aa97ca3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732524847673629138, guid: 8c4715556738dc145b56b72e2aa97ca3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6534338628520747987, guid: 8c4715556738dc145b56b72e2aa97ca3,
         type: 3}
       propertyPath: m_Name
       value: BuoyantCrate02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534338628520747987, guid: 8c4715556738dc145b56b72e2aa97ca3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c4715556738dc145b56b72e2aa97ca3, type: 3}
@@ -2419,6 +2474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuoyantBarrel (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506302037978785333, guid: 225cc751d9f28eb40a51bc1b92e0c492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9027364358247185551, guid: 225cc751d9f28eb40a51bc1b92e0c492,
         type: 3}
@@ -5450,6 +5510,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuoyantBarrel (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8506302037978785333, guid: 225cc751d9f28eb40a51bc1b92e0c492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 9027364358247185551, guid: 225cc751d9f28eb40a51bc1b92e0c492,
         type: 3}
       propertyPath: m_RootOrder
@@ -6994,6 +7059,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuoyantBarrel (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506302037978785333, guid: 225cc751d9f28eb40a51bc1b92e0c492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9027364358247185551, guid: 225cc751d9f28eb40a51bc1b92e0c492,
         type: 3}
