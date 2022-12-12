@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [RequireComponent(typeof(IArduinoData))]
 public class IdleBehaviour : MonoBehaviour
@@ -37,13 +38,19 @@ public class IdleBehaviour : MonoBehaviour
         }
     }
 
+    private List<IIdleAction> idleActions;
+
 
     private void OnEnable() {
         pitchMeasurements = new List<float>();
         rollMeasurements = new List<float>();
 
         arduinoControls = GetComponent<ArduinoControls>();
+        idleActions = new(FindObjectsOfType<MonoBehaviour>().OfType<IIdleAction>());
+        
+
         StartCoroutine(GetMeasurments());
+        StartCoroutine(CallIdleActions());
     }
 
     private void Update() {
@@ -94,6 +101,18 @@ public class IdleBehaviour : MonoBehaviour
             rollMeasurements.Add(arduinoControls.Roll);
 
             yield return new WaitForSeconds(1 / SamplesPerSecond);
+        }
+    }
+
+    private IEnumerator CallIdleActions()
+    {
+        while(true)
+        {
+            foreach(IIdleAction idleAction in idleActions)
+            {
+                idleAction.SwitchIdleState(IsIdle);
+            }
+            yield return new WaitForSeconds(1);
         }
     }
 
