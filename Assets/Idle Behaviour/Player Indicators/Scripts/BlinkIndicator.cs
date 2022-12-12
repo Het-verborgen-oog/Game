@@ -65,8 +65,6 @@ public class BlinkIndicator : MonoBehaviour, IIdleAction
 
         Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, currentColor.a + alphaShift);
 
-        Debug.Log(currentColor);
-
         foreach(Renderer renderer in indicatorRenderers)
         {
             renderer.material.color = newColor;
