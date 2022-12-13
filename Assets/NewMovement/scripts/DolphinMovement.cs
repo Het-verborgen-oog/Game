@@ -92,25 +92,17 @@ public class DolphinMovement : MonoBehaviour
         if (horizontalInput < 0) {
             trackSideHorizontal = TrackSide.left;
         } 
-        else if (horizontalInput > 0)
+        else 
         {
             trackSideHorizontal = TrackSide.right;
-        }
-        else
-        {
-            trackSideHorizontal = TrackSide.none;
         }
 
         if (verticalInput > 0) {
             trackSideVertical = TrackSide.down;
         } 
-        else if (verticalInput < 0)
-        {
-            trackSideVertical = TrackSide.up;
-        }
         else
         {
-            trackSideVertical = TrackSide.none;
+            trackSideVertical = TrackSide.up;
         }
         cartController.SetDirection(trackSideVertical, trackSideHorizontal);
         OnPlayerMoved.Invoke(trackSideHorizontal, trackSideVertical);

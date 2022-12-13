@@ -20,6 +20,5 @@ public enum TrackSide
     left,
     right,
     up,
-    down,
-    none
+    down
 }

@@ -6,16 +6,16 @@ using UnityEngine;
 public class SplitPath : MonoBehaviour
 {
     [SerializeField]
-    private List<GodrayGuider> godrayGuiders;
+    private List<PlayerGuider> playerGuiders;
     // Start is called before the first frame update
     void Start()
     {
-        godrayGuiders = GetComponentsInChildren<GodrayGuider>().ToList();
+        playerGuiders = GetComponentsInChildren<PlayerGuider>().ToList();
     }
 
     public void ToggleGodrayGuiders(TrackSide playerDirectionHorizontal, TrackSide playerDirectionVertical)
     {
-        foreach (GodrayGuider godrayGuider in godrayGuiders)
+        foreach (PlayerGuider godrayGuider in playerGuiders)
         {
             godrayGuider.ToggleParticleSystem(playerDirectionHorizontal, playerDirectionVertical);
         }
