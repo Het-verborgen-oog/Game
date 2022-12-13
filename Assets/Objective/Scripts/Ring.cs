@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Ring : MonoBehaviour, IScore,IInteractable
@@ -16,7 +17,10 @@ public class Ring : MonoBehaviour, IScore,IInteractable
     float ResetDelay = 5f;
     [SerializeField]
     int score = 5;
-    
+
+
+    [SerializeField]
+    TextMeshProUGUI scoreField;
     public int Score { get { return score; }} 
 
     const string PlayerTag = "Player";
@@ -24,8 +28,9 @@ public class Ring : MonoBehaviour, IScore,IInteractable
 
     void Start()
     {
-        MeshRenderer = GetComponent<MeshRenderer>();
+        MeshRenderer = GetComponentInChildren<MeshRenderer>();
         DefaultMaterial = MeshRenderer.material;
+        scoreField = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,8 +52,9 @@ public class Ring : MonoBehaviour, IScore,IInteractable
         ScoreManager.Add(Score);
         SwitchToClearedMaterial();
         GetComponent<AudioSource>().Play();
-        SpawnParticles();
+        if(HitParticles != null) SpawnParticles();
         StartCoroutine(PrepareReset());
+        scoreField.text = "Score: " + ScoreManager.Score;
     }
 
     private void SwitchToDefaultMaterial()

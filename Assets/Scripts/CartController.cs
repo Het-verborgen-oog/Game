@@ -7,20 +7,19 @@ public class CartController : MonoBehaviour
 {
     CinemachineDollyCart cart;
     float baseSpeed;
-    private float boostModifier;
     [SerializeField] float trackSwitchSafety = 100f;
     [SerializeField] CinemachinePath mainTrack;
     [SerializeField] List<SideTrack> altTracks;
     private SideTrack currentSideTrack;
-    private TrackSide cartDirection;
+    private TrackSide cartDirectionVertical;
+    private TrackSide cartDirectionHorizontal;
+    private ArduinoControls arduinoControls;
 
     void Start()
     {
         cart = GetComponent<CinemachineDollyCart>();
         baseSpeed = cart.m_Speed;
-        boostModifier = 1f;
-
-        cartDirection = TrackSide.right;
+        arduinoControls = FindObjectOfType<ArduinoControls>();
     }
 
     void Update()
@@ -28,7 +27,7 @@ public class CartController : MonoBehaviour
         //switch to an alternative track if there is one available in the direction the player is moving
         foreach (var altTrack in altTracks)
         {
-            if (CheckTrackSwitchable(altTrack, cartDirection))
+            if (CheckTrackSwitchable(altTrack, cartDirectionVertical, cartDirectionHorizontal))
             {
                 SetAltTrackAsMainTrack(altTrack);
                 break;
@@ -36,7 +35,9 @@ public class CartController : MonoBehaviour
         }
 
         //set the speed of the cart
-        cart.m_Speed = baseSpeed * boostModifier;
+        if(arduinoControls != null && arduinoControls.isConnected()) cart.m_Speed = baseSpeed * arduinoControls.Speed;
+        else if (Input.GetButton("Jump")) cart.m_Speed = baseSpeed * 2;
+        else cart.m_Speed = baseSpeed;
 
         //check if the player is at the end of a sidetrack
         if (cart.m_Path != mainTrack && cart.m_Position == currentSideTrack.track.PathLength)
@@ -44,7 +45,7 @@ public class CartController : MonoBehaviour
             //set followed path & position
             cart.m_Path = currentSideTrack.trackToSwitchBackTo;
             cart.m_Position = currentSideTrack.transferBackPos;
-            if (cart.m_Path != mainTrack)
+            if (cart.m_Path != mainTrack) //cart is on sidetrack
             {
                 //set currentSideTrack to the new track
                 foreach (var altTrack in altTracks)
@@ -66,25 +67,20 @@ public class CartController : MonoBehaviour
     }
 
     //function to set the direction the cart is going
-    public void SetDirection(TrackSide newCartdirection)
+    public void SetDirection(TrackSide newCartdirectionVertical, TrackSide newCartDirectionHorizontal)
     {
-        cartDirection = newCartdirection;
-    }
-
-    //function to set the boost modifier
-    public void SetBoostModifier(float newBoostModifier)
-    {
-        boostModifier = newBoostModifier;
+        cartDirectionVertical = newCartdirectionVertical;
+        cartDirectionHorizontal = newCartDirectionHorizontal;
     }
 
     //check if you can switch to the chosen sidetrack whilst moving in a given direction
-    bool CheckTrackSwitchable(SideTrack sideTrack, TrackSide movementDirection)
+    bool CheckTrackSwitchable(SideTrack sideTrack, TrackSide movementDirectionVertical, TrackSide movenmentDirectionHorizontal)
     {
         float transferMinPos = sideTrack.transferToPos - cart.m_Speed / trackSwitchSafety;
         if (cart.m_Position >= transferMinPos && cart.m_Position <= sideTrack.transferToPos &&
             cart.m_Path == sideTrack.trackToSwitchFrom &&
             sideTrack.unlocked &&
-            movementDirection == sideTrack.trackSide)
+            (movementDirectionVertical == sideTrack.trackSide || movenmentDirectionHorizontal == sideTrack.trackSide))
             return true;
         return false;
     }
