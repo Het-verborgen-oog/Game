@@ -33,6 +33,9 @@ public class DolphinMovement : MonoBehaviour
     private IInputHandler desiredInputHandler;
     private CartController cartController;
 
+    public delegate void OnPlayerMovement(TrackSide horizontal, TrackSide vertical);
+    public static OnPlayerMovement OnPlayerMoved;
+
     private void Start()
     {
         availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
@@ -95,16 +98,21 @@ public class DolphinMovement : MonoBehaviour
 
         if (horizontalInput < 0) {
             trackSideHorizontal = TrackSide.left;
-        } else {
+        } 
+        else 
+        {
             trackSideHorizontal = TrackSide.right;
         }
 
         if (verticalInput > 0) {
             trackSideVertical = TrackSide.down;
-        } else {
+        } 
+        else
+        {
             trackSideVertical = TrackSide.up;
         }
         cartController.SetDirection(trackSideVertical, trackSideHorizontal);
+        OnPlayerMoved.Invoke(trackSideHorizontal, trackSideVertical);
     }
 
 
