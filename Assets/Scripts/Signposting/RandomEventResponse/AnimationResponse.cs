@@ -23,6 +23,6 @@ public class AnimationResponse : MonoBehaviour, IResponse
 
     public void Reset()
     {
-        
+        animator.Play("Idle");
     }
 }

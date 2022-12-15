@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class SignpostTrigger : MonoBehaviour, IInteractable
+[RequireComponent(typeof(BoxCollider))]
+public class RandomEventTrigger : MonoBehaviour, IInteractable
 {
     const string PLAYERTAG = "Player";
-    private IResponse signpostResponse; 
+    private List<IResponse> randomEventResponses; 
     // Start is called before the first frame update
     void Start()
     {
-        signpostResponse = GetComponentInChildren<IResponse>();
+        randomEventResponses = GetComponentsInChildren<IResponse>().ToList();
     }
 
     public void Trigger()
     {
-        signpostResponse.Activate();
+        foreach (IResponse response in randomEventResponses)
+        {
+            response.Activate();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

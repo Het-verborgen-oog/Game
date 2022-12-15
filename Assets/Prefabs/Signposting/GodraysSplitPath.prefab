@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2901412869973655827}
   - component: {fileID: 2901412869973655828}
   - component: {fileID: 7722007676480242948}
-  - component: {fileID: 7722007676480242959}
+  - component: {fileID: 1181153819022284529}
   m_Layer: 0
   m_Name: God Rays (1)
   m_TagString: Untagged
@@ -4839,7 +4839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredDirectionHorizontal: 0
---- !u!114 &7722007676480242959
+--- !u!114 &1181153819022284529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4848,10 +4848,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2901412869973655831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a21eb44870ec4a4f9595d29f52f2ffd, type: 3}
+  m_Script: {fileID: 11500000, guid: 718777f3d3015494a863bb2ed52abf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godRayParticleSystem: {fileID: 0}
+  particleSystem: {fileID: 0}
 --- !u!1 &2901412871074379865
 GameObject:
   m_ObjectHideFlags: 0
@@ -4876,7 +4876,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2901412871074379865}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -243.31, y: -28.19, z: 299.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4911,7 +4911,7 @@ GameObject:
   - component: {fileID: 5955818273066610121}
   - component: {fileID: 5955818273066610122}
   - component: {fileID: 7722007676480242947}
-  - component: {fileID: 7722007676480242956}
+  - component: {fileID: 7415864062559716361}
   m_Layer: 0
   m_Name: God Rays
   m_TagString: Untagged
@@ -5124,7 +5124,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.35686275}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.42745098}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9738,7 +9738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredDirectionHorizontal: 1
---- !u!114 &7722007676480242956
+--- !u!114 &7415864062559716361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9747,7 +9747,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5955818273066610123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a21eb44870ec4a4f9595d29f52f2ffd, type: 3}
+  m_Script: {fileID: 11500000, guid: 718777f3d3015494a863bb2ed52abf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godRayParticleSystem: {fileID: 0}
+  particleSystem: {fileID: 0}

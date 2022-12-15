@@ -36,6 +36,9 @@ public class DolphinMovement : MonoBehaviour
     public delegate void OnPlayerMovement(TrackSide horizontal, TrackSide vertical);
     public static OnPlayerMovement OnPlayerMoved;
 
+    TrackSide playerHorizontalSide;
+    TrackSide playerVerticalSide;
+
     private void Start()
     {
         availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
@@ -93,26 +96,24 @@ public class DolphinMovement : MonoBehaviour
         upVector = Quaternion.AngleAxis(-raycastAngle, transform.right) * transform.forward;
         downVector = Quaternion.AngleAxis(raycastAngle, transform.right) * transform.forward;
 
-        TrackSide trackSideVertical;
-        TrackSide trackSideHorizontal;
 
         if (horizontalInput < 0) {
-            trackSideHorizontal = TrackSide.left;
+            playerHorizontalSide = TrackSide.left;
         } 
-        else 
+        else if (horizontalInput > 0)
         {
-            trackSideHorizontal = TrackSide.right;
+            playerHorizontalSide = TrackSide.right;
         }
 
         if (verticalInput > 0) {
-            trackSideVertical = TrackSide.down;
+            playerVerticalSide = TrackSide.down;
         } 
-        else
+        else if (verticalInput < 0)
         {
-            trackSideVertical = TrackSide.up;
+            playerVerticalSide = TrackSide.up;
         }
-        cartController.SetDirection(trackSideVertical, trackSideHorizontal);
-        OnPlayerMoved.Invoke(trackSideHorizontal, trackSideVertical);
+        cartController.SetDirection(playerVerticalSide, playerHorizontalSide);
+        OnPlayerMoved?.Invoke(playerHorizontalSide, playerVerticalSide);
     }
 
 
