@@ -33,6 +33,8 @@ public class DolphinMovement : MonoBehaviour
 
     private void Start()
     {
+        halfpoint = raycastLength + (raycastFarLength - raycastLength) / 2;
+        Debug.Log(halfpoint);
         availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
         cartController = FindObjectOfType<CartController>();
     }
@@ -103,10 +105,35 @@ public class DolphinMovement : MonoBehaviour
 
     private void Movement()
     {
+        Ray downRay = new(transform.position, downVector);
+        Ray upRay = new(transform.position, upVector);
+        Ray leftRay = new(transform.position, leftVector);
+        Ray rightRay = new(transform.position, rightVector);
+        RaycastHit hit;
+
         //Add yaw pitch and roll to the dolphin
         float yaw = Mathf.Lerp(0, 20, Mathf.Abs(horizontalInput)) * Mathf.Sign(horizontalInput);
         float pitch = Mathf.Lerp(0, 20, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
         float roll = Mathf.Lerp(0, 30, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
+
+        Debug.Log("yaw: " + yaw);
+        Debug.Log("pitch: " + pitch);
+        
+
+        if (Physics.Raycast(downRay, raycastFarLength))
+        {
+            pitch = 0;
+        }
+
+        if (Physics.Raycast(downRay, raycastFarLength))
+        {
+            pitch = 0;
+        }
+
+        if (Physics.Raycast(downRay, raycastFarLength))
+        {
+            pitch = 0;
+        }
 
         //Move the dolphin
         if (idleBehaviour != null && idleBehaviour.IsIdle)
@@ -129,7 +156,7 @@ public class DolphinMovement : MonoBehaviour
 
         if (Physics.Raycast(leftRay, out hit, raycastLength))
         {
-            horizontalInput = 1 * Math.Min(5, 5 / hit.distance);
+            horizontalInput = Math.Min(5, 5 / hit.distance);
         }
 
         if (Physics.Raycast(rightRay, out hit, raycastLength))
@@ -139,7 +166,7 @@ public class DolphinMovement : MonoBehaviour
 
         if (Physics.Raycast(upRay, out hit, raycastLength))
         {
-            verticalInput = 1f * Math.Min(10, 10 / hit.distance);
+            verticalInput = Math.Min(10, 10 / hit.distance);
         }
 
         if (Physics.Raycast(downRay, out hit, raycastLength))
@@ -148,35 +175,43 @@ public class DolphinMovement : MonoBehaviour
         }
     }
 
+    private bool lockthatmovement;
+    private float halfpoint;
     private void LockMovement()
     {
-        if (Physics.Raycast(transform.position, leftVector, raycastFarLength) || transform.localPosition.x <= horizontalMovementLimit * -1f)
-        {
-            if (horizontalInput < 0)
-            {
-                horizontalInput = 0;
-            }
-        }
+        Ray downRay = new(transform.position, downVector);
+        Ray upRay = new(transform.position, upVector);
+        Ray leftRay = new(transform.position, leftVector);
+        Ray rightRay = new(transform.position, rightVector);
+        RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, rightVector, raycastFarLength) || transform.localPosition.x >= horizontalMovementLimit )
+        if (Physics.Raycast(downRay, halfpoint))
         {
-            if (horizontalInput > 0)
-            {
-                horizontalInput = 0;
-            }
-        }
-
-        if (Physics.Raycast(transform.position, upVector, raycastFarLength) || transform.localPosition.y >= verticalMovementLimit)
-        {
-            if (verticalInput < 0)
+            if (verticalInput >= 0)
             {
                 verticalInput = 0;
             }
         }
 
-        if (Physics.Raycast(transform.position, downVector, raycastFarLength) || transform.localPosition.y <= verticalMovementLimit * -1f)
+        if (Physics.Raycast(upRay, halfpoint))
         {
-            if (verticalInput > 0)
+            if (verticalInput <= 0)
+            {
+                verticalInput = 0;
+            }
+        }
+
+        if (Physics.Raycast(leftRay, halfpoint))
+        {
+            if (verticalInput <= 0)
+            {
+                verticalInput = 0;
+            }
+        }
+
+        if (Physics.Raycast(rightRay, halfpoint))
+        {
+            if (verticalInput <= 0)
             {
                 verticalInput = 0;
             }
@@ -185,6 +220,11 @@ public class DolphinMovement : MonoBehaviour
 
     private void OnDrawGizmos()//used to see Ray in editor without update function
     {
+        Debug.DrawRay(transform.position, downVector * raycastFarLength, Color.blue);
+        Debug.DrawRay(transform.position, upVector * raycastFarLength, Color.blue);
+        Debug.DrawRay(transform.position, rightVector * raycastFarLength, Color.blue);
+        Debug.DrawRay(transform.position, leftVector * raycastFarLength, Color.blue);
+
         Debug.DrawRay(transform.position, leftVector * raycastLength, Color.red);
         Debug.DrawRay(transform.position, rightVector * raycastLength, Color.red);
         Debug.DrawRay(transform.position, upVector * raycastLength, Color.green);
