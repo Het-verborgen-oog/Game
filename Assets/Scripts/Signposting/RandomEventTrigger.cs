@@ -6,27 +6,34 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class RandomEventTrigger : MonoBehaviour, IInteractable
 {
-    const string PLAYERTAG = "Player";
-    private List<IResponse> randomEventResponses; 
-    // Start is called before the first frame update
-    void Start()
-    {
-        randomEventResponses = GetComponentsInChildren<IResponse>().ToList();
-    }
+    [SerializeField]
+    [Range(0, 100)]
+    private int activationPercentage;
 
-    public void Trigger()
+    const string PLAYERTAG = "Player";
+    private RandomEventController randomEventController;
+    private void Start()
     {
-        foreach (IResponse response in randomEventResponses)
-        {
-            response.Activate();
-        }
+        randomEventController = GetComponentInParent<RandomEventController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag(PLAYERTAG))
         {
-            Trigger();
+            CheckForChance();
         }
+    }
+
+    private void CheckForChance()
+    {
+        int randomNumber = Random.Range(0, 100);
+        if (randomNumber > activationPercentage) return;
+        Trigger();
+    }
+
+    public void Trigger()
+    {
+        randomEventController?.Trigger();
     }
 }

@@ -6,8 +6,7 @@ using UnityEngine;
 public class AnimationResponse : MonoBehaviour, IResponse
 {
     private Animator animator;
-    [SerializeField]
-    private string animationName;
+    private string animationName = "isActivated";
     private int animationHashId;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +22,6 @@ public class AnimationResponse : MonoBehaviour, IResponse
 
     public void Reset()
     {
-        animator.Play("Idle");
+        animator.ResetTrigger(animationHashId);
     }
 }
