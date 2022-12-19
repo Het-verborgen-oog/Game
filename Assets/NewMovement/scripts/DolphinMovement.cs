@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DolphinMovement : MonoBehaviour
+public class DolphinMovement : MonoBehaviour, ITrigger
 {
     [SerializeField] private GameObject gameObjectWithInputHandlers;
     //must be child of object with this script
@@ -28,10 +28,22 @@ public class DolphinMovement : MonoBehaviour
     private Vector3 rightVector;
     private Vector3 upVector;
     private Vector3 downVector;
+
     private bool overrideMovement = false;
     
     private IInputHandler desiredInputHandler;
     private CartController cartController;
+
+    public void TriggerEvent(object parameters)
+    {
+        if (parameters.GetType() != typeof(bool))
+        {
+            return;
+        }
+
+        bool state = (bool)parameters;
+        overrideMovement = state;
+    }
 
     private void Start()
     {
