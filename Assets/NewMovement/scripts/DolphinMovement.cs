@@ -114,19 +114,19 @@ public class DolphinMovement : MonoBehaviour, ITrigger
 
 
         if (horizontalInput < -steeringDeadzone) {
-            trackSideHorizontal = TrackSide.left;
+            playerHorizontalSide = TrackSide.left;
         } else if (horizontalInput > steeringDeadzone) {
-            trackSideHorizontal = TrackSide.right;
+            playerHorizontalSide = TrackSide.right;
         } else {
-            trackSideHorizontal = TrackSide.neutral;
+            playerHorizontalSide = TrackSide.neutral;
         }
 
         if (verticalInput < -steeringDeadzone) {
-            trackSideVertical = TrackSide.up;            
+            playerVerticalSide = TrackSide.up;            
         } else if (verticalInput > steeringDeadzone) {
-            trackSideVertical = TrackSide.down;
+            playerVerticalSide = TrackSide.down;
         } else {
-            trackSideVertical = TrackSide.neutral;
+            playerVerticalSide = TrackSide.neutral;
         }
         cartController.SetDirection(playerVerticalSide, playerHorizontalSide);
         OnPlayerMoved?.Invoke(playerHorizontalSide, playerVerticalSide);
