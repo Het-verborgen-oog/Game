@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6122543104345270105}
   - component: {fileID: 6122543104345270110}
   - component: {fileID: 6122543104345270111}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Deepsea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
