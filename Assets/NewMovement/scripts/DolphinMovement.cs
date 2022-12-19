@@ -14,6 +14,7 @@ public class DolphinMovement : MonoBehaviour, ITrigger
     [SerializeField] public float verticalMovementSpeed = 5;
     [SerializeField] public float horizontalMovementLimit = 20;
     [SerializeField] public float verticalMovementLimit = 20;
+    [SerializeField, Range(0, 1)] public float steeringDeadzone = 0.2f;
     [SerializeField] public float raycastAngle = 45;
     [SerializeField] public float raycastLength = 5;
     [SerializeField] public float raycastFarLength = 6;
@@ -108,16 +109,20 @@ public class DolphinMovement : MonoBehaviour, ITrigger
         TrackSide trackSideVertical;
         TrackSide trackSideHorizontal;
 
-        if (horizontalInput < 0) {
+        if (horizontalInput < -steeringDeadzone) {
             trackSideHorizontal = TrackSide.left;
-        } else {
+        } else if (horizontalInput > steeringDeadzone) {
             trackSideHorizontal = TrackSide.right;
+        } else {
+            trackSideHorizontal = TrackSide.neutral;
         }
 
-        if (verticalInput > 0) {
+        if (verticalInput < -steeringDeadzone) {
+            trackSideVertical = TrackSide.up;            
+        } else if (verticalInput > steeringDeadzone) {
             trackSideVertical = TrackSide.down;
         } else {
-            trackSideVertical = TrackSide.up;
+            trackSideVertical = TrackSide.neutral;
         }
         cartController.SetDirection(trackSideVertical, trackSideHorizontal);
     }
