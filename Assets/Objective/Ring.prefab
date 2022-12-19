@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 8780173663215045552}
   - component: {fileID: 4691561414069730723}
   - component: {fileID: 4691561414069730720}
-  - component: {fileID: 3654748381649246921}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,6 +193,10 @@ PrefabInstance:
     - target: {fileID: 1940392824129002, guid: efa8779d08315c24d9a040775c00cf89, type: 3}
       propertyPath: m_Name
       value: Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940392824129002, guid: efa8779d08315c24d9a040775c00cf89, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4829956754868850, guid: efa8779d08315c24d9a040775c00cf89, type: 3}
       propertyPath: m_RootOrder
