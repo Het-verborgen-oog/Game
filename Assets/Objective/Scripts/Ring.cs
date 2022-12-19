@@ -28,7 +28,7 @@ public class Ring : MonoBehaviour, IScore,IInteractable
 
     void Start()
     {
-        MeshRenderer = GetComponent<MeshRenderer>();
+        MeshRenderer = GetComponentInChildren<MeshRenderer>();
         DefaultMaterial = MeshRenderer.material;
         scoreField = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
     }
@@ -52,10 +52,9 @@ public class Ring : MonoBehaviour, IScore,IInteractable
         ScoreManager.Add(Score);
         SwitchToClearedMaterial();
         GetComponent<AudioSource>().Play();
-        SpawnParticles();
+        if(HitParticles != null) SpawnParticles();
         StartCoroutine(PrepareReset());
         scoreField.text = "Score: " + ScoreManager.Score;
-
     }
 
     private void SwitchToDefaultMaterial()

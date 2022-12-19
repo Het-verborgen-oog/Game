@@ -164,6 +164,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3654748381649246921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8780173663215045550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40207e865809fb84fb6862a3e3b0df79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitParticles: {fileID: 1382557174936957044, guid: 9a46ebbd7fe6e06408d7aef3d35d916d,
+    type: 3}
+  DefaultMaterial: {fileID: 2100000, guid: 668a5e7d4cd7a244386a603bbf768aaf, type: 2}
+  ClearedMaterial: {fileID: 2100000, guid: 6bcff17a06996f848b63be994d938f0f, type: 2}
+  ResetDelay: 5
+  score: 5
+  scoreField: {fileID: 0}
 --- !u!1001 &8780173663632382734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -239,7 +258,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e5cc88a0553de0f4f929fef74886d758, type: 2}
+      objectReference: {fileID: 2100000, guid: 668a5e7d4cd7a244386a603bbf768aaf, type: 2}
     - target: {fileID: 33920142849842558, guid: efa8779d08315c24d9a040775c00cf89,
         type: 3}
       propertyPath: m_Mesh
