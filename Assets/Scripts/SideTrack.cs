@@ -17,6 +17,7 @@ public class SideTrack : MonoBehaviour
 
 public enum TrackSide
 {
+    neutral,
     left,
     right,
     up,

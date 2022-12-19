@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DolphinMovement : MonoBehaviour
+public class DolphinMovement : MonoBehaviour, ITrigger
 {
     [SerializeField] private GameObject gameObjectWithInputHandlers;
     //must be child of object with this script
@@ -14,6 +14,7 @@ public class DolphinMovement : MonoBehaviour
     [SerializeField] public float verticalMovementSpeed = 5;
     [SerializeField] public float horizontalMovementLimit = 20;
     [SerializeField] public float verticalMovementLimit = 20;
+    [SerializeField, Range(0, 1)] public float steeringDeadzone = 0.2f;
     [SerializeField] public float raycastAngle = 45;
     [SerializeField] public float raycastLength = 5;
     [SerializeField] public float raycastFarLength = 6;
@@ -28,6 +29,7 @@ public class DolphinMovement : MonoBehaviour
     private Vector3 rightVector;
     private Vector3 upVector;
     private Vector3 downVector;
+
     private bool overrideMovement = false;
     
     private IInputHandler desiredInputHandler;
@@ -38,6 +40,20 @@ public class DolphinMovement : MonoBehaviour
 
     TrackSide playerHorizontalSide;
     TrackSide playerVerticalSide;
+
+    [SerializeField]
+    LayerMask collisionLayers;
+
+    public void TriggerEvent(object parameters)
+    {
+        if (parameters.GetType() != typeof(bool))
+        {
+            return;
+        }
+
+        bool state = (bool)parameters;
+        overrideMovement = state;
+    }
 
     private void Start()
     {
@@ -97,20 +113,20 @@ public class DolphinMovement : MonoBehaviour
         downVector = Quaternion.AngleAxis(raycastAngle, transform.right) * transform.forward;
 
 
-        if (horizontalInput < 0) {
-            playerHorizontalSide = TrackSide.left;
-        } 
-        else if (horizontalInput > 0)
-        {
-            playerHorizontalSide = TrackSide.right;
+        if (horizontalInput < -steeringDeadzone) {
+            trackSideHorizontal = TrackSide.left;
+        } else if (horizontalInput > steeringDeadzone) {
+            trackSideHorizontal = TrackSide.right;
+        } else {
+            trackSideHorizontal = TrackSide.neutral;
         }
 
-        if (verticalInput > 0) {
-            playerVerticalSide = TrackSide.down;
-        } 
-        else if (verticalInput < 0)
-        {
-            playerVerticalSide = TrackSide.up;
+        if (verticalInput < -steeringDeadzone) {
+            trackSideVertical = TrackSide.up;            
+        } else if (verticalInput > steeringDeadzone) {
+            trackSideVertical = TrackSide.down;
+        } else {
+            trackSideVertical = TrackSide.neutral;
         }
         cartController.SetDirection(playerVerticalSide, playerHorizontalSide);
         OnPlayerMoved?.Invoke(playerHorizontalSide, playerVerticalSide);
@@ -143,22 +159,22 @@ public class DolphinMovement : MonoBehaviour
         Ray rightRay = new(transform.position, rightVector);
         RaycastHit hit;
 
-        if (Physics.Raycast(leftRay, out hit, raycastLength))
+        if (Physics.Raycast(leftRay, out hit, raycastLength, collisionLayers))
         {
             horizontalInput = 1 * Math.Min(5, 5 / hit.distance);
         }
 
-        if (Physics.Raycast(rightRay, out hit, raycastLength))
+        if (Physics.Raycast(rightRay, out hit, raycastLength, collisionLayers))
         {
             horizontalInput = -1f * Math.Min(5, 5 / hit.distance);
         }
 
-        if (Physics.Raycast(upRay, out hit, raycastLength))
+        if (Physics.Raycast(upRay, out hit, raycastLength, collisionLayers))
         {
             verticalInput = 1f * Math.Min(10, 10 / hit.distance);
         }
 
-        if (Physics.Raycast(downRay, out hit, raycastLength))
+        if (Physics.Raycast(downRay, out hit, raycastLength, collisionLayers))
         {
             verticalInput = -1f * Math.Min(10, 10 / hit.distance);
         }
@@ -166,7 +182,7 @@ public class DolphinMovement : MonoBehaviour
 
     private void LockMovement()
     {
-        if (Physics.Raycast(transform.position, leftVector, raycastFarLength) || transform.localPosition.x <= horizontalMovementLimit * -1f)
+        if (Physics.Raycast(transform.position, leftVector, raycastFarLength, collisionLayers) || transform.localPosition.x <= horizontalMovementLimit * -1f)
         {
             if (horizontalInput < 0)
             {
@@ -174,7 +190,7 @@ public class DolphinMovement : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, rightVector, raycastFarLength) || transform.localPosition.x >= horizontalMovementLimit )
+        if (Physics.Raycast(transform.position, rightVector, raycastFarLength, collisionLayers) || transform.localPosition.x >= horizontalMovementLimit )
         {
             if (horizontalInput > 0)
             {
@@ -182,7 +198,7 @@ public class DolphinMovement : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, upVector, raycastFarLength) || transform.localPosition.y >= verticalMovementLimit)
+        if (Physics.Raycast(transform.position, upVector, raycastFarLength, collisionLayers) || transform.localPosition.y >= verticalMovementLimit)
         {
             if (verticalInput < 0)
             {
@@ -190,7 +206,7 @@ public class DolphinMovement : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, downVector, raycastFarLength) || transform.localPosition.y <= verticalMovementLimit * -1f)
+        if (Physics.Raycast(transform.position, downVector, raycastFarLength, collisionLayers) || transform.localPosition.y <= verticalMovementLimit * -1f)
         {
             if (verticalInput > 0)
             {

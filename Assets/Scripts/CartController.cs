@@ -11,7 +11,11 @@ public class CartController : MonoBehaviour
     [SerializeField] CinemachinePath mainTrack;
     [SerializeField] List<SideTrack> altTracks;
     private SideTrack currentSideTrack;
+
+    [SerializeField]
     private TrackSide cartDirectionVertical;
+
+    [SerializeField]
     private TrackSide cartDirectionHorizontal;
     private ArduinoControls arduinoControls;
 
