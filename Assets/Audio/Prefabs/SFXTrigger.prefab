@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8321596534153797}
   - component: {fileID: 5993628303518349457}
   - component: {fileID: 6197711464482149106}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SFXTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
