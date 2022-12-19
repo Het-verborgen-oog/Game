@@ -132,12 +132,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObjectWithInputHandlers: {fileID: 0}
   dolphinObject: {fileID: 914024830424351019}
-  horizontalMovmentSpeed: 5
-  verticalMovmentSpeed: 5
+  horizontalMovementSpeed: 5
+  verticalMovementSpeed: 5
+  horizontalMovementLimit: 20
+  verticalMovementLimit: 20
   raycastAngle: 45
   raycastLength: 5
   raycastFarLength: 6
   speedMultiplier: 2
+  idleBehaviour: {fileID: 0}
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 707
 --- !u!1 &7391934892129036838
 GameObject:
   m_ObjectHideFlags: 0
