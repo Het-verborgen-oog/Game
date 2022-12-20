@@ -125,17 +125,17 @@ public class Calibration : MonoBehaviour
 
     private void SetValues(List<float> values)
     {
-                //Horizontal
-                    horizontalSlidersList[0].GetComponent<Slider>().value = values[0];
-                    horizontalSlidersList[1].GetComponent<Slider>().value = values[1];
-                    horizontalSlidersList[2].GetComponent<Slider>().value = values[2];
-                //Vertical
-                    verticalSlidersList[0].GetComponent<Slider>().value = values[3];
-                    verticalSlidersList[1].GetComponent<Slider>().value = values[4];
-                    verticalSlidersList[2].GetComponent<Slider>().value = values[5];
-                //Speed
-                    speedSlidersList[0].GetComponent<Slider>().value = values[6];
-                    speedSlidersList[1].GetComponent<Slider>().value = values[7];
-                    speedSlidersList[2].GetComponent<Slider>().value = values[8];
+        //Horizontal
+            horizontalSlidersList[0].GetComponent<Slider>().value = values[0];
+            horizontalSlidersList[1].GetComponent<Slider>().value = values[1];
+            horizontalSlidersList[2].GetComponent<Slider>().value = values[2];
+        //Vertical
+            verticalSlidersList[0].GetComponent<Slider>().value = values[3];
+            verticalSlidersList[1].GetComponent<Slider>().value = values[4];
+            verticalSlidersList[2].GetComponent<Slider>().value = values[5];
+        //Speed
+            speedSlidersList[0].GetComponent<Slider>().value = values[6];
+            speedSlidersList[1].GetComponent<Slider>().value = values[7];
+            speedSlidersList[2].GetComponent<Slider>().value = values[8];
     }    
 }
