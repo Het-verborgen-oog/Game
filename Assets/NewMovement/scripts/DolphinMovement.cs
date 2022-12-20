@@ -35,6 +35,12 @@ public class DolphinMovement : MonoBehaviour, ITrigger
     private IInputHandler desiredInputHandler;
     private CartController cartController;
 
+    public delegate void OnPlayerMovement(TrackSide horizontal, TrackSide vertical);
+    public static OnPlayerMovement OnPlayerMoved;
+
+    TrackSide playerHorizontalSide;
+    TrackSide playerVerticalSide;
+
     [SerializeField]
     LayerMask collisionLayers;
 
@@ -106,25 +112,24 @@ public class DolphinMovement : MonoBehaviour, ITrigger
         upVector = Quaternion.AngleAxis(-raycastAngle, transform.right) * transform.forward;
         downVector = Quaternion.AngleAxis(raycastAngle, transform.right) * transform.forward;
 
-        TrackSide trackSideVertical;
-        TrackSide trackSideHorizontal;
 
         if (horizontalInput < -steeringDeadzone) {
-            trackSideHorizontal = TrackSide.left;
+            playerHorizontalSide = TrackSide.left;
         } else if (horizontalInput > steeringDeadzone) {
-            trackSideHorizontal = TrackSide.right;
+            playerHorizontalSide = TrackSide.right;
         } else {
-            trackSideHorizontal = TrackSide.neutral;
+            playerHorizontalSide = TrackSide.neutral;
         }
 
         if (verticalInput < -steeringDeadzone) {
-            trackSideVertical = TrackSide.up;            
+            playerVerticalSide = TrackSide.up;            
         } else if (verticalInput > steeringDeadzone) {
-            trackSideVertical = TrackSide.down;
+            playerVerticalSide = TrackSide.down;
         } else {
-            trackSideVertical = TrackSide.neutral;
+            playerVerticalSide = TrackSide.neutral;
         }
-        cartController.SetDirection(trackSideVertical, trackSideHorizontal);
+        cartController.SetDirection(playerVerticalSide, playerHorizontalSide);
+        OnPlayerMoved?.Invoke(playerHorizontalSide, playerVerticalSide);
     }
 
 
