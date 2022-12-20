@@ -2286,6 +2286,7 @@ GameObject:
   - component: {fileID: 1761180896106442982}
   - component: {fileID: 4090902424682792087}
   - component: {fileID: 3830966888975545749}
+  - component: {fileID: 4316888089296452171}
   m_Layer: 5
   m_Name: Scroll
   m_TagString: Untagged
@@ -2351,3 +2352,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4316888089296452171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8884570793942651521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5234332b95a84b74c802f4b8fced0701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnAroundPoint: 0
+  VerticalTranslateSpeed: 149.45
+  RotationSpeed: 1
