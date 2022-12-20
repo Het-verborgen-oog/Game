@@ -28,12 +28,32 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     private string inboundMessage;
 
 
+<<<<<<< Updated upstream
+    const float MinimumPitch = -1f, MaximumPitch = 1f, MinimumSpeed = 1f, MaximumSpeed = 2.5f;
+    const float MinimumRoll = -1f, MaximumRoll = 1f;
+
+    //These values were calculated with rigourous testing :)
+    // JK I wrote a program that calculated all digital values the arduino can output and their respective voltages, and used that as a lookup table :)
+    const float
+        ExpectedMinimumPitch = 82f,
+        ExpectedMaximumPitch = 409f,
+        ExpectedMinumumSpeed = 0f,
+        ExpectedMaximumSpeed = 5f;
+    const float 
+        ExpectedMinimumRoll = 511f,
+        ExpectedMaximumRoll = 736f;
+
+    public float Roll { get { return (keyValuePairs["HRZ"] - ExpectedMinimumRoll) / (ExpectedMaximumRoll - ExpectedMinimumRoll) * (MaximumRoll - MinimumRoll) + MinimumRoll; } }
+
+    public float Pitch { get { return (keyValuePairs["VER"] - ExpectedMinimumPitch) / (ExpectedMaximumPitch - ExpectedMinimumPitch) * (MaximumPitch - MinimumPitch) + MinimumPitch; } }
+=======
     const float MinimumTilt = -1f, MaximumTilt = 1f, MinimumSpeed = 1f, MaximumSpeed = 2.5f;
-    const float ExpectedMinimumTilt = 0f, ExpectedMaximumTilt = 1024f, ExpectedMinumumSpeed = 0f, ExpectedMaximumSpeed = 5f;
+    const float ExpectedMinimumRoll = 72f, ExpectedMaximumRoll = 110f, ExpectedMinumumSpeed = 0f, ExpectedMaximumSpeed = 5f;
+    const float ExpectedMinimumPitch = 0f, ExpectedMaximumPitch = 1024f;
+    public float Roll { get { return (keyValuePairs["HRZ"] - ExpectedMinimumRoll) / (ExpectedMaximumRoll - ExpectedMinimumRoll) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
 
-    public float Roll { get { return (keyValuePairs["HRZ"] - ExpectedMinimumTilt) / (ExpectedMaximumTilt - ExpectedMinimumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
-
-    public float Pitch { get { return (keyValuePairs["VER"] - ExpectedMinimumTilt) / (ExpectedMaximumTilt - ExpectedMinimumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
+    public float Pitch { get { return (keyValuePairs["VER"] - ExpectedMinimumPitch) / (ExpectedMaximumPitch - ExpectedMinimumPitch) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
+>>>>>>> Stashed changes
 
     public float Speed { get { return (keyValuePairs["SPD"] - ExpectedMinumumSpeed) / (ExpectedMaximumSpeed - ExpectedMinumumSpeed) * (MaximumSpeed - MinimumSpeed) + MinimumSpeed; } }
 
