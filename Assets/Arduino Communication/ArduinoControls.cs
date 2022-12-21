@@ -74,11 +74,6 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     public void Start()
     {
         GrabSettings();
-
-        foreach (var item in RollData.GetPropertyValues())
-        {
-            Debug.Log(item);
-        }
     }
 
     //public void Start()
