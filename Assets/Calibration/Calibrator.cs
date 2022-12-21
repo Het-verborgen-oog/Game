@@ -13,9 +13,6 @@ public class Calibrator : MonoBehaviour
     [SerializeField]
     Slider MaximumSlider;
 
-    [SerializeField]
-    Slider CenterSlider;
-
     [Header("Text Boxes")]
     [SerializeField]
     TextMeshProUGUI ValueText;
@@ -27,16 +24,18 @@ public class Calibrator : MonoBehaviour
     TextMeshProUGUI MaximumText;
 
     [SerializeField]
-    TextMeshProUGUI CenterText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    ArduinoControls arduino;
 
-    // Update is called once per frame
+    [SerializeField]
+    ArduinoControls.MeasureDataIndex RequestedData;
+
     void Update()
     {
-        
+        MinimumSlider.value = arduino.DataCollection[(int)RequestedData].InputMinimum;
+        MinimumText.text = MinimumSlider.value.ToString();
+
+        MaximumSlider.value = arduino.DataCollection[(int)RequestedData].InputMaximum;
+        MaximumText.text = MaximumSlider.value.ToString();
+
     }
 }
