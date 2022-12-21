@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ClamWithFishOverride
+  m_Controller: {fileID: 9100000, guid: 1c396fd8fdc65ec48848eeb35ac55885, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 26f3a8e26e5df6043ab17a0e3abb0510, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 26f3a8e26e5df6043ab17a0e3abb0510, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 106a9be491718344c8591a2a2ca3d401, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b3b6b091585b21e4fb0a22a403f9c7b8, type: 2}
