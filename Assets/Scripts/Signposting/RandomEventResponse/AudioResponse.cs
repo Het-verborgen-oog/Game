@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioResponse : MonoBehaviour
+[RequireComponent(typeof(AudioClip))]
+public class AudioResponse : MonoBehaviour, IResponse
 {
     // Start is called before the first frame update
     void Start()
@@ -10,8 +11,12 @@ public class AudioResponse : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Activate()
+    {
+        
+    }
+
+    public void Reset()
     {
         
     }
