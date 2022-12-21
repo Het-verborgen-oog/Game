@@ -21,37 +21,80 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
 
     [SerializeField]
     private string[] Message;
-
+    /// <summary>
+    /// The dictionary where the data is stored.
+    /// </summary>
     public Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
     private int HorizontalTilt, VerticalTilt, Rotations;
 
     private string inboundMessage;
 
+    //const float MinimumTilt = -1f, MaximumTilt = 1f, MinimumSpeed = 1f, MaximumSpeed = 2.5f;
+    //const float ExpectedMinimumTilt = 0f, ExpectedMaximumTilt = 1024f, ExpectedMinumumSpeed = 0f, ExpectedMaximumSpeed = 5f;
 
-    const float MinimumTilt = -1f, MaximumTilt = 1f, MinimumSpeed = 1f, MaximumSpeed = 2.5f;
-    const float ExpectedMinimumTilt = 0f, ExpectedMaximumTilt = 1024f, ExpectedMinumumSpeed = 0f, ExpectedMaximumSpeed = 5f;
-
-    public float Roll { get { return (keyValuePairs["HRZ"] - ExpectedMinimumTilt) / (ExpectedMaximumTilt - ExpectedMinimumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
-
-    public float Pitch { get { return (keyValuePairs["VER"] - ExpectedMinimumTilt) / (ExpectedMaximumTilt - ExpectedMinimumTilt) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
-
-    public float Speed { get { return (keyValuePairs["SPD"] - ExpectedMinumumSpeed) / (ExpectedMaximumSpeed - ExpectedMinumumSpeed) * (MaximumSpeed - MinimumSpeed) + MinimumSpeed; } }
-
-    public void Start()
+    public struct MeasureData
     {
-        string[] ports = GetPorts();
-        serialPort = new SerialPort(ports[0]);
-        messageCreator = new MessageCreator(StartMarker,EndMarker);
-        serialPort.BaudRate = baudRate;
+        public readonly float InputMinimum;
+        public readonly float InputMaximum;
+        public readonly float OutputMinimum;
+        public readonly float OutputMaximum;
 
-        PrepareCommands();
-        Connect();
-
-        if (serialPort.IsOpen == false)
+        public MeasureData(float inputMinimum, float inputMaximum, float outputMinimum, float outputMaximum)
         {
-            throw new Exception("Hardware could not connect!");
+            InputMinimum = inputMinimum;
+            InputMaximum = inputMaximum;
+            OutputMinimum = outputMinimum;
+            OutputMaximum = outputMaximum;
+        }
+
+        public static string[] GetPropertyNames()
+        {
+            return new string[] { nameof(InputMinimum), nameof(InputMaximum), nameof(OutputMinimum), nameof(OutputMaximum) };
+        }
+
+        public float[] GetPropertyValues()
+        {
+            return new float[] { InputMinimum, InputMaximum, OutputMinimum, OutputMaximum };
         }
     }
+
+    public MeasureData RollData;
+    public MeasureData PitchData;
+    public MeasureData SpeedData;
+
+    public float Roll { get { return (keyValuePairs["HRZ"] - RollData.InputMinimum) / (RollData.InputMaximum - RollData.InputMinimum) * (RollData.OutputMaximum - RollData.OutputMaximum) + RollData.OutputMinimum; } }
+
+    public float Pitch { get { return (keyValuePairs["VER"] - PitchData.InputMinimum) / (PitchData.InputMaximum - PitchData.InputMinimum) * (PitchData.OutputMaximum - PitchData.OutputMinimum) + PitchData.OutputMinimum; } }
+
+    public float Speed { get { return (keyValuePairs["SPD"] - SpeedData.InputMinimum) / (SpeedData.InputMaximum - SpeedData.InputMinimum) * (SpeedData.OutputMaximum - SpeedData.OutputMinimum) + SpeedData.OutputMinimum; } }
+
+    /// <summary>
+    /// This one is a test function
+    /// </summary>
+    public void Start()
+    {
+        GrabSettings();
+    }
+
+    //public void Start()
+    //{
+    //    string[] ports = GetPorts();
+    //    if (ports.Length > 0)
+    //    {
+    //        serialPort = new SerialPort(ports[0]);
+    //    }
+    //    messageCreator = new MessageCreator(StartMarker,EndMarker);
+    //    serialPort.BaudRate = baudRate;
+
+    //    PrepareCommands();
+    //    GrabSettings();
+    //    Connect();
+
+    //    if (serialPort.IsOpen == false)
+    //    {
+    //        throw new Exception("Hardware could not connect!");
+    //    }
+    //}
 
     public void OnDestroy()
     {
@@ -66,12 +109,125 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         }
     }
 
+    /// <summary>
+    /// Prepares the dictionary.
+    /// </summary>
     private void PrepareCommands()
     {
         keyValuePairs.Add("HRZ", HorizontalTilt);
         keyValuePairs.Add("VER", VerticalTilt);
         keyValuePairs.Add("SPD", Rotations);
     }
+
+    // =============== //
+    //  SAVE SETTINGS  //
+    // =============== //
+
+    /// <summary>
+    /// Grabs all the required settings upon initialisation
+    /// </summary>
+    private void GrabSettings()
+    {
+        if(!PlayerPrefs.HasKey(nameof(RollData)+nameof(RollData.OutputMaximum)))
+        {
+            CreateSettings();
+            return;
+        }
+
+        RollData = LoadDataSet(nameof(RollData));
+        PitchData = LoadDataSet(nameof(PitchData));
+        SpeedData = LoadDataSet(nameof(SpeedData));
+    }
+
+    private void CreateSettings()
+    {
+        RollData = new MeasureData(0f, 1023f, -1f, 1f);
+        PitchData = new MeasureData(0f, 1023f, -1f, 1f);
+        SpeedData = new MeasureData(0f, 5f, 1f, 2.5f);
+
+        SaveDataSet(nameof(RollData),RollData);
+    }
+
+    private MeasureData LoadDataSet(string dataSet)
+    {
+        if (dataSet == null)
+        {
+            throw new ArgumentNullException(nameof(dataSet));
+        }
+        if (string.IsNullOrEmpty(dataSet) || string.IsNullOrWhiteSpace(dataSet))
+        {
+            throw new ArgumentException(nameof(dataSet));
+        }
+
+        string[] keys = MeasureData.GetPropertyNames(); // Look, it works FINE.
+        List<float> values = new List<float>();
+
+        foreach (string item in keys)
+        {
+            values.Add(LoadData(dataSet, item));
+        }
+
+        //Should be an enum, but at this stage of the project I physically do not care enough.
+        return new MeasureData(values[0], values[1], values[2], values[3]);
+    }
+
+    private void SaveDataSet(string dataSet, MeasureData data)
+    {
+        string[] keys = MeasureData.GetPropertyNames();
+        float[] values = data.GetPropertyValues();
+
+        if (keys.Length != values.Length) throw new Exception("Data set aspects have changed!");
+
+        for (int i = 0; i < keys.Length; i++)
+        {
+            SaveData(dataSet, keys[i], values[i]);
+        }
+    }
+
+    /// <summary>
+    /// Saves data for calibration to the PlayerPrefs API
+    /// </summary>
+    /// <param name="dataSet">The data set to access, e.g. RollData</param>
+    /// <param name="key">The key to save to, e.g. InputMinimum</param>
+    /// <param name="data">The data to store</param>
+    private void SaveData(string dataSet, string key, float data)
+    {
+        if (dataSet == null)
+        {
+            throw new ArgumentNullException(nameof(dataSet));
+        }
+        if (string.IsNullOrEmpty(dataSet) || string.IsNullOrWhiteSpace(dataSet))
+        {
+            throw new ArgumentException(nameof(dataSet));
+        }
+
+        if (key == null)
+        {
+            throw new ArgumentNullException(nameof(key));
+        }
+        if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
+        {
+            throw new ArgumentException(nameof(key));
+        }
+
+        PlayerPrefs.SetFloat(dataSet + key, data);
+    }
+
+    /// <summary>
+    /// Loads data for calibration to the PlayerPrefs API
+    /// </summary>
+    /// <param name="dataSet">The data set to access, e.g. RollData</param>
+    /// <param name="key">The key to save to, e.g. InputMinimum</param>
+    /// <returns>The loaded data, or 0.</returns>
+    private float LoadData(string dataSet, string key)
+    {
+        return PlayerPrefs.GetFloat(dataSet + key);
+    }
+
+    // ================== //
+    // MESSAGE PROCESSING //
+    // ================== //
+
     enum CommandStructure
     {
         Identifier = 0,
@@ -111,14 +267,9 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     /// </summary>
     public void Disconnect()
     {
-        if (string.IsNullOrEmpty(serialPort.PortName) || string.IsNullOrWhiteSpace(serialPort.PortName))
-        {
-            return;
-        }
-        else if (serialPort.IsOpen == true)
-        {
-            serialPort.Close();
-        }
+        if (serialPort == null) return;
+        else if (string.IsNullOrEmpty(serialPort.PortName) || string.IsNullOrWhiteSpace(serialPort.PortName)) return;
+        else if (serialPort.IsOpen == true) serialPort.Close();
     }
 
     /// <summary>
@@ -142,48 +293,43 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     /// Reads a message from the serial port.
     /// </summary>
     /// <returns>Whether it was successful.</returns>
+
+    // Development note: Code could be improved with the use of "serialPort.ReadExistingLine()", but I didn't have time to implement this.
     public bool ReadMessage()
     {
         if (serialPort != null && serialPort.IsOpen == true && serialPort.BytesToRead > 0)
         {
             string readMessage = serialPort.ReadExisting();
 
-            try
+            if (readMessage.Contains(EndMarker))
             {
-                if (readMessage.Contains(EndMarker))
+                inboundMessage += readMessage;
+                int endIndex = inboundMessage.IndexOf(EndMarker);
+                int startIndex = inboundMessage.IndexOf(StartMarker);
+
+                if (startIndex == -1 || endIndex == -1 || startIndex == inboundMessage.Length - 1)
                 {
-                    inboundMessage += readMessage;
-                    int endIndex = inboundMessage.IndexOf(EndMarker);
-                    int startIndex = inboundMessage.IndexOf(StartMarker);
-
-                    if (startIndex == -1 || endIndex == -1 || startIndex == inboundMessage.Length - 1)
-                    {
-                        inboundMessage = "";
-                        return false;
-                    }
-
-                    //Technically unsafe, but due to the order its FINE.
-                    inboundMessage = inboundMessage.Remove(endIndex);
-
-                    if (1 > inboundMessage.Length - startIndex)
-                    {
-                        return false;
-                    }
-
-                    inboundMessage = inboundMessage.Remove(startIndex, 1);
-                    inboundMessage = inboundMessage.Trim();
-                    Message = inboundMessage.Split(PayloadMarker, StringSplitOptions.RemoveEmptyEntries);
                     inboundMessage = "";
+                    return false;
                 }
-                else
+
+                inboundMessage = inboundMessage.Remove(endIndex);
+
+                if (1 > inboundMessage.Length - startIndex)
                 {
-                    inboundMessage += readMessage;
+                    return false;
                 }
-                return true;
+
+                inboundMessage = inboundMessage.Remove(startIndex, 1);
+                inboundMessage = inboundMessage.Trim();
+                Message = inboundMessage.Split(PayloadMarker, StringSplitOptions.RemoveEmptyEntries);
+                inboundMessage = "";
             }
-            catch (ArgumentOutOfRangeException ex)
+            else
             {
+                inboundMessage += readMessage;
             }
+            return true;
         }
         return false;
     }
@@ -217,4 +363,6 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         if (serialPort == null) return false;
         else return serialPort.IsOpen;
     }
+
+
 }
