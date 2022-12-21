@@ -23,19 +23,19 @@ public class Ring : MonoBehaviour, IScore,IInteractable
     TextMeshProUGUI scoreField;
     public int Score { get { return score; }} 
 
-    const string PlayerTag = "Player";
+    const string PLAYERTAG = "Player";
     private MeshRenderer MeshRenderer;
 
     void Start()
     {
-        MeshRenderer = GetComponent<MeshRenderer>();
+        MeshRenderer = GetComponentInChildren<MeshRenderer>();
         DefaultMaterial = MeshRenderer.material;
         scoreField = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(PlayerTag))
+        if (other.CompareTag(PLAYERTAG))
         {
             Trigger();
         }
@@ -52,10 +52,9 @@ public class Ring : MonoBehaviour, IScore,IInteractable
         ScoreManager.Add(Score);
         SwitchToClearedMaterial();
         GetComponent<AudioSource>().Play();
-        SpawnParticles();
+        if(HitParticles != null) SpawnParticles();
         StartCoroutine(PrepareReset());
         scoreField.text = "Score: " + ScoreManager.Score;
-
     }
 
     private void SwitchToDefaultMaterial()
