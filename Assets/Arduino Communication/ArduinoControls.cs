@@ -74,6 +74,11 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     public void Start()
     {
         GrabSettings();
+
+        foreach (var item in RollData.GetPropertyValues())
+        {
+            Debug.Log(item);
+        }
     }
 
     //public void Start()
@@ -242,7 +247,6 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         }
     }   
 
-
     /// <summary>
     /// Connects to the serial port.
     /// </summary>
@@ -363,6 +367,4 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         if (serialPort == null) return false;
         else return serialPort.IsOpen;
     }
-
-
 }
