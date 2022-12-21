@@ -62,6 +62,14 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     public MeasureData PitchData;
     public MeasureData SpeedData;
 
+    public enum MeasureDataIndex
+    {
+        Roll = 0,
+        Pitch = 1,
+        Speed = 2
+    }
+    public MeasureData[] DataCollection;
+
     public float Roll { get { return (keyValuePairs["HRZ"] - RollData.InputMinimum) / (RollData.InputMaximum - RollData.InputMinimum) * (RollData.OutputMaximum - RollData.OutputMaximum) + RollData.OutputMinimum; } }
 
     public float Pitch { get { return (keyValuePairs["VER"] - PitchData.InputMinimum) / (PitchData.InputMaximum - PitchData.InputMinimum) * (PitchData.OutputMaximum - PitchData.OutputMinimum) + PitchData.OutputMinimum; } }
@@ -73,6 +81,7 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     /// </summary>
     public void Start()
     {
+        DataCollection = new MeasureData[] { RollData, PitchData, SpeedData };
         GrabSettings();
     }
 
