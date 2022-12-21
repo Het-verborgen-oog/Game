@@ -27,7 +27,8 @@ public class Crate : MonoBehaviour, IScore, IInteractable
 
     private const string IdleAnimation = "Idle";
     private const string CollideAnimation = "Collect";
-    
+
+    const string PLAYERTAG = "Player";
 
     private void Start()
     {
@@ -38,7 +39,7 @@ public class Crate : MonoBehaviour, IScore, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Make sure this works properly with whoever is working on Dolfy
+        if (other.CompareTag(PLAYERTAG)) // Make sure this works properly with whoever is working on Dolfy
         {
             Trigger();
         }
