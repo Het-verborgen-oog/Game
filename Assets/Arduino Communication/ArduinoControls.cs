@@ -70,7 +70,12 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     }
     public MeasureData[] DataCollection;
 
-    public float Roll { get { return (keyValuePairs["HRZ"] - RollData.InputMinimum) / (RollData.InputMaximum - RollData.InputMinimum) * (RollData.OutputMaximum - RollData.OutputMaximum) + RollData.OutputMinimum; } }
+    public float Roll_Raw { get { return keyValuePairs["HRZ"]; } }
+    public float Pitch_Raw { get { return keyValuePairs["HRZ"]; } }
+    public float Speed_Raw { get { return keyValuePairs["HRZ"]; } }
+
+
+    public float Roll { get { return (keyValuePairs["HRZ"] - RollData.InputMinimum) / (RollData.InputMaximum - RollData.InputMinimum) * (RollData.OutputMaximum - RollData.OutputMinimum) + RollData.OutputMinimum; } }
 
     public float Pitch { get { return (keyValuePairs["VER"] - PitchData.InputMinimum) / (PitchData.InputMaximum - PitchData.InputMinimum) * (PitchData.OutputMaximum - PitchData.OutputMinimum) + PitchData.OutputMinimum; } }
 
@@ -79,31 +84,32 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     /// <summary>
     /// This one is a test function
     /// </summary>
-    public void Start()
-    {
-        DataCollection = new MeasureData[] { RollData, PitchData, SpeedData };
-        GrabSettings();
-    }
-
     //public void Start()
     //{
-    //    string[] ports = GetPorts();
-    //    if (ports.Length > 0)
-    //    {
-    //        serialPort = new SerialPort(ports[0]);
-    //    }
-    //    messageCreator = new MessageCreator(StartMarker,EndMarker);
-    //    serialPort.BaudRate = baudRate;
-
-    //    PrepareCommands();
     //    GrabSettings();
-    //    Connect();
-
-    //    if (serialPort.IsOpen == false)
-    //    {
-    //        throw new Exception("Hardware could not connect!");
-    //    }
+    //    PrepareExternal();
     //}
+
+    public void Start()
+    {
+        string[] ports = GetPorts();
+        if (ports.Length > 0)
+        {
+            serialPort = new SerialPort(ports[0]);
+        }
+        messageCreator = new MessageCreator(EndMarker, StartMarker);
+        serialPort.BaudRate = baudRate;
+
+        PrepareCommands();
+        PrepareExternal();
+        GrabSettings();
+        Connect();
+
+        if (serialPort.IsOpen == false)
+        {
+            throw new Exception("Hardware could not connect!");
+        }
+    }
 
     public void OnDestroy()
     {
@@ -126,6 +132,11 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         keyValuePairs.Add("HRZ", HorizontalTilt);
         keyValuePairs.Add("VER", VerticalTilt);
         keyValuePairs.Add("SPD", Rotations);
+    }
+
+    private void PrepareExternal()
+    {
+        DataCollection = new MeasureData[] { RollData, PitchData, SpeedData };
     }
 
     // =============== //
@@ -233,6 +244,25 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         return PlayerPrefs.GetFloat(dataSet + key);
     }
 
+    // =========== //
+    // WORK AROUND //
+    // =========== //
+
+    public float GrabRawProperty(MeasureDataIndex data)
+    {
+        switch (data)
+        {
+            case MeasureDataIndex.Roll:
+                return Roll_Raw;
+            case MeasureDataIndex.Pitch:
+                return Pitch_Raw;
+            case MeasureDataIndex.Speed:
+                return Speed_Raw;
+            default:
+                return -1;
+        }
+    }
+
     // ================== //
     // MESSAGE PROCESSING //
     // ================== //
@@ -307,7 +337,7 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     {
         if (serialPort != null && serialPort.IsOpen == true && serialPort.BytesToRead > 0)
         {
-            string readMessage = serialPort.ReadExisting();
+            string readMessage = serialPort.ReadLine();
 
             if (readMessage.Contains(EndMarker))
             {
