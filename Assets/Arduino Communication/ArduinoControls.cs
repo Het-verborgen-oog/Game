@@ -40,6 +40,7 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     public void Start()
     {
         string[] ports = GetPorts();
+        if (ports.Length == 0) return;
         serialPort = new SerialPort(ports[0]);
         messageCreator = new MessageCreator(StartMarker,EndMarker);
         serialPort.BaudRate = baudRate;
