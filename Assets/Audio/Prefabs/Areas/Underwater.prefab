@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3707275616370836491}
   - component: {fileID: 3707275616370836533}
   - component: {fileID: 3707275616370836532}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Underwater
   m_TagString: Untagged
   m_Icon: {fileID: 0}

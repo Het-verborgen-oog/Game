@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 600751349105708440}
   - component: {fileID: 4609882536154710589}
   - component: {fileID: 1737651649064187639}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WhirlPool_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1143058156647047919}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: BigWhirlPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 2893072135169012567}
   - component: {fileID: 2272517164371770610}
   - component: {fileID: 4066026005382006840}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WhirlPool_Inside_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2900220767836556205}
   - component: {fileID: 1143058156698836785}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ObjectInWhirlpool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6297949802458914778}
   - component: {fileID: 8800562890865562749}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: CollisionDetection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,6 +306,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Coral09
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248600234682720494, guid: 7ab8253070896d5478cda53a72af8cc2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8733388533232302676, guid: 7ab8253070896d5478cda53a72af8cc2,
         type: 3}
@@ -479,6 +484,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coral16
       objectReference: {fileID: 0}
+    - target: {fileID: 4569916078294864918, guid: e95ad334a9449014bb2c22159803a803,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e95ad334a9449014bb2c22159803a803, type: 3}
 --- !u!1 &3510396634295274473 stripped
@@ -595,6 +605,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Coral12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024992322474302092, guid: 6df6b8785dee999478ad41f92b12feae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df6b8785dee999478ad41f92b12feae, type: 3}
@@ -907,6 +922,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bubbles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470254255337856532, guid: ffa458d8b7d81cc41ac9c08784400306,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa458d8b7d81cc41ac9c08784400306, type: 3}
