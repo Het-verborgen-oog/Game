@@ -28,7 +28,6 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     private string inboundMessage;
 
 
-<<<<<<< Updated upstream
     const float MinimumPitch = -1f, MaximumPitch = 1f, MinimumSpeed = 1f, MaximumSpeed = 2.5f;
     const float MinimumRoll = -1f, MaximumRoll = 1f;
 
@@ -40,20 +39,12 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         ExpectedMinumumSpeed = 0f,
         ExpectedMaximumSpeed = 5f;
     const float 
-        ExpectedMinimumRoll = 511f,
-        ExpectedMaximumRoll = 736f;
+        ExpectedMinimumRoll = 72f,
+        ExpectedMaximumRoll = 113f;
 
     public float Roll { get { return (keyValuePairs["HRZ"] - ExpectedMinimumRoll) / (ExpectedMaximumRoll - ExpectedMinimumRoll) * (MaximumRoll - MinimumRoll) + MinimumRoll; } }
 
     public float Pitch { get { return (keyValuePairs["VER"] - ExpectedMinimumPitch) / (ExpectedMaximumPitch - ExpectedMinimumPitch) * (MaximumPitch - MinimumPitch) + MinimumPitch; } }
-=======
-    const float MinimumTilt = -1f, MaximumTilt = 1f, MinimumSpeed = 1f, MaximumSpeed = 2.5f;
-    const float ExpectedMinimumRoll = 72f, ExpectedMaximumRoll = 110f, ExpectedMinumumSpeed = 0f, ExpectedMaximumSpeed = 5f;
-    const float ExpectedMinimumPitch = 0f, ExpectedMaximumPitch = 1024f;
-    public float Roll { get { return (keyValuePairs["HRZ"] - ExpectedMinimumRoll) / (ExpectedMaximumRoll - ExpectedMinimumRoll) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
-
-    public float Pitch { get { return (keyValuePairs["VER"] - ExpectedMinimumPitch) / (ExpectedMaximumPitch - ExpectedMinimumPitch) * (MaximumTilt - MinimumTilt) + MinimumTilt; } }
->>>>>>> Stashed changes
 
     public float Speed { get { return (keyValuePairs["SPD"] - ExpectedMinumumSpeed) / (ExpectedMaximumSpeed - ExpectedMinumumSpeed) * (MaximumSpeed - MinimumSpeed) + MinimumSpeed; } }
 
@@ -200,9 +191,6 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
                     inboundMessage += readMessage;
                 }
                 return true;
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
             }
         }
         return false;
