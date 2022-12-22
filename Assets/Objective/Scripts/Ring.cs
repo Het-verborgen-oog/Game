@@ -23,7 +23,7 @@ public class Ring : MonoBehaviour, IScore,IInteractable
     TextMeshProUGUI scoreField;
     public int Score { get { return score; }} 
 
-    const string PlayerTag = "Player";
+    const string PLAYERTAG = "Player";
     private MeshRenderer MeshRenderer;
 
     void Start()
@@ -35,7 +35,7 @@ public class Ring : MonoBehaviour, IScore,IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(PlayerTag))
+        if (other.CompareTag(PLAYERTAG))
         {
             Trigger();
         }
