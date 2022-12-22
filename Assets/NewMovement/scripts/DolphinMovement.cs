@@ -19,30 +19,28 @@ public class DolphinMovement : MonoBehaviour, ITrigger
     [SerializeField] public float raycastLength = 5;
     [SerializeField] public float raycastFarLength = 6;
     [SerializeField] public float speedMultiplier = 2;
-
     [SerializeField] public IdleBehaviour idleBehaviour;
+    [SerializeField] public LayerMask collisionLayers;
+    [SerializeField, Range(0, 90)] public float maxBankAngle = 30f;
+    [SerializeField, Range(0, 90)] public float maxPitchAngle = 20f;
 
+    private Quaternion targetRotation;
     private float horizontalInput;
     private float verticalInput;
-    
+
     private Vector3 leftVector;
     private Vector3 rightVector;
     private Vector3 upVector;
     private Vector3 downVector;
 
     private bool overrideMovement = false;
-    
+
     private IInputHandler desiredInputHandler;
     private CartController cartController;
 
-    public delegate void OnPlayerMovement(TrackSide horizontal, TrackSide vertical);
-    public static OnPlayerMovement OnPlayerMoved;
-
-    TrackSide playerHorizontalSide;
-    TrackSide playerVerticalSide;
-
     [SerializeField]
-    LayerMask collisionLayers;
+    public float rotationAnglePerFrame = 0.05f;
+
 
     public void TriggerEvent(object parameters)
     {
@@ -60,7 +58,11 @@ public class DolphinMovement : MonoBehaviour, ITrigger
         availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
         cartController = FindObjectOfType<CartController>();
     }
-    
+
+    private void OnEnable() {
+        StartCoroutine(RotateDolphin());    
+    }
+
     //Arduino is priority so you can only play with keyboard when arduino is NOT connected.
     private void CheckForAvailableInputHandler()
     {
@@ -74,7 +76,7 @@ public class DolphinMovement : MonoBehaviour, ITrigger
             }
         }
     }
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -101,10 +103,12 @@ public class DolphinMovement : MonoBehaviour, ITrigger
         if ((idleBehaviour != null && idleBehaviour.IsIdle) || overrideMovement)
         {
             horizontalInput = 0;
-            verticalInput = 0;                      
-        } else {
+            verticalInput = 0;
+        }
+        else
+        {
             horizontalInput = desiredInputHandler.GetXMovement();
-            verticalInput = desiredInputHandler.GetYMovement();  
+            verticalInput = desiredInputHandler.GetYMovement();
         }
 
         leftVector = Quaternion.AngleAxis(-60, transform.up) * transform.forward;
@@ -112,47 +116,61 @@ public class DolphinMovement : MonoBehaviour, ITrigger
         upVector = Quaternion.AngleAxis(-raycastAngle, transform.right) * transform.forward;
         downVector = Quaternion.AngleAxis(raycastAngle, transform.right) * transform.forward;
 
+        TrackSide trackSideVertical;
+        TrackSide trackSideHorizontal;
 
-        if (horizontalInput < -steeringDeadzone) {
-            playerHorizontalSide = TrackSide.left;
-        } else if (horizontalInput > steeringDeadzone) {
-            playerHorizontalSide = TrackSide.right;
-        } else {
-            playerHorizontalSide = TrackSide.neutral;
+        if (horizontalInput < -steeringDeadzone)
+        {
+            trackSideHorizontal = TrackSide.left;
+        }
+        else if (horizontalInput > steeringDeadzone)
+        {
+            trackSideHorizontal = TrackSide.right;
+        }
+        else
+        {
+            trackSideHorizontal = TrackSide.neutral;
         }
 
-        if (verticalInput < -steeringDeadzone) {
-            playerVerticalSide = TrackSide.up;            
-        } else if (verticalInput > steeringDeadzone) {
-            playerVerticalSide = TrackSide.down;
-        } else {
-            playerVerticalSide = TrackSide.neutral;
+        if (verticalInput < -steeringDeadzone)
+        {
+            trackSideVertical = TrackSide.up;
         }
-        cartController.SetDirection(playerVerticalSide, playerHorizontalSide);
-        OnPlayerMoved?.Invoke(playerHorizontalSide, playerVerticalSide);
+        else if (verticalInput > steeringDeadzone)
+        {
+            trackSideVertical = TrackSide.down;
+        }
+        else
+        {
+            trackSideVertical = TrackSide.neutral;
+        }
+        cartController.SetDirection(trackSideVertical, trackSideHorizontal);
     }
 
 
     private void Movement()
     {
         //Add yaw pitch and roll to the dolphin
-        float yaw = Mathf.Lerp(0, 20, Mathf.Abs(horizontalInput)) * Mathf.Sign(horizontalInput);
-        float pitch = Mathf.Lerp(0, 20, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
-        float roll = Mathf.Lerp(0, 30, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
+        float targetYaw = Mathf.Lerp(0, maxPitchAngle, Mathf.Abs(horizontalInput)) * Mathf.Sign(horizontalInput);
+        float targetPitch = Mathf.Lerp(0, maxPitchAngle, Mathf.Abs(verticalInput)) * Mathf.Sign(verticalInput);
+        float targetRoll = Mathf.Lerp(0, maxBankAngle, Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
 
         //Move the dolphin
         if (idleBehaviour != null && idleBehaviour.IsIdle)
         {
             transform.localPosition = Vector3.zero;
-        } else {                        
+        }
+        else
+        {
             transform.localPosition += new Vector3(horizontalInput * Time.deltaTime * horizontalMovementSpeed, (verticalInput * -1f) * Time.deltaTime * verticalMovementSpeed, 0);
         }
-        dolphinObject.transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch + Vector3.forward * roll);
+
+        // Rotate Dolphin
+        targetRotation = Quaternion.Euler(Vector3.up * targetYaw + Vector3.right * targetPitch + Vector3.forward * targetRoll);
     }
 
     private void AvoidCollisions()
     {
-        //Vector3 offset = new(0, 10, 0);
         Ray downRay = new(transform.position, downVector);
         Ray upRay = new(transform.position, upVector);
         Ray leftRay = new(transform.position, leftVector);
@@ -174,9 +192,16 @@ public class DolphinMovement : MonoBehaviour, ITrigger
             verticalInput = 1f * Math.Min(10, 10 / hit.distance);
         }
 
+        // Ground Detection
         if (Physics.Raycast(downRay, out hit, raycastLength, collisionLayers))
         {
-            verticalInput = -1f * Math.Min(10, 10 / hit.distance);
+            Debug.DrawRay(hit.point, hit.normal, Color.blue);
+
+            Vector3 normalHitVector = hit.normal;
+            Vector3 adjustedNormalVector = Quaternion.AngleAxis(90, transform.right) * normalHitVector;
+            
+            float angleBetween = Vector3.Angle(transform.forward, adjustedNormalVector);
+            verticalInput = -1f * Mathf.Max(verticalInput, (angleBetween / maxPitchAngle));
         }
     }
 
@@ -190,7 +215,7 @@ public class DolphinMovement : MonoBehaviour, ITrigger
             }
         }
 
-        if (Physics.Raycast(transform.position, rightVector, raycastFarLength, collisionLayers) || transform.localPosition.x >= horizontalMovementLimit )
+        if (Physics.Raycast(transform.position, rightVector, raycastFarLength, collisionLayers) || transform.localPosition.x >= horizontalMovementLimit)
         {
             if (horizontalInput > 0)
             {
@@ -211,6 +236,20 @@ public class DolphinMovement : MonoBehaviour, ITrigger
             if (verticalInput > 0)
             {
                 verticalInput = 0;
+            }
+        }
+    }
+
+    private IEnumerator RotateDolphin()
+    {
+        while(true)
+        {            
+            Quaternion startRotation = new Quaternion(dolphinObject.transform.localRotation.x, dolphinObject.transform.localRotation.y, dolphinObject.transform.localRotation.z, dolphinObject.transform.localRotation.w);
+            Quaternion storedTargetRotation = new Quaternion(targetRotation.x, targetRotation.y, targetRotation.z, targetRotation.w);
+            for(float i = 0; i < 1; i = Mathf.Min(i + rotationAnglePerFrame, 1))
+            {
+                dolphinObject.transform.localRotation = Quaternion.Lerp(startRotation, storedTargetRotation, i);
+                yield return new WaitForEndOfFrame();
             }
         }
     }
