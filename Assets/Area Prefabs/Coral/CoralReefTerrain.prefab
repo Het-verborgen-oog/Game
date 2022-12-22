@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5091669867828411835}
   - component: {fileID: 5615786148956841435}
+  - component: {fileID: 5532636302715467427}
   m_Layer: 0
   m_Name: RandomEventWhirlpool
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376827c4a358b08478ffe290afecf17e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5532636302715467427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966245152050158265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71566ba9cd0ffa9478433bc8cfb8e564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinOutTime: 1
 --- !u!1 &1861236895858262743
 GameObject:
   m_ObjectHideFlags: 0
