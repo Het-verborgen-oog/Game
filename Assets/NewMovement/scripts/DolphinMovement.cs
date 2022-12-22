@@ -41,6 +41,9 @@ public class DolphinMovement : MonoBehaviour, ITrigger
     [SerializeField]
     public float rotationAnglePerFrame = 0.05f;
 
+    public delegate void OnPlayerMovement(TrackSide horizontal, TrackSide vertical);
+    public static OnPlayerMovement OnPlayerMoved;
+
 
     public void TriggerEvent(object parameters)
     {
@@ -145,6 +148,11 @@ public class DolphinMovement : MonoBehaviour, ITrigger
             trackSideVertical = TrackSide.neutral;
         }
         cartController.SetDirection(trackSideVertical, trackSideHorizontal);
+
+        if (verticalInput != 0 || horizontalInput != 0)
+        {
+            OnPlayerMoved.Invoke(trackSideHorizontal, trackSideVertical);
+        }        
     }
 
 
