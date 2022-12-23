@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO.Ports;
+using System.Management;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ArduinoControls : MonoBehaviour, IArduinoData
 {
@@ -49,9 +51,10 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     public float Speed { get { return (keyValuePairs["SPD"] - ExpectedMinumumSpeed) / (ExpectedMaximumSpeed - ExpectedMinumumSpeed) * (MaximumSpeed - MinimumSpeed) + MinimumSpeed; } }
     public void Start()
     {
-        string[] ports = GetPorts();
-        if (ports.Length == 0) return;
-        serialPort = new SerialPort(ports[0]);
+        string port = CheckCOMPort("Arduino");
+        if (port == null) port = CheckCOMPort("Genuino");
+        if (port == null) return;
+        serialPort = new SerialPort(port);
         messageCreator = new MessageCreator(StartMarker,EndMarker);
         serialPort.BaudRate = baudRate;
 
@@ -227,5 +230,36 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     {
         if (serialPort == null) return false;
         else return serialPort.IsOpen;
+    }
+
+    /// <summary>
+    /// A method to check if the COM device's description contains the desired value.
+    /// </summary>
+    /// <param name="valueToCheck">What to check for in the device description.</param>
+    /// <returns>The COM port containing the right value, or null if none are found.</returns>
+    public string CheckCOMPort(string valueToCheck)
+    {
+        ManagementScope managementScope = new ManagementScope();
+        SelectQuery query = new SelectQuery("Select * from Win32_SerialPort");
+        ManagementObjectSearcher managmentObjectSearcher = new ManagementObjectSearcher(managementScope, query);
+
+        try
+        {
+            foreach (ManagementObject managementObject in managmentObjectSearcher.Get())
+            {
+                string description = managementObject["Description"].ToString();
+                string deviceID = managementObject["DeviceID"].ToString();
+                if (description.Contains(valueToCheck))
+                {
+                    return deviceID;
+                }
+            }
+        }
+        catch (ManagementException exception)
+        {
+            Debug.LogError(exception.Message);
+        }
+
+        return null;
     }
 }
