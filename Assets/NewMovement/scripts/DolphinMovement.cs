@@ -151,7 +151,7 @@ public class DolphinMovement : MonoBehaviour, ITrigger
 
         if (verticalInput != 0 || horizontalInput != 0)
         {
-            OnPlayerMoved.Invoke(trackSideHorizontal, trackSideVertical);
+            OnPlayerMoved?.Invoke(trackSideHorizontal, trackSideVertical);
         }        
     }
 
