@@ -2,6 +2,7 @@ using ArduinoControl;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.IO.Ports;
 using UnityEngine;
 
@@ -166,6 +167,8 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         SpeedData = new MeasureData(0f, 5f, 1f, 2.5f);
 
         SaveDataSet(nameof(RollData),RollData);
+        SaveDataSet(nameof(PitchData), PitchData);
+        SaveDataSet(nameof(SpeedData), SpeedData);
     }
 
     private MeasureData LoadDataSet(string dataSet)
@@ -189,6 +192,27 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
 
         //Should be an enum, but at this stage of the project I physically do not care enough.
         return new MeasureData(values[0], values[1], values[2], values[3]);
+    }
+
+    public void Save(MeasureDataIndex index)
+    {
+        string dataset = "";
+        switch (index)
+        {
+            case MeasureDataIndex.Roll:
+                dataset = nameof(RollData);
+                break;
+            case MeasureDataIndex.Pitch:
+                dataset = nameof(PitchData);
+                break;
+            case MeasureDataIndex.Speed:
+                dataset = nameof(SpeedData);
+                break;
+            default:
+                break;
+        }
+
+        SaveDataSet(dataset, DataCollection[(int)index]);
     }
 
     private void SaveDataSet(string dataSet, MeasureData data)

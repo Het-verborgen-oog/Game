@@ -25,6 +25,17 @@ public class Calibrator : MonoBehaviour
     TextMeshProUGUI MaximumText;
 
     [SerializeField]
+    GameObject MinInputText;
+
+    [SerializeField]
+    GameObject MaxInputText;
+
+    [SerializeField]
+    GameObject DoneText;
+
+    [Header("Input")]
+
+    [SerializeField]
     ArduinoControls arduino;
 
     [SerializeField]
@@ -34,64 +45,36 @@ public class Calibrator : MonoBehaviour
     { 
         Idle = 0,
         Minimum = 1,
-        Maximum = 2
+        Maximum = 2,
     }
 
     MeasureState CurrentState = MeasureState.Idle;
-    float lastArduinoValue;
-    bool lastInputConfirmed;
-
-    private void Start()
-    {
-    }
+    float newMinimum = 0f, newMaximum = 0f;
 
     void Update()
     {
-        if (CurrentState != MeasureState.Idle)
-        {
-            MinimumSlider.value = arduino.DataCollection[(int)RequestedData].InputMinimum;
-            MinimumText.text = MinimumSlider.value.ToString();
-
-            MaximumSlider.value = arduino.DataCollection[(int)RequestedData].InputMaximum;
-            MaximumText.text = MaximumSlider.value.ToString();
-        }
-        
         ValueText.text = arduino.GrabRawProperty(RequestedData).ToString();
     }
 
-    public void Calibrate()
+    public void MaximumCalibration()
     {
-        switch (CurrentState)
-        {
-            case MeasureState.Idle:
-                MinimumCalibration();
-                CurrentState = MeasureState.Minimum;
-                break;
-            case MeasureState.Minimum:
-                MaximumCalibration();
-                CurrentState = MeasureState.Maximum;
-                break;
-            case MeasureState.Maximum:
-                SaveData();
-                CurrentState = MeasureState.Idle;
-                break;
-            default:
-                break;
-        }
+        newMaximum = arduino.GrabRawProperty(RequestedData);
+        MaximumSlider.value = newMaximum;
+        MaximumText.text = MaximumSlider.value.ToString();
     }
 
-    private void MaximumCalibration()
+    public void MinimumCalibration()
     {
-        lastArduinoValue = arduino.GrabRawProperty(RequestedData);
+        newMinimum = arduino.GrabRawProperty(RequestedData);
+        MinimumSlider.value = newMinimum;
+        MinimumText.text = MinimumSlider.value.ToString();
     }
 
-    private void SaveData()
+    public void SaveData()
     {
-        Debug.Log("Saving!");
-    }
-
-    private void MinimumCalibration()
-    {
-        
+        ArduinoControls.MeasureData oldData = arduino.DataCollection[(int)RequestedData];
+        ArduinoControls.MeasureData newData = new ArduinoControls.MeasureData(newMinimum, newMaximum, oldData.OutputMinimum, oldData.OutputMaximum);
+        arduino.DataCollection[(int)RequestedData] = newData;
+        arduino.Save(RequestedData);
     }
 }
