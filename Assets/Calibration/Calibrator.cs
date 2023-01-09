@@ -25,13 +25,7 @@ public class Calibrator : MonoBehaviour
     TextMeshProUGUI MaximumText;
 
     [SerializeField]
-    GameObject MinInputText;
-
-    [SerializeField]
-    GameObject MaxInputText;
-
-    [SerializeField]
-    GameObject DoneText;
+    TextMeshProUGUI InstructionText;
 
     [Header("Input")]
 
@@ -56,25 +50,46 @@ public class Calibrator : MonoBehaviour
         ValueText.text = arduino.GrabRawProperty(RequestedData).ToString();
     }
 
-    public void MaximumCalibration()
+    public void Calibrate()
+    {
+        // Pseudo Code
+        //DisplayText("Maximum Calibration");
+        MaximumCalibration();
+        //DisplayText("Minimum Calibration)";
+        MinimumCalibration();
+        //DisplayText("Saving");
+        SaveData();
+        //DisplayText("Calibration Complete");
+    }
+
+    private void MaximumCalibration()
     {
         newMaximum = arduino.GrabRawProperty(RequestedData);
         MaximumSlider.value = newMaximum;
         MaximumText.text = MaximumSlider.value.ToString();
     }
 
-    public void MinimumCalibration()
+    private void MinimumCalibration()
     {
         newMinimum = arduino.GrabRawProperty(RequestedData);
         MinimumSlider.value = newMinimum;
         MinimumText.text = MinimumSlider.value.ToString();
     }
 
-    public void SaveData()
+    private void SaveData()
     {
         ArduinoControls.MeasureData oldData = arduino.DataCollection[(int)RequestedData];
         ArduinoControls.MeasureData newData = new ArduinoControls.MeasureData(newMinimum, newMaximum, oldData.OutputMinimum, oldData.OutputMaximum);
         arduino.DataCollection[(int)RequestedData] = newData;
         arduino.Save(RequestedData);
+    }
+
+    /// <summary>
+    /// A function to display instructions or notifications onscreen.
+    /// </summary>
+    /// <param name="text">The text to display</param>
+    private void DisplayText(string text)
+    {
+        InstructionText.text = text;
     }
 }
