@@ -2046,7 +2046,7 @@ MonoBehaviour:
   ValueText: {fileID: 996534372358507002}
   MinimumText: {fileID: 996534372726524464}
   MaximumText: {fileID: 996534371659283474}
-  InstructionText: {fileID: 1354880741}
+  InstructionText: {fileID: 1354880743}
   arduino: {fileID: 0}
   RequestedData: 0
 --- !u!1 &996534371470976275
@@ -7314,7 +7314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 452, y: 85.000015}
+  m_AnchoredPosition: {x: 430, y: 47}
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6925697407696873903
