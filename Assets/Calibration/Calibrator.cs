@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,14 +36,6 @@ public class Calibrator : MonoBehaviour
     [SerializeField]
     ArduinoControls.MeasureDataIndex RequestedData;
 
-    private enum MeasureState
-    { 
-        Idle = 0,
-        Minimum = 1,
-        Maximum = 2,
-    }
-
-    MeasureState CurrentState = MeasureState.Idle;
     float newMinimum = 0f, newMaximum = 0f;
 
     void Update()
@@ -53,25 +46,25 @@ public class Calibrator : MonoBehaviour
     public void Calibrate()
     {
         // Pseudo Code
-        //DisplayText("Maximum Calibration");
-        MaximumCalibration();
-        //DisplayText("Minimum Calibration)";
-        MinimumCalibration();
-        //DisplayText("Saving");
+        DisplayText("Maximum Calibration");
+        PrepareMaximumData(IngestData());
+        DisplayText("Minimum Calibration");
+        PrepareMinimumData(IngestData());
+        DisplayText("Saving");
         SaveData();
-        //DisplayText("Calibration Complete");
+        DisplayText("Calibration Complete");
     }
 
-    private void MaximumCalibration()
+    private void PrepareMaximumData(float data)
     {
-        newMaximum = arduino.GrabRawProperty(RequestedData);
+        newMaximum = data;
         MaximumSlider.value = newMaximum;
         MaximumText.text = MaximumSlider.value.ToString();
     }
 
-    private void MinimumCalibration()
+    private void PrepareMinimumData(float data)
     {
-        newMinimum = arduino.GrabRawProperty(RequestedData);
+        newMinimum = data;
         MinimumSlider.value = newMinimum;
         MinimumText.text = MinimumSlider.value.ToString();
     }
@@ -82,6 +75,31 @@ public class Calibrator : MonoBehaviour
         ArduinoControls.MeasureData newData = new ArduinoControls.MeasureData(newMinimum, newMaximum, oldData.OutputMinimum, oldData.OutputMaximum);
         arduino.DataCollection[(int)RequestedData] = newData;
         arduino.Save(RequestedData);
+    }
+
+    private float IngestData()
+    {
+        float newVal = -1f; // This value should never be returned, nor can be sent by the controller.
+        const float TimeDelay = 10f;
+        float stopTime = Time.time + TimeDelay;
+
+        const int arrayLimit = 50;
+        float[] ingestedValues = new float[arrayLimit];
+        int index = 0;
+
+        while (Time.time < stopTime)
+        {
+            if (index <= arrayLimit) index = 0;
+            ingestedValues[index] = arduino.GrabRawProperty(RequestedData);
+            index++;
+        }
+
+        for (int i = 0; i < arrayLimit; i++)
+        {
+            newVal += ingestedValues[i];
+        }
+
+        return newVal / arrayLimit;
     }
 
     /// <summary>
