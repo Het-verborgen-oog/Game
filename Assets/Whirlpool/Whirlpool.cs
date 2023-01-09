@@ -14,16 +14,16 @@ public class Whirlpool : MonoBehaviour
     {
         if (other.CompareTag(PLAYERTAG))
         {
-            AnimatorController animatorController = other.GetComponentInChildren<AnimatorController>();
+            //AnimatorController animatorController = other.GetComponentInChildren<AnimatorController>();
             DolphinMovement dolf = other.GetComponentInChildren<DolphinMovement>();
-            StartCoroutine(Spinout(dolf, animatorController));
+            StartCoroutine(Spinout(dolf));
         }
     }
 
-    IEnumerator Spinout(DolphinMovement player, AnimatorController animatorController)
+    IEnumerator Spinout(DolphinMovement player)
     {
         player.ToggleMovement(false);
-        animatorController.PlayAnimationTrigger(spinningTrigger);
+        //animatorController.PlayAnimationTrigger(spinningTrigger);
         yield return new WaitForSeconds(spinOutTime);
         player.ToggleMovement(true);
     }
