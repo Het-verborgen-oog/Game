@@ -17,7 +17,7 @@ public class ParticleResponse : MonoBehaviour, IResponse
         particles.Play();
     }
 
-    public void Reset()
+    public void ResetResponse()
     {
         particles.Stop();
     }

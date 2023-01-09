@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IResponse
 {
     void Activate();
-    void Reset();
+    void ResetResponse();
 }

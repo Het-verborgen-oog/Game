@@ -36988,35 +36988,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Great White Shark
       objectReference: {fileID: 0}
-    - target: {fileID: 1122085670500552541, guid: 51d4a343da8b28a45a3babf83ea7739e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205974934597274324, guid: 51d4a343da8b28a45a3babf83ea7739e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205974934597274324, guid: 51d4a343da8b28a45a3babf83ea7739e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205974934597274324, guid: 51d4a343da8b28a45a3babf83ea7739e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019526284922736750, guid: 51d4a343da8b28a45a3babf83ea7739e,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -2800783701984757887, guid: 51d4a343da8b28a45a3babf83ea7739e, type: 3}
-    - {fileID: 4108262130555790920, guid: 51d4a343da8b28a45a3babf83ea7739e, type: 3}
-    - {fileID: 1122085670000094269, guid: 51d4a343da8b28a45a3babf83ea7739e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51d4a343da8b28a45a3babf83ea7739e, type: 3}
 --- !u!4 &6460468364295860312 stripped
 Transform:
@@ -37024,44 +36996,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6213352610099707648}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6460468364295860317 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1122085670500552541, guid: 51d4a343da8b28a45a3babf83ea7739e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6213352610099707648}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2091574997720426194
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6460468364295860317}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: ce51ec7ddebd4c343b8cfe88d5b01333, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7706099141601532259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6460468364295860317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782ca60145927b74894971638a4138e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6213352610116800714
 PrefabInstance:
   m_ObjectHideFlags: 0

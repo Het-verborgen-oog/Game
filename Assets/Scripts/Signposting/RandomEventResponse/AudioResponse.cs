@@ -16,7 +16,7 @@ public class AudioResponse : MonoBehaviour, IResponse
         
     }
 
-    public void Reset()
+    public void ResetResponse()
     {
         
     }

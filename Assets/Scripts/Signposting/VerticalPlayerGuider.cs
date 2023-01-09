@@ -6,17 +6,21 @@ public class VerticalPlayerGuider : PlayerGuider
 {
     [SerializeField]
     private TrackSide requiredDirectionVertical;
+    private TrackSide savedDirection;
 
     public override void ToggleParticleSystem(TrackSide playerDirectionHorizontal, TrackSide playerDirectionVertical)
     {
         if (playerDirectionVertical == requiredDirectionVertical)
         {
+            if (savedDirection == playerDirectionVertical) return;
             visualGuidance.ShowPath();
         }
         else
         {
+            if (savedDirection != playerDirectionVertical) return;
             visualGuidance.HidePath();
         }
+        savedDirection = playerDirectionVertical;
     }
 
 }

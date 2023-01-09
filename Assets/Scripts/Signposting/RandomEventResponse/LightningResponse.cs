@@ -29,7 +29,7 @@ public class LightningResponse : MonoBehaviour, IResponse
         ChangeLightSource(requestedLightIntensity, requestedLightColor);
     }
 
-    public void Reset()
+    public void ResetResponse()
     {
         ChangeLightSource(startLightIntensity, startLightColor);
     }

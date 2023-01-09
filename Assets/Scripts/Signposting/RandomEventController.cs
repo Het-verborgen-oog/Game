@@ -7,6 +7,11 @@ public class RandomEventController : MonoBehaviour
 {
     private List<IResponse> randomEventResponses;
 
+    private void OnEnable()
+    {
+        ResetTrigger.OnResetRandomEvents += ResetResponses;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +30,13 @@ public class RandomEventController : MonoBehaviour
     {
         foreach (IResponse response in randomEventResponses)
         {
-            response.Reset();
+            response.ResetResponse();
         }
+    }
+
+    private void OnDisable()
+    {
+        ResetTrigger.OnResetRandomEvents -= ResetResponses;
     }
 
 }
