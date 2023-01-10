@@ -36,24 +36,110 @@ public class Calibrator : MonoBehaviour
     [SerializeField]
     ArduinoControls.MeasureDataIndex RequestedData;
 
+    [SerializeField]
+    float WaitUntilCapture = 6f;
+
     float newMinimum = 0f, newMaximum = 0f;
+
+    private bool isCalibrating = false, isIdle = true;
+    private LastCalibrationState state = LastCalibrationState.None;
+
+    enum LastCalibrationState
+    {
+        Minimum = 0,
+        Maximum = 1,
+        None = 2
+    }
 
     void Update()
     {
-        ValueText.text = arduino.GrabRawProperty(RequestedData).ToString();
+        UpdateText();
     }
 
-    public void Calibrate()
+    private void UpdateText()
     {
-        // Pseudo Code
-        DisplayText("Maximum Calibration");
-        PrepareMaximumData(IngestData());
-        DisplayText("Minimum Calibration");
-        PrepareMinimumData(IngestData());
-        DisplayText("Saving");
-        SaveData();
-        DisplayText("Calibration Complete");
+        ValueText.text = arduino.GrabRawProperty(RequestedData).ToString();
     }
+    public void CalibrateMaximum()
+    {
+        StartCoroutine(IngestMaximum());
+    }
+
+    public void CalibrateMinimum()
+    {
+        StartCoroutine(IngestMinimum());
+    }
+
+    private IEnumerator IngestMaximum()
+    {
+        float result = -1;
+        const int arrayLimit = 20;
+
+        float[] ingestedValues = new float[arrayLimit];
+
+        for (int i = (int)WaitUntilCapture; i > 0; i--)
+        {
+            DisplayInstruction("Measuring in: " + i);
+            yield return new WaitForSeconds(1);
+        }
+
+        DisplayInstruction("Measuring");
+
+        for (int i = 0; i < arrayLimit; i++)
+        {
+            ingestedValues[i] = arduino.GrabRawProperty(RequestedData);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        for (int i = 0; i < arrayLimit; i++)
+        {
+            result += ingestedValues[i];
+        }
+
+        result /= arrayLimit;
+
+        DisplayInstruction("Calibration Complete");
+
+        PrepareMaximumData(result);
+        yield return null;
+    }
+
+    private IEnumerator IngestMinimum()
+    {
+        float result = -1;
+        const int arrayLimit = 20;
+
+        float[] ingestedValues = new float[arrayLimit];
+
+        for (int i = (int)WaitUntilCapture; i > 0; i--)
+        {
+            DisplayInstruction("Measuring in: " + i);
+            yield return new WaitForSeconds(1);
+        }
+
+        DisplayInstruction("Measuring");
+
+        for (int i = 0; i < arrayLimit; i++)
+        {
+            ingestedValues[i] = arduino.GrabRawProperty(RequestedData);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        for (int i = 0; i < arrayLimit; i++)
+        {
+            result += ingestedValues[i];
+        }
+
+        result /= arrayLimit;
+
+        DisplayInstruction("Calibration Complete");
+
+        PrepareMinimumData(result);
+        yield return null;
+    }
+
 
     private void PrepareMaximumData(float data)
     {
@@ -69,7 +155,7 @@ public class Calibrator : MonoBehaviour
         MinimumText.text = MinimumSlider.value.ToString();
     }
 
-    private void SaveData()
+    public void SaveData()
     {
         ArduinoControls.MeasureData oldData = arduino.DataCollection[(int)RequestedData];
         ArduinoControls.MeasureData newData = new ArduinoControls.MeasureData(newMinimum, newMaximum, oldData.OutputMinimum, oldData.OutputMaximum);
@@ -77,37 +163,18 @@ public class Calibrator : MonoBehaviour
         arduino.Save(RequestedData);
     }
 
-    private float IngestData()
-    {
-        float newVal = -1f; // This value should never be returned, nor can be sent by the controller.
-        const float TimeDelay = 10f;
-        float stopTime = Time.time + TimeDelay;
-
-        const int arrayLimit = 50;
-        float[] ingestedValues = new float[arrayLimit];
-        int index = 0;
-
-        while (Time.time < stopTime)
-        {
-            if (index <= arrayLimit) index = 0;
-            ingestedValues[index] = arduino.GrabRawProperty(RequestedData);
-            index++;
-        }
-
-        for (int i = 0; i < arrayLimit; i++)
-        {
-            newVal += ingestedValues[i];
-        }
-
-        return newVal / arrayLimit;
-    }
-
     /// <summary>
     /// A function to display instructions or notifications onscreen.
     /// </summary>
     /// <param name="text">The text to display</param>
-    private void DisplayText(string text)
+    private void DisplayInstruction(string text)
     {
         InstructionText.text = text;
+        Debug.Log(text);
+    }
+
+    public void SwitchDataType(int data)
+    {
+        RequestedData = (ArduinoControls.MeasureDataIndex) Enum.ToObject(typeof(ArduinoControls.MeasureDataIndex), data);
     }
 }
