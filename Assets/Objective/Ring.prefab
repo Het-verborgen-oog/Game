@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8780173663215045552}
   - component: {fileID: 4691561414069730723}
   - component: {fileID: 4691561414069730720}
+  - component: {fileID: 3654748381649246921}
   m_Layer: 2
   m_Name: Ring
   m_TagString: Untagged
@@ -66,8 +67,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.415616, y: 4.415616, z: 0.2943744}
+  m_Center: {x: 0, y: 0, z: -0.047186844}
 --- !u!82 &4691561414069730720
 AudioSource:
   m_ObjectHideFlags: 0
