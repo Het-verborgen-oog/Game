@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[RequireComponent(typeof(IArduinoData))]
 public class IdleBehaviour : MonoBehaviour
 {
     [SerializeField]

@@ -22,4 +22,5 @@ public class SplitPath : MonoBehaviour
             godrayGuider.ToggleParticleSystem(playerDirectionHorizontal, playerDirectionVertical);
         }
     }
+
 }

@@ -20,8 +20,8 @@ public class AnimationResponse : MonoBehaviour, IResponse
         animator.SetTrigger(animationHashId);
     }
 
-    public void Reset()
+    public void ResetResponse()
     {
-        animator.ResetTrigger(animationHashId);
+        animator.Play("Idle");
     }
 }

@@ -7742,7 +7742,7 @@ PrefabInstance:
     - target: {fileID: 7156721461697917180, guid: 19d538a034e8aaf4f81ff1b709525dd1,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8891347669915404605, guid: 19d538a034e8aaf4f81ff1b709525dd1,
         type: 3}
@@ -7752,7 +7752,7 @@ PrefabInstance:
     - target: {fileID: 8891347669915404605, guid: 19d538a034e8aaf4f81ff1b709525dd1,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19d538a034e8aaf4f81ff1b709525dd1, type: 3}
@@ -9761,6 +9761,11 @@ PrefabInstance:
       propertyPath: prewarm
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3470254255337856529, guid: ffa458d8b7d81cc41ac9c08784400306,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3470254255337856531, guid: ffa458d8b7d81cc41ac9c08784400306,
         type: 3}
       propertyPath: m_RootOrder
@@ -9843,6 +9848,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa458d8b7d81cc41ac9c08784400306, type: 3}
+--- !u!1 &716530801275436115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3470254255337856532, guid: ffa458d8b7d81cc41ac9c08784400306,
+    type: 3}
+  m_PrefabInstance: {fileID: 4168487364992606791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2782665884731555539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716530801275436115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9923f4423522245b1ec187e2f45029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &716530801275436116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3470254255337856531, guid: ffa458d8b7d81cc41ac9c08784400306,
@@ -10004,7 +10027,7 @@ PrefabInstance:
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 226.8
+      value: 235.95
       objectReference: {fileID: 0}
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}
@@ -10014,27 +10037,27 @@ PrefabInstance:
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 488.8
+      value: 499.6
       objectReference: {fileID: 0}
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8423058
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.53900003
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}
@@ -10044,7 +10067,7 @@ PrefabInstance:
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -65.231
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5362832165111031729, guid: 9af4ad2befd9fc54e93538056ea03654,
         type: 3}

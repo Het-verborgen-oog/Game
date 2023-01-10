@@ -5,28 +5,36 @@ using UnityEngine;
 public class GodrayGuidance : ParticleGuidance
 {
     private float startAlpha;
-    private const float SELECTEDALPHA = 200;
+    private const float SELECTEDALPHA = 250;
+    private const float STARTALPHA = 50;
 
     private Color godrayColor;
+
+    [Header("Colors")]
+    [SerializeField]
+    private Color showColor;
+    [SerializeField]
+    private Color hiddenColor;
+
     private void Start()
     {
         base.Start();
         godrayColor = particleSystem.main.startColor.color;
-        startAlpha = godrayColor.a;
+        hiddenColor = godrayColor;
     }
     public override void HidePath()
     {
-        SetAlphaOfGodray(startAlpha);
+        SetAlphaOfGodray(hiddenColor);
     }
 
     public override void ShowPath()
     {
-        SetAlphaOfGodray(SELECTEDALPHA);
+        SetAlphaOfGodray(showColor);
     }
 
-    private void SetAlphaOfGodray(float alpha)
+    private void SetAlphaOfGodray(Color col)
     {
-        Color updatedColor = new Color(godrayColor.r, godrayColor.g, godrayColor.b, alpha);
+        Color updatedColor = col;
         ParticleSystem.MainModule main = particleSystem.main;
         main.startColor = updatedColor;
     }

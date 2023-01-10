@@ -123,11 +123,18 @@ MonoBehaviour:
   verticalMovementSpeed: 5
   horizontalMovementLimit: 10
   verticalMovementLimit: 10
+  steeringDeadzone: 0.2
   raycastAngle: 45
   raycastLength: 5
   raycastFarLength: 6
   speedMultiplier: 2
   idleBehaviour: {fileID: 0}
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  maxBankAngle: 30
+  maxPitchAngle: 20
+  rotationAnglePerFrame: 0.05
 --- !u!1 &2302626679267707630
 GameObject:
   m_ObjectHideFlags: 0

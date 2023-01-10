@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1122085670500552536}
-  - component: {fileID: -2800783701984757887}
-  - component: {fileID: 4108262130555790920}
+  - component: {fileID: 2091574997720426194}
+  - component: {fileID: 7706099141601532259}
   m_Layer: 8
   m_Name: Great White Shark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 16
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1122085670500552536
 Transform:
@@ -34,7 +34,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2800783701984757887
+--- !u!95 &2091574997720426194
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122085670500552541}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: ce51ec7ddebd4c343b8cfe88d5b01333, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7706099141601532259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,42 +63,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1122085670500552541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50401156e42c1c640a809cbd9dc5ae82, type: 3}
+  m_Script: {fileID: 11500000, guid: 782ca60145927b74894971638a4138e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swimType: 1
-  bobSpeed: 0.5
-  bobHeight: 1
-  faceBobDirection: 0
-  visualizeViewRays: 0
-  visualizeAvoidanceRay: 1
-  visualizeDetectionRadius: 0
-  visualizeBoundsRadius: 0
-  detectionQuality: 3
-  viewAngle: 275
-  turnFraction: 275
-  accuracy: 12
-  maxVelocity: 10
-  detectionRadius: 75
-  boundsRadius: 6
-  obstacleAvoidanceForce: 0.03
-  velocity: {x: 0, y: 0, z: 0}
-  boundsCollider: {fileID: 0}
-  avoidancePoint: {x: 0, y: 0, z: 0}
---- !u!136 &4108262130555790920
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122085670500552541}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 6
-  m_Height: 25
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -5.53}
 --- !u!1 &8019526284922736750
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,13 +77,12 @@ GameObject:
   - component: {fileID: 7205974934597274324}
   - component: {fileID: 6030073144088528241}
   - component: {fileID: 8380047556819153339}
-  - component: {fileID: 1122085670000094269}
   m_Layer: 8
   m_Name: GreatWhiteSharkFish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 16
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7205974934597274324
 Transform:
@@ -106,7 +92,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8019526284922736750}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.97, y: 0.87, z: 0.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -163,31 +149,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1122085670000094269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8019526284922736750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3414f619d278a40b790c606ff628ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainDistortAxis: 3
-  secondaryDistortAxis: 0
-  visualizeMainWaveGradient: 0
-  visualizeSeconaryWaveGradient: 0
-  waveLength1: 35.6
-  waveSpeed1: 0.25
-  waveHeight1: 0.4
-  gradientBlending1: 0.157
-  gradientOffset1: 2.82
-  waveLength2: 6.5
-  waveSpeed2: 2
-  waveHeight2: 0.2
-  gradientBlending2: 1
-  gradientOffset2: 0
-  clampMinMax: {x: -0.1, y: 3}
-  randomizationPercent: 0
