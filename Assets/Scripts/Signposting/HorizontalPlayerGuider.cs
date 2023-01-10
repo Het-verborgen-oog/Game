@@ -12,7 +12,7 @@ public class HorizontalPlayerGuider : PlayerGuider
     {
         if (playerDirectionHorizontal == requiredDirectionHorizontal)
         {
-            if (savedDirection == playerDirectionHorizontal) return;
+            if (savedDirection == playerDirectionHorizontal ) return;
             visualGuidance.ShowPath();
         }
         else

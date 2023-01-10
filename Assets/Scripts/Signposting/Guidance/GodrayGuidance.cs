@@ -15,6 +15,7 @@ public class GodrayGuidance : ParticleGuidance
     private Color showColor;
     [SerializeField]
     private Color hiddenColor;
+
     private void Start()
     {
         base.Start();
@@ -24,13 +25,11 @@ public class GodrayGuidance : ParticleGuidance
     public override void HidePath()
     {
         SetAlphaOfGodray(hiddenColor);
-        Debug.Log(this.gameObject.name + "is hiding");
     }
 
     public override void ShowPath()
     {
         SetAlphaOfGodray(showColor);
-        Debug.Log(this.gameObject.name + "is showing");
     }
 
     private void SetAlphaOfGodray(Color col)

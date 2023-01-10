@@ -36988,6 +36988,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Great White Shark
       objectReference: {fileID: 0}
+    - target: {fileID: 1122085670500552541, guid: 51d4a343da8b28a45a3babf83ea7739e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019526284922736750, guid: 51d4a343da8b28a45a3babf83ea7739e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51d4a343da8b28a45a3babf83ea7739e, type: 3}
 --- !u!4 &6460468364295860312 stripped
