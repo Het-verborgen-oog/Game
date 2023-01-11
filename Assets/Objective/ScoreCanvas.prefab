@@ -70,7 +70,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score:'
+  m_text: 'Score: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a2ecfd0a1a381d841aea67dd31eea8c5, type: 2}
   m_sharedMaterial: {fileID: -4458463903843987987, guid: a2ecfd0a1a381d841aea67dd31eea8c5,
@@ -329,6 +329,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6674347233594509527}
     m_Modifications:
+    - target: {fileID: 4316137956000978111, guid: f9176d81663dcbb42906e872e3a41b58,
+        type: 3}
+      propertyPath: m_text
+      value: 'Score: 0'
+      objectReference: {fileID: 0}
     - target: {fileID: 4316137956443363833, guid: f9176d81663dcbb42906e872e3a41b58,
         type: 3}
       propertyPath: m_Name
