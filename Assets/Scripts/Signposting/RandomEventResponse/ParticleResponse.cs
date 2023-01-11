@@ -6,12 +6,14 @@ using UnityEngine;
 public class ParticleResponse : MonoBehaviour, IResponse
 {
     private ParticleSystem particles;
-    // Start is called before the first frame update
+    
+    // Monobehaviour Methods
     void Start()
     {
         particles = GetComponentInChildren<ParticleSystem>();
     }
 
+    // Public Methods
     public void Activate()
     {
         particles.Play();

@@ -7,6 +7,7 @@ public class ArduinoInputHandler : MonoBehaviour, IInputHandler
     [SerializeField]
     private ArduinoValuesFacade facade;
 
+    // Public Methods
     public bool CheckIfConnected()
     {
         return facade.CheckIfConnected();

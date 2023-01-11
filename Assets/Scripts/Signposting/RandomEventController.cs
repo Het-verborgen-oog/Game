@@ -7,17 +7,23 @@ public class RandomEventController : MonoBehaviour
 {
     private List<IResponse> randomEventResponses;
 
-    private void OnEnable()
-    {
-        ResetTrigger.OnResetRandomEvents += ResetResponses;
-    }
-
-    // Start is called before the first frame update
+    // Monobehaviour Methods
     void Start()
     {
         randomEventResponses = GetComponentsInChildren<IResponse>().ToList();
     }
 
+    private void OnEnable()
+    {
+        ResetTrigger.OnResetRandomEvents += ResetResponses;
+    }
+
+    private void OnDisable()
+    {
+        ResetTrigger.OnResetRandomEvents -= ResetResponses;
+    }
+
+    // Public Methods
     public void Trigger()
     {
         foreach (IResponse response in randomEventResponses)
@@ -33,10 +39,4 @@ public class RandomEventController : MonoBehaviour
             response.ResetResponse();
         }
     }
-
-    private void OnDisable()
-    {
-        ResetTrigger.OnResetRandomEvents -= ResetResponses;
-    }
-
 }

@@ -4,12 +4,16 @@ using UnityEngine;
 using Cinemachine;
 
 public class CartController : MonoBehaviour
-{
-    CinemachineDollyCart cart;
-    float baseSpeed;
-    [SerializeField] float trackSwitchSafety = 100f;
-    [SerializeField] CinemachinePath mainTrack;
-    [SerializeField] List<SideTrack> altTracks;
+{   
+    [SerializeField] 
+    private float trackSwitchSafety = 100f;
+
+    [SerializeField] 
+    private CinemachinePath mainTrack;
+
+    [SerializeField] 
+    private List<SideTrack> altTracks;
+
     private SideTrack currentSideTrack;
 
     [SerializeField]
@@ -17,8 +21,12 @@ public class CartController : MonoBehaviour
 
     [SerializeField]
     private TrackSide cartDirectionHorizontal;
-    private ArduinoControls arduinoControls;
 
+    private ArduinoControls arduinoControls;
+    private CinemachineDollyCart cart;
+    private float baseSpeed;
+
+    // Monobehaviour Methods
     void Start()
     {
         cart = GetComponent<CinemachineDollyCart>();
@@ -63,6 +71,7 @@ public class CartController : MonoBehaviour
         }
     }
 
+    // Public Methods
     public void SetAltTrackAsMainTrack(SideTrack altTrack)
     {
         cart.m_Path = altTrack.track;
@@ -70,15 +79,16 @@ public class CartController : MonoBehaviour
         currentSideTrack = altTrack;
     }
 
-    //function to set the direction the cart is going
+        //function to set the direction the cart is going
     public void SetDirection(TrackSide newCartdirectionVertical, TrackSide newCartDirectionHorizontal)
     {
         cartDirectionVertical = newCartdirectionVertical;
         cartDirectionHorizontal = newCartDirectionHorizontal;
     }
 
-    //check if you can switch to the chosen sidetrack whilst moving in a given direction
-    bool CheckTrackSwitchable(SideTrack sideTrack, TrackSide movementDirectionVertical, TrackSide movenmentDirectionHorizontal)
+    // Private Methods
+        //check if you can switch to the chosen sidetrack whilst moving in a given direction
+    private bool CheckTrackSwitchable(SideTrack sideTrack, TrackSide movementDirectionVertical, TrackSide movenmentDirectionHorizontal)
     {
         float transferMinPos = sideTrack.transferToPos - cart.m_Speed / trackSwitchSafety;
         if (cart.m_Position >= transferMinPos && cart.m_Position <= sideTrack.transferToPos &&

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Whirlpool : MonoBehaviour
 {
-    private const string spinningTrigger = "IsSpinning";
-    const string PLAYERTAG = "Player";
+    
     [SerializeField]
     private float spinOutTime = 1f;
 
-    //Replace the Offset with the current way to control the player
+    private const string spinningTrigger = "IsSpinning";
+    const string PLAYERTAG = "Player";
+
+    // Monobehaviour Methods        
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(PLAYERTAG))
@@ -20,7 +22,8 @@ public class Whirlpool : MonoBehaviour
         }
     }
 
-    IEnumerator Spinout(DolphinMovement player)
+    // Private Methods
+    private IEnumerator Spinout(DolphinMovement player)
     {
         player.ToggleMovement(false);
         //animatorController.PlayAnimationTrigger(spinningTrigger);

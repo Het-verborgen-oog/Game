@@ -11,77 +11,43 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
     [SerializeField]
     private int baudRate = 9600;
     [SerializeField]
-    char StartMarker = '@';
+    public char StartMarker = '@';
     [SerializeField]
-    char EndMarker = '#';
+    public char EndMarker = '#';
     [SerializeField]
-    char PayloadMarker = ':';
+    public char PayloadMarker = ':';
     private SerialPort serialPort { get; set; }
 
     private MessageCreator messageCreator;
 
     [SerializeField]
     private string[] Message;
+
     /// <summary>
     /// The dictionary where the data is stored.
     /// </summary>
     public Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
+
     private int HorizontalTilt, VerticalTilt, Rotations;
 
     private string inboundMessage;
 
-    //const float MinimumTilt = -1f, MaximumTilt = 1f, MinimumSpeed = 1f, MaximumSpeed = 2.5f;
-    //const float ExpectedMinimumTilt = 0f, ExpectedMaximumTilt = 1024f, ExpectedMinumumSpeed = 0f, ExpectedMaximumSpeed = 5f;
-
-    public struct MeasureData
-    {
-        public readonly float InputMinimum;
-        public readonly float InputMaximum;
-        public readonly float OutputMinimum;
-        public readonly float OutputMaximum;
-
-        public MeasureData(float inputMinimum, float inputMaximum, float outputMinimum, float outputMaximum)
-        {
-            InputMinimum = inputMinimum;
-            InputMaximum = inputMaximum;
-            OutputMinimum = outputMinimum;
-            OutputMaximum = outputMaximum;
-        }
-
-        public static string[] GetPropertyNames()
-        {
-            return new string[] { nameof(InputMinimum), nameof(InputMaximum), nameof(OutputMinimum), nameof(OutputMaximum) };
-        }
-
-        public float[] GetPropertyValues()
-        {
-            return new float[] { InputMinimum, InputMaximum, OutputMinimum, OutputMaximum };
-        }
-    }
-
     public MeasureData RollData;
     public MeasureData PitchData;
     public MeasureData SpeedData;
-
-    public enum MeasureDataIndex
-    {
-        Roll = 0,
-        Pitch = 1,
-        Speed = 2
-    }
     public MeasureData[] DataCollection;
 
+    // Properties
     public float Roll_Raw { get { return keyValuePairs["HRZ"]; } }
     public float Pitch_Raw { get { return keyValuePairs["HRZ"]; } }
     public float Speed_Raw { get { return keyValuePairs["HRZ"]; } }
 
 
     public float Roll { get { return (keyValuePairs["HRZ"] - RollData.InputMinimum) / (RollData.InputMaximum - RollData.InputMinimum) * (RollData.OutputMaximum - RollData.OutputMinimum) + RollData.OutputMinimum; } }
-
     public float Pitch { get { return (keyValuePairs["VER"] - PitchData.InputMinimum) / (PitchData.InputMaximum - PitchData.InputMinimum) * (PitchData.OutputMaximum - PitchData.OutputMinimum) + PitchData.OutputMinimum; } }
-
     public float Speed { get { return (keyValuePairs["SPD"] - SpeedData.InputMinimum) / (SpeedData.InputMaximum - SpeedData.InputMinimum) * (SpeedData.OutputMaximum - SpeedData.OutputMinimum) + SpeedData.OutputMinimum; } }
 
+    // Monobehaviour Methods
     public void Start()
     {
         string[] ports = GetPorts();
@@ -116,6 +82,7 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         }
     }
 
+    // Private Methods
     /// <summary>
     /// Prepares the dictionary.
     /// </summary>
@@ -185,6 +152,7 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         return new MeasureData(values[0], values[1], values[2], values[3]);
     }
 
+    // Public Methods
     public void Save(MeasureDataIndex index)
     {
         string dataset = "";
@@ -206,6 +174,7 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         SaveDataSet(dataset, DataCollection[(int)index]);
     }
 
+    // Private Methods
     private void SaveDataSet(string dataSet, MeasureData data)
     {
         string[] keys = MeasureData.GetPropertyNames();
@@ -416,4 +385,40 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         if (serialPort == null) return false;
         else return serialPort.IsOpen;
     }
+
+    // Support Structures
+    public struct MeasureData
+    {
+        public readonly float InputMinimum;
+        public readonly float InputMaximum;
+        public readonly float OutputMinimum;
+        public readonly float OutputMaximum;
+
+        public MeasureData(float inputMinimum, float inputMaximum, float outputMinimum, float outputMaximum)
+        {
+            InputMinimum = inputMinimum;
+            InputMaximum = inputMaximum;
+            OutputMinimum = outputMinimum;
+            OutputMaximum = outputMaximum;
+        }
+
+        public static string[] GetPropertyNames()
+        {
+            return new string[] { nameof(InputMinimum), nameof(InputMaximum), nameof(OutputMinimum), nameof(OutputMaximum) };
+        }
+
+        public float[] GetPropertyValues()
+        {
+            return new float[] { InputMinimum, InputMaximum, OutputMinimum, OutputMaximum };
+        }
+    }
+    
+    public enum MeasureDataIndex
+    {
+        Roll = 0,
+        Pitch = 1,
+        Speed = 2
+    }
 }
+
+

@@ -10,6 +10,7 @@ public class ResetTrigger : MonoBehaviour
 
     const string PLAYERTAG = "Player";
 
+    // Monobehaviour Methods
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(PLAYERTAG))

@@ -11,21 +11,26 @@ public class Calibration : MonoBehaviour
 
     [SerializeField]
     private GameObject horizontalSliders;
+
     [SerializeField]
     private GameObject verticalSliders;
+
     [SerializeField]
     private GameObject speedSliders;
 
     [SerializeField]
     private List<GameObject> horizontalSlidersList;
+
     [SerializeField]
     private List<GameObject> verticalSlidersList;
+
     [SerializeField]
     private List<GameObject> speedSlidersList;
 
     private List<float> allValues = new List<float>();
     private List<string> playerPrefIndex = new List<string>();
 
+    // Monobehaviour Methods
     private void Awake()
     {
         int totalIndexes = horizontalSlidersList.Count + verticalSlidersList.Count + speedSlidersList.Count;
@@ -40,6 +45,7 @@ public class Calibration : MonoBehaviour
         PlayerPrefshandler.SetGlobalValues(playerPrefIndex);
     }
 
+    // Public Methods
     public void ChangeSliders()
     {
         PlayerPrefs.Save();
@@ -90,9 +96,9 @@ public class Calibration : MonoBehaviour
             float tempMinValue = horizontalSlidersList[0].GetComponent<Slider>().value;
             float tempMaxValue = horizontalSlidersList[2].GetComponent<Slider>().value;
             
-                GlobalPotValues.horizontalValues.minValue = tempMinValue;
-                GlobalPotValues.horizontalValues.turnoverValue = turnoverValue;
-                GlobalPotValues.horizontalValues.maxValue = tempMaxValue;
+                GlobalPotValues.HorizontalValues.MinValue = tempMinValue;
+                GlobalPotValues.HorizontalValues.TurnoverValue = turnoverValue;
+                GlobalPotValues.HorizontalValues.MaxValue = tempMaxValue;
             
             PlayerPrefshandler.SaveValues(0, horizontalSlidersList, playerPrefIndex);
         }
@@ -102,9 +108,9 @@ public class Calibration : MonoBehaviour
             float tempMinValue = verticalSlidersList[0].GetComponent<Slider>().value;
             float tempMaxValue = verticalSlidersList[2].GetComponent<Slider>().value;
             
-                GlobalPotValues.verticalValues.minValue = tempMinValue;
-                GlobalPotValues.verticalValues.turnoverValue = turnoverValue;
-                GlobalPotValues.verticalValues.maxValue = tempMaxValue;
+                GlobalPotValues.VerticalValues.MinValue = tempMinValue;
+                GlobalPotValues.VerticalValues.TurnoverValue = turnoverValue;
+                GlobalPotValues.VerticalValues.MaxValue = tempMaxValue;
             
             PlayerPrefshandler.SaveValues(1, verticalSlidersList, playerPrefIndex);
         }
@@ -114,15 +120,16 @@ public class Calibration : MonoBehaviour
             float tempMinValue = speedSlidersList[0].GetComponent<Slider>().value;
             float tempMaxValue = speedSlidersList[2].GetComponent<Slider>().value;
             
-                GlobalPotValues.speedValues.minValue = tempMinValue;
-                GlobalPotValues.speedValues.turnoverValue = turnoverValue;
-                GlobalPotValues.speedValues.maxValue = tempMaxValue;
+                GlobalPotValues.SpeedValues.MinValue = tempMinValue;
+                GlobalPotValues.SpeedValues.TurnoverValue = turnoverValue;
+                GlobalPotValues.SpeedValues.MaxValue = tempMaxValue;
             
             PlayerPrefshandler.SaveValues(2, speedSlidersList, playerPrefIndex);
         }
         allValues = PlayerPrefshandler.GetValues(playerPrefIndex);
     }
 
+    // Private Methods
     private void SetValues(List<float> values)
     {
                 //Horizontal

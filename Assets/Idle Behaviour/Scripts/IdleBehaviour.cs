@@ -29,17 +29,19 @@ public class IdleBehaviour : MonoBehaviour
 
     [SerializeField]
     private bool stationairy;
-    private float timeSinceStationairy;
 
+
+    private float timeSinceStationairy;
+    private List<IIdleAction> idleActions;
+
+    // Public Properties
     public bool IsIdle {
         get {
             return stationairy && (Time.timeSinceLevelLoad > timeSinceStationairy + SecondsTillIdle);
         }
     }
 
-    private List<IIdleAction> idleActions;
-
-
+    // Monobehaviour Methods
     private void OnEnable() {
         pitchMeasurements = new List<float>();
         rollMeasurements = new List<float>();

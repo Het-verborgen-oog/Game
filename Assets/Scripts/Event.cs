@@ -9,19 +9,27 @@ public class Event : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
-    [SerializeField] private float positionTrack;
-    [SerializeField] private int triggerAmount = 5;
-    [SerializeField] private List<string> animationNames = new List<string>();
+
+    [SerializeField] 
+    private float positionTrack;
+
+    [SerializeField] 
+    private int triggerAmount = 5;
+
+    [SerializeField] 
+    private List<string> animationNames = new List<string>();
 
     private float startArea = 15;
     private int totalEncounter = 0;
     private bool passedPosition = false;
 
+    // Monobehaviour Methods
     private void Update()
     {
         CheckPlayerPosition();
     }
 
+    // Private Methods
     private void CheckPlayerPosition()
     {
         if (passedPosition == false)

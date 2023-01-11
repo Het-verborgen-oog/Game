@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class RotateAroundItself : MonoBehaviour, IRotatable
 {
-    [SerializeField] private float rotationSpeed;
+    [SerializeField] 
+    private float rotationSpeed;
 
-    // Update is called once per frame
+    // Monobehaviour Methods
     void Update()
     {
         Rotate();
     }
 
+    // Public Methods
     public void Rotate()
     {
         transform.Rotate(new Vector3(0, rotationSpeed, 0));

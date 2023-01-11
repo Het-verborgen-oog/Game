@@ -6,14 +6,21 @@ using UnityEngine.Audio;
 
 public class AudioUIManager : MonoBehaviour
 {
-    [SerializeField] GameObject mainButtons;
-    [SerializeField] GameObject audioButtons;
+    [SerializeField] 
+    private GameObject mainButtons;
+    [SerializeField] 
+    private GameObject audioButtons;
 
-    [SerializeField] AudioMixer audioMixer;
+    [SerializeField] 
+    private AudioMixer audioMixer;
 
-    [SerializeField] Slider effectSlider;
-    [SerializeField] Slider backgroundSlider;
+    [SerializeField] 
+    private Slider effectSlider;
 
+    [SerializeField] 
+    private Slider backgroundSlider;
+
+    // Public Methods
     public void LoadAudioMenu()
     {
         mainButtons.SetActive(false);

@@ -9,13 +9,15 @@ public class AnimationGuidance : MonoBehaviour, IVisualGuidance
     private Animator animator;
     private const string ANIMATORBOOLEAN = "onDifferentPath";
     private int animationHash;
-    // Start is called before the first frame update
+    
+    // Monobehaviour Methods
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         animationHash = Animator.StringToHash(ANIMATORBOOLEAN);
     }
 
+    // Public Methods
     public void HidePath()
     {
         animator.SetBool(animationHash, false);

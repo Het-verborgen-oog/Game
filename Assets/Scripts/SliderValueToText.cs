@@ -8,14 +8,17 @@ public class SliderValueToText : MonoBehaviour
 {
     [SerializeField]
     private Slider slider;
+
     [SerializeField]
     private TMP_Text text;
 
+    // Monobahaviour Methods
     private void Awake()
     {
         ChangeText();
     }
 
+    // Public Methods
     public void ChangeText()
     {
         text.text = slider.value.ToString();

@@ -10,7 +10,8 @@ public class SplitPathTrigger : MonoBehaviour,IInteractable
 
     public delegate void OnPlayerEnterSplitPath(SplitPath splitPath);
     public static OnPlayerEnterSplitPath PlayerEnteredSplitPath;
-    // Start is called before the first frame update
+    
+    // Monobehaviour Methods
     void Start()
     {
         parentSplitPath = GetComponentInParent<SplitPath>();
@@ -24,6 +25,7 @@ public class SplitPathTrigger : MonoBehaviour,IInteractable
         }
     }
 
+    // Public Methods
     public void Trigger()
     {
         PlayerEnteredSplitPath.Invoke(parentSplitPath);

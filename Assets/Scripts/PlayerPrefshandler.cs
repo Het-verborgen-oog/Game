@@ -71,10 +71,10 @@ public static class PlayerPrefshandler
         List<float> allValues = GetValues(playerPrefIndex);
 
         //horizontal
-        GlobalPotValues.horizontalValues = new DifferentPotValues(allValues[0], allValues[1], allValues[2]);
+        GlobalPotValues.HorizontalValues = new DifferentPotValues(allValues[0], allValues[1], allValues[2]);
         //vertical
-        GlobalPotValues.verticalValues = new DifferentPotValues(allValues[3], allValues[4], allValues[5]);
+        GlobalPotValues.VerticalValues = new DifferentPotValues(allValues[3], allValues[4], allValues[5]);
         //speed
-        GlobalPotValues.speedValues = new DifferentPotValues(allValues[6], allValues[7], allValues[8]);
+        GlobalPotValues.SpeedValues = new DifferentPotValues(allValues[6], allValues[7], allValues[8]);
     }
 }

@@ -6,23 +6,28 @@ using UnityEngine;
 
 public class DolphinMovement : MonoBehaviour, ITrigger
 {
+    [SerializeField] public IdleBehaviour idleBehaviour;
+
     [SerializeField] private GameObject gameObjectWithInputHandlers;
     //must be child of object with this script
     [SerializeField] private GameObject dolphinObject;
-    private List<IInputHandler> availableInputHandlers;
-    [SerializeField] public float horizontalMovementSpeed = 5;
-    [SerializeField] public float verticalMovementSpeed = 5;
-    [SerializeField] public float horizontalMovementLimit = 20;
-    [SerializeField] public float verticalMovementLimit = 20;
-    [SerializeField, Range(0, 1)] public float steeringDeadzone = 0.2f;
-    [SerializeField] public float raycastAngle = 45;
-    [SerializeField] public float raycastLength = 5;
-    [SerializeField] public float raycastFarLength = 6;
-    [SerializeField] public float speedMultiplier = 2;
-    [SerializeField] public IdleBehaviour idleBehaviour;
-    [SerializeField] public LayerMask collisionLayers;
-    [SerializeField, Range(0, 90)] public float maxBankAngle = 30f;
-    [SerializeField, Range(0, 90)] public float maxPitchAngle = 20f;
+    [SerializeField] private float horizontalMovementSpeed = 5;
+    [SerializeField] private float verticalMovementSpeed = 5;
+    [SerializeField] private float horizontalMovementLimit = 20;
+    [SerializeField] private float verticalMovementLimit = 20;
+    [SerializeField, Range(0, 1)] private float steeringDeadzone = 0.2f;
+    [SerializeField] private float raycastAngle = 45;
+    [SerializeField] private float raycastLength = 5;
+    [SerializeField] private float raycastFarLength = 6;
+    [SerializeField] private float speedMultiplier = 2;
+    
+    [SerializeField] private LayerMask collisionLayers;
+    [SerializeField, Range(0, 90)] private float maxBankAngle = 30f;
+    [SerializeField, Range(0, 90)] private float maxPitchAngle = 20f;
+    [SerializeField] private float rotationAnglePerFrame = 0.05f;
+
+    public delegate void OnPlayerMovement(TrackSide horizontal, TrackSide vertical);
+    public static OnPlayerMovement OnPlayerMoved;
 
     private Quaternion targetRotation;
     private float horizontalInput;
@@ -35,27 +40,11 @@ public class DolphinMovement : MonoBehaviour, ITrigger
 
     private bool overrideMovement = false;
 
+    private List<IInputHandler> availableInputHandlers;
     private IInputHandler desiredInputHandler;
     private CartController cartController;
 
-    [SerializeField]
-    public float rotationAnglePerFrame = 0.05f;
-
-    public delegate void OnPlayerMovement(TrackSide horizontal, TrackSide vertical);
-    public static OnPlayerMovement OnPlayerMoved;
-
-
-    public void TriggerEvent(object parameters)
-    {
-        if (parameters.GetType() != typeof(bool))
-        {
-            return;
-        }
-
-        bool state = (bool)parameters;
-        overrideMovement = state;
-    }
-
+    // Monobehaviour Methods
     private void Start()
     {
         availableInputHandlers = gameObjectWithInputHandlers.GetComponentsInChildren<IInputHandler>().ToList();
@@ -66,21 +55,6 @@ public class DolphinMovement : MonoBehaviour, ITrigger
         StartCoroutine(RotateDolphin());    
     }
 
-    //Arduino is priority so you can only play with keyboard when arduino is NOT connected.
-    private void CheckForAvailableInputHandler()
-    {
-        foreach (IInputHandler inputHandler in availableInputHandlers)
-        {
-            bool isConnected = inputHandler.CheckIfConnected();
-            if (isConnected)
-            {
-                desiredInputHandler = inputHandler;
-                break;
-            }
-        }
-    }
-
-    // Update is called once per frame
     void Update()
     {
         CheckForAvailableInputHandler();
@@ -94,6 +68,18 @@ public class DolphinMovement : MonoBehaviour, ITrigger
 
         //moves the player acording to the inputs
         Movement();
+    }
+
+    // Public Methods
+    public void TriggerEvent(object parameters)
+    {
+        if (parameters.GetType() != typeof(bool))
+        {
+            return;
+        }
+
+        bool state = (bool)parameters;
+        overrideMovement = state;
     }
 
     public void ToggleMovement(bool _enabled)
@@ -153,6 +139,21 @@ public class DolphinMovement : MonoBehaviour, ITrigger
         {
             OnPlayerMoved?.Invoke(trackSideHorizontal, trackSideVertical);
         }        
+    }
+
+    // Private Methods
+        //Arduino is priority so you can only play with keyboard when arduino is NOT connected.
+    private void CheckForAvailableInputHandler()
+    {
+        foreach (IInputHandler inputHandler in availableInputHandlers)
+        {
+            bool isConnected = inputHandler.CheckIfConnected();
+            if (isConnected)
+            {
+                desiredInputHandler = inputHandler;
+                break;
+            }
+        }
     }
 
 
@@ -262,7 +263,7 @@ public class DolphinMovement : MonoBehaviour, ITrigger
         }
     }
 
-    private void OnDrawGizmos()//used to see Ray in editor without update function
+    private void OnDrawGizmos() //used to see Ray in editor without update function
     {
         Debug.DrawRay(transform.position, leftVector * raycastLength, Color.red);
         Debug.DrawRay(transform.position, rightVector * raycastLength, Color.red);
