@@ -39,8 +39,8 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
 
     // Properties
     public float Roll_Raw { get { return keyValuePairs["HRZ"]; } }
-    public float Pitch_Raw { get { return keyValuePairs["HRZ"]; } }
-    public float Speed_Raw { get { return keyValuePairs["HRZ"]; } }
+    public float Pitch_Raw { get { return keyValuePairs["VER"]; } }
+    public float Speed_Raw { get { return keyValuePairs["SPD"]; } }
 
 
     public float Roll { get { return (keyValuePairs["HRZ"] - RollData.InputMinimum) / (RollData.InputMaximum - RollData.InputMinimum) * (RollData.OutputMaximum - RollData.OutputMinimum) + RollData.OutputMinimum; } }
