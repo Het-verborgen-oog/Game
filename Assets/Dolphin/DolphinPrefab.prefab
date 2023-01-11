@@ -119,8 +119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObjectWithInputHandlers: {fileID: 0}
   dolphinObject: {fileID: 9121169619556729011}
-  horizontalMovementSpeed: 5
-  verticalMovementSpeed: 5
+  horizontalMovementSpeed: 8
+  verticalMovementSpeed: 8
   horizontalMovementLimit: 10
   verticalMovementLimit: 10
   steeringDeadzone: 0.2

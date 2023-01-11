@@ -50,7 +50,6 @@ public class IdleZoom : MonoBehaviour, IIdleAction
             progression += Mathf.Min((Time.deltaTime / transitionTime), 1);
             
             transposer.m_FollowOffset = lerpVector;
-            Debug.Log(progression + " | " + lerpVector);
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForEndOfFrame();

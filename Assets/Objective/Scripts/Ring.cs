@@ -37,6 +37,7 @@ public class Ring : MonoBehaviour, IScore,IInteractable
     {
         if (other.CompareTag(PLAYERTAG))
         {
+            if (other.GetComponent<DolphinMovement>().idleBehaviour.IsIdle) return;
             Trigger();
         }
     }

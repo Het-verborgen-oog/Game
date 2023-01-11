@@ -41,6 +41,7 @@ public class Crate : MonoBehaviour, IScore, IInteractable
     {
         if (other.CompareTag(PLAYERTAG)) // Make sure this works properly with whoever is working on Dolfy
         {
+            if (other.GetComponent<DolphinMovement>().idleBehaviour.IsIdle) return;
             Trigger();
         }
     }
