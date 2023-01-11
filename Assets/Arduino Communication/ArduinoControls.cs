@@ -82,8 +82,6 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
 
     public float Speed { get { return (keyValuePairs["SPD"] - SpeedData.InputMinimum) / (SpeedData.InputMaximum - SpeedData.InputMinimum) * (SpeedData.OutputMaximum - SpeedData.OutputMinimum) + SpeedData.OutputMinimum; } }
 
-    public float Speed { get { return (keyValuePairs["SPD"] - ExpectedMinumumSpeed) / (ExpectedMaximumSpeed - ExpectedMinumumSpeed) * (MaximumSpeed - MinimumSpeed) + MinimumSpeed; } }
-    
     public void Start()
     {
         string[] ports = GetPorts();
