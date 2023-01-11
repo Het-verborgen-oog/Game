@@ -36,6 +36,7 @@ public class Crate : MonoBehaviour, IScore, IInteractable
     private void Start()
     {
         animator = GetComponent<Animator>();
+        hitParticle = GetComponentInChildren<ParticleSystem>();
         animator.Play(IdleAnimation);
         scoreField = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
     }
