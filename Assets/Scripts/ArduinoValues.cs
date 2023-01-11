@@ -11,19 +11,18 @@ public static class ArduinoValues
     public static float yMovement;
 
     public static void GetvaluePotXMovement(float potValue)
-    {
-        //float tempPotValue = (potValue - GlobalPotValues.horizontalValues.minValue) - (GlobalPotValues.horizontalValues.maxValue - GlobalPotValues.horizontalValues.minValue);
-        xMovement = -GetCalibrateValue(GlobalPotValues.horizontalValues, potValue);
+    {        
+        xMovement = -GetCalibrateValue(GlobalPotValues.HorizontalValues, potValue);
     }
 
     public static void GetvaluePotYMovement(float potValue)
     {
-        yMovement = GetCalibrateValue(GlobalPotValues.verticalValues, potValue);
+        yMovement = GetCalibrateValue(GlobalPotValues.VerticalValues, potValue);
     }
 
     public static float GetValuePotSpeed(float potValue)
     {
-        float speedPercentage = (potValue - GlobalPotValues.speedValues.minValue) / (GlobalPotValues.speedValues.maxValue - GlobalPotValues.speedValues.minValue);
+        float speedPercentage = (potValue - GlobalPotValues.SpeedValues.MinValue) / (GlobalPotValues.SpeedValues.MaxValue - GlobalPotValues.SpeedValues.MinValue);
         if (speedPercentage <= 0)
         {
             speedPercentage = 0;
@@ -37,20 +36,20 @@ public static class ArduinoValues
 
         float tempPotValue = potValue;
 
-        if (tempPotValue > differentPotValues.turnoverValue)
+        if (tempPotValue > differentPotValues.TurnoverValue)
         {
-            tempPotValue -= differentPotValues.turnoverValue;
-            float tempMaxValue = differentPotValues.maxValue - differentPotValues.turnoverValue;
+            tempPotValue -= differentPotValues.TurnoverValue;
+            float tempMaxValue = differentPotValues.MaxValue - differentPotValues.TurnoverValue;
             i = tempPotValue / tempMaxValue;
         }
-        else if (tempPotValue < differentPotValues.turnoverValue)
+        else if (tempPotValue < differentPotValues.TurnoverValue)
         {
-            tempPotValue -= differentPotValues.minValue;
-            tempPotValue = differentPotValues.turnoverValue - tempPotValue;
-            float tempTurnoverValue = differentPotValues.turnoverValue - differentPotValues.minValue;
+            tempPotValue -= differentPotValues.MinValue;
+            tempPotValue = differentPotValues.TurnoverValue - tempPotValue;
+            float tempTurnoverValue = differentPotValues.TurnoverValue - differentPotValues.MinValue;
             i = tempPotValue / tempTurnoverValue * -1f;
         }
-        else if (tempPotValue == differentPotValues.turnoverValue)
+        else if (tempPotValue == differentPotValues.TurnoverValue)
         {
             i = 0;
         }

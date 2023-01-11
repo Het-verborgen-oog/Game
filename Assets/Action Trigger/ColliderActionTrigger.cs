@@ -10,6 +10,7 @@ public class ColliderActionTrigger : MonoBehaviour
 
     private List<ITrigger> triggers;
 
+    // Monobehaviour Methods
     private void Start() {
         triggers = new List<ITrigger>();
         foreach(MonoBehaviour script in actions)

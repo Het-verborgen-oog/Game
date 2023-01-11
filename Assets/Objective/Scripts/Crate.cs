@@ -8,19 +8,18 @@ using UnityEngine;
 public class Crate : MonoBehaviour, IScore, IInteractable
 {
     [SerializeField]
-    ParticleSystem HitParticle;
+    private ParticleSystem hitParticle;
 
     [Header("Crate Settings")]
     [Range(0, 45)]
     [SerializeField]
-    float ResetDelay = 5f;
-    [SerializeField]
-    int score = 20;
+    private float ResetDelay = 5f;
 
     [SerializeField]
-    TextMeshProUGUI scoreField;
+    private int score = 20;
 
-    public int Score { get { return score; }}
+    [SerializeField]
+    private TextMeshProUGUI scoreField;
 
     private bool Triggered = false;
     private Animator animator;
@@ -30,6 +29,10 @@ public class Crate : MonoBehaviour, IScore, IInteractable
 
     const string PLAYERTAG = "Player";
 
+    // Public Properties
+    public int Score { get { return score; }}
+
+    // Monobehaviour Methods
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -46,6 +49,7 @@ public class Crate : MonoBehaviour, IScore, IInteractable
         }
     }
 
+    // Public Methods
     public void Trigger()
     {
         Triggered = true;
@@ -58,13 +62,6 @@ public class Crate : MonoBehaviour, IScore, IInteractable
         StartCoroutine(PrepareReset());
     }
 
-    private void SpawnParticles()
-    {
-        ParticleSystem system = Instantiate(HitParticle, gameObject.transform);
-        system.Play();
-        Destroy(system, ResetDelay);
-    }
-        
     public IEnumerator PrepareReset()
     {
         if (Triggered)
@@ -78,5 +75,13 @@ public class Crate : MonoBehaviour, IScore, IInteractable
     public void Reset()
     {
         animator.Play(IdleAnimation);
+    }
+
+    // Private Methods
+    private void SpawnParticles()
+    {
+        ParticleSystem system = Instantiate(hitParticle, gameObject.transform);
+        system.Play();
+        Destroy(system, ResetDelay);
     }
 }

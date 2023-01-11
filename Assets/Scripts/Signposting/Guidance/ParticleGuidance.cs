@@ -7,11 +7,14 @@ public class ParticleGuidance : MonoBehaviour, IVisualGuidance
 {
     [SerializeField]
     protected ParticleSystem particleSystem;
-    // Start is called before the first frame update
+    
+    // Monobehaviour Methods
     protected void Start()
     {
         particleSystem = GetComponentInChildren<ParticleSystem>();
     }
+
+    // Public Methods
     public virtual void HidePath()
     {
         particleSystem.Clear();

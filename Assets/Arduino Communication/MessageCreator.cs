@@ -13,6 +13,7 @@ namespace ArduinoControl
         public string PartialMessage { get; set; }
         public char PayloadMarker { get; private set; }
 
+        // Constructors
         public MessageCreator(char end, char start)
         {
             EndMarker = end;
@@ -21,6 +22,7 @@ namespace ArduinoControl
             PayloadMarker = ':';
         }
 
+        // Public Methods
         public string Add(string input)
         {
             if (string.IsNullOrEmpty(input))

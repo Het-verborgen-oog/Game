@@ -10,56 +10,51 @@ public class Calibrator : MonoBehaviour
 {
     [Header("Sliders")]
     [SerializeField]
-    Slider MinimumSlider;
+    private Slider MinimumSlider;
 
     [SerializeField]
-    Slider MaximumSlider;
+    private Slider MaximumSlider;
 
     [Header("Text Boxes")]
     [SerializeField]
-    TextMeshProUGUI ValueText;
+    private TextMeshProUGUI ValueText;
 
     [SerializeField]
-    TextMeshProUGUI MinimumText;
+    private TextMeshProUGUI MinimumText;
 
     [SerializeField]
-    TextMeshProUGUI MaximumText;
+    private TextMeshProUGUI MaximumText;
 
     [SerializeField]
-    TextMeshProUGUI InstructionText;
+    private TextMeshProUGUI InstructionText;
 
     [Header("Input")]
+    [SerializeField]
+    private ArduinoControls arduino;
 
     [SerializeField]
-    ArduinoControls arduino;
+    private ArduinoControls.MeasureDataIndex RequestedData;
 
     [SerializeField]
-    ArduinoControls.MeasureDataIndex RequestedData;
+    private float WaitUntilCapture = 6f;
 
-    [SerializeField]
-    float WaitUntilCapture = 6f;
-
-    float newMinimum = 0f, newMaximum = 0f;
-
-    private bool isCalibrating = false, isIdle = true;
+    private float newMinimum = 0f, newMaximum = 0f;
+    private bool isCalibrating = false;
+    private bool isIdle = true;
     private LastCalibrationState state = LastCalibrationState.None;
 
-    enum LastCalibrationState
-    {
-        Minimum = 0,
-        Maximum = 1,
-        None = 2
-    }
-
+    // Monobehaviour Methods
     void Update()
     {
         UpdateText();
     }
 
-    private void UpdateText()
+    // Public Methods
+    public void SwitchDataType(int data)
     {
-        ValueText.text = arduino.GrabRawProperty(RequestedData).ToString();
+        RequestedData = (ArduinoControls.MeasureDataIndex) Enum.ToObject(typeof(ArduinoControls.MeasureDataIndex), data);
     }
+
     public void CalibrateMaximum()
     {
         StartCoroutine(IngestMaximum());
@@ -68,6 +63,20 @@ public class Calibrator : MonoBehaviour
     public void CalibrateMinimum()
     {
         StartCoroutine(IngestMinimum());
+    }
+
+    public void SaveData()
+    {
+        ArduinoControls.MeasureData oldData = arduino.DataCollection[(int)RequestedData];
+        ArduinoControls.MeasureData newData = new ArduinoControls.MeasureData(newMinimum, newMaximum, oldData.OutputMinimum, oldData.OutputMaximum);
+        arduino.DataCollection[(int)RequestedData] = newData;
+        arduino.Save(RequestedData);
+    }
+
+    // Private Methods
+    private void UpdateText()
+    {
+        ValueText.text = arduino.GrabRawProperty(RequestedData).ToString();
     }
 
     private IEnumerator IngestMaximum()
@@ -155,14 +164,6 @@ public class Calibrator : MonoBehaviour
         MinimumText.text = MinimumSlider.value.ToString();
     }
 
-    public void SaveData()
-    {
-        ArduinoControls.MeasureData oldData = arduino.DataCollection[(int)RequestedData];
-        ArduinoControls.MeasureData newData = new ArduinoControls.MeasureData(newMinimum, newMaximum, oldData.OutputMinimum, oldData.OutputMaximum);
-        arduino.DataCollection[(int)RequestedData] = newData;
-        arduino.Save(RequestedData);
-    }
-
     /// <summary>
     /// A function to display instructions or notifications onscreen.
     /// </summary>
@@ -173,8 +174,12 @@ public class Calibrator : MonoBehaviour
         Debug.Log(text);
     }
 
-    public void SwitchDataType(int data)
+
+    // Support Structures
+    enum LastCalibrationState
     {
-        RequestedData = (ArduinoControls.MeasureDataIndex) Enum.ToObject(typeof(ArduinoControls.MeasureDataIndex), data);
+        Minimum = 0,
+        Maximum = 1,
+        None = 2
     }
 }

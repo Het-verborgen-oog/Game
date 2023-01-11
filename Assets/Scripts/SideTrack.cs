@@ -6,15 +6,16 @@ using System;
 
 public class SideTrack : MonoBehaviour
 {
-    public CinemachinePath track;
-    public TrackSide trackSide;
-    public bool unlocked = true;
-    public float transferToPos;
-    public float transferBackPos;
-    public CinemachinePath trackToSwitchFrom;
-    public CinemachinePath trackToSwitchBackTo;
+    [SerializeField] public CinemachinePath track;
+    [SerializeField] public TrackSide trackSide;
+    [SerializeField] public bool unlocked = true;
+    [SerializeField] public float transferToPos;
+    [SerializeField] public float transferBackPos;
+    [SerializeField] public CinemachinePath trackToSwitchFrom;
+    [SerializeField] public CinemachinePath trackToSwitchBackTo;
 }
 
+// Support Structures
 public enum TrackSide
 {
     neutral,

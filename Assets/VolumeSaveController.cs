@@ -5,16 +5,19 @@ using UnityEngine.UI;
 
 public class VolumeSaveController : MonoBehaviour
 {
+    [SerializeField] 
+    private Slider volumeSlider = null;
 
-    [SerializeField] private Slider volumeSlider = null;
+    [SerializeField] 
+    private Text VolumeTextUI = null;
 
-    [SerializeField] private Text VolumeTextUI = null;
-
+    // Monobehaviour Methods
     private void Start()
     {
         LoadValues();
     }
 
+    // Public Methods
     public void VolumeSlider(float volume)
     {
         VolumeTextUI.text = volume.ToString("0.0");
@@ -27,7 +30,8 @@ public class VolumeSaveController : MonoBehaviour
         LoadValues();
     }
 
-    void LoadValues()
+    // Private Methods
+    private void LoadValues()
     {
         float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
         volumeSlider.value = volumeValue;

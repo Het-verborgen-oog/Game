@@ -8,20 +8,23 @@ public class SplitPathManager : MonoBehaviour
 {
     [SerializeField]
     private List<SplitPath> splitpathes;
+
     [SerializeField]
     private SplitPath playerEnteredSplitPath;
-    private void OnEnable()
-    {
-        DolphinMovement.OnPlayerMoved += ToggleSplitPath;
-        SplitPathTrigger.PlayerEnteredSplitPath += SetEnteredSplitPath;
-    }
 
-    // Start is called before the first frame update
+    // Monobehaviour Methods
     void Start()
     {
         splitpathes = GetComponentsInChildren<SplitPath>().ToList();
     }
 
+    private void OnEnable()
+    {
+        DolphinMovement.OnPlayerMoved += ToggleSplitPath;
+        SplitPathTrigger.PlayerEnteredSplitPath += SetEnteredSplitPath;
+    }
+    
+    // Private Methods
     private void SetEnteredSplitPath(SplitPath enteredSplitPath)
     {
         playerEnteredSplitPath = enteredSplitPath;

@@ -12,12 +12,13 @@ public class SFXPlayer : MonoBehaviour
 
     [SerializeField]
     [Tooltip("List of soundeffects that will be played at random.")]
-    private SFXCollection soundEffects = new SFXCollection {minPitch = 0.5f, maxPitch = 1.5f };
+    private SFXCollection soundEffects = new SFXCollection {MinPitch = 0.5f, MaxPitch = 1.5f };
 
+    // Public Methods
     public void Play()
     {
         if (soundEffects.audioClips.Length == 0) { return; }
-        audioSource.pitch = Random.Range(soundEffects.minPitch, soundEffects.maxPitch);
+        audioSource.pitch = Random.Range(soundEffects.MinPitch, soundEffects.MaxPitch);
 
         int selectedSound = Random.Range(1, soundEffects.audioClips.Length) * System.Convert.ToInt32(soundEffects.audioClips.Length > 1);
         audioSource.clip = soundEffects.audioClips[selectedSound];

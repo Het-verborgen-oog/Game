@@ -7,6 +7,7 @@ public class VisibilityResponse : MonoBehaviour,IResponse
     [SerializeField]
     private GameObject toggledObject;
 
+    // Public Methods
     public void Activate()
     {
         toggledObject.SetActive(true);

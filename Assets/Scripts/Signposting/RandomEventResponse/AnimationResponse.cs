@@ -8,13 +8,15 @@ public class AnimationResponse : MonoBehaviour, IResponse
     private Animator animator;
     private string animationName = "isActivated";
     private int animationHashId;
-    // Start is called before the first frame update
+    
+    // Monobehaviour Methods
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         animationHashId = Animator.StringToHash(animationName);
     }
 
+    // Public Methods
     public void Activate()
     {
         animator.SetTrigger(animationHashId);

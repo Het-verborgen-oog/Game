@@ -6,6 +6,7 @@ public class KeyboardInputHandler : MonoBehaviour, IInputHandler
 {
     private bool isConnected = true;
 
+    // Public Methods
     public bool CheckIfConnected()
     {
         return isConnected;

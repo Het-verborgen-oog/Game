@@ -9,12 +9,13 @@ public class SplitPath : MonoBehaviour
     [SerializeField]
     private List<PlayerGuider> playerGuiders;
 
-    // Start is called before the first frame update
+    // Monobehaviour Methods
     void Start()
     {
         playerGuiders = GetComponentsInChildren<PlayerGuider>().ToList();
     }
 
+    // Public Methods
     public void ToggleGodrayGuiders(TrackSide playerDirectionHorizontal, TrackSide playerDirectionVertical)
     {
         foreach (PlayerGuider godrayGuider in playerGuiders)
@@ -22,5 +23,4 @@ public class SplitPath : MonoBehaviour
             godrayGuider.ToggleParticleSystem(playerDirectionHorizontal, playerDirectionVertical);
         }
     }
-
 }

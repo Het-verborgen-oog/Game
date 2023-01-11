@@ -7,6 +7,7 @@ public class IdleZoom : MonoBehaviour, IIdleAction
 {
     [SerializeField]
     private Vector3 zoomPosition;
+
     [SerializeField]
     private float transitionTime = 1f;
 
@@ -16,10 +17,12 @@ public class IdleZoom : MonoBehaviour, IIdleAction
     private bool zoomedIn;
     private Vector3 defaultPosition;
 
+    // Monobehaviour Methods
     private void Start() {
         defaultPosition = virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
     }
 
+    // Public Methods
     public void SwitchIdleState(bool isIdle)
     {
         
@@ -37,6 +40,7 @@ public class IdleZoom : MonoBehaviour, IIdleAction
         zoomedIn = isIdle;
     }
 
+    // Private Methods
     private IEnumerator MoveCamera(Vector3 targetPosition, float transitionTime)
     {
         CinemachineTransposer transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();

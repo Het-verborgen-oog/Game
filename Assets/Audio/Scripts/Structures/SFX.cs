@@ -2,7 +2,12 @@ using UnityEngine;
 
 [System.Serializable]
 public struct SFXCollection {
+    [SerializeField]
     public AudioClip[] audioClips;
-    public float minPitch;
-    public float maxPitch;
+
+    [SerializeField]
+    public float MinPitch;
+
+    [SerializeField]
+    public float MaxPitch;
  }

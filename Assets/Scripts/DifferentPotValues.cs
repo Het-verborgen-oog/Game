@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class DifferentPotValues
+public struct DifferentPotValues
 {
-    public float minValue;
-    public float turnoverValue;
-    public float maxValue;
+    public float MinValue;
+    public float TurnoverValue;
+    public float MaxValue;
 
     
     public DifferentPotValues(float _minValue, float _turnoverValue, float _maxValue)
     {
-        minValue = _minValue;
-        turnoverValue = _turnoverValue;
-        maxValue = _maxValue;
+        MinValue = _minValue;
+        TurnoverValue = _turnoverValue;
+        MaxValue = _maxValue;
     }
 }

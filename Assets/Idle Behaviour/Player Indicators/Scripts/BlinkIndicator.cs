@@ -17,6 +17,7 @@ public class BlinkIndicator : MonoBehaviour, IIdleAction
     private int shiftDirection = -1;
     private List<Renderer> indicatorRenderers;
 
+    // Monobehaviour Methods
     void Start()
     {
         indicatorRenderers = new();
@@ -32,11 +33,6 @@ public class BlinkIndicator : MonoBehaviour, IIdleAction
         }
 
         enabled = false;
-    }
-
-    public void SwitchIdleState(bool isIdle)
-    {
-        this.enabled = isIdle;
     }
 
     private void OnDisable() {
@@ -79,5 +75,12 @@ public class BlinkIndicator : MonoBehaviour, IIdleAction
             shiftDirection = -1;
         }
         
+    }
+
+
+    // Public Methods
+    public void SwitchIdleState(bool isIdle)
+    {
+        this.enabled = isIdle;
     }
 }

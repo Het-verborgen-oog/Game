@@ -9,6 +9,8 @@ public class CalibrationMenu : MonoBehaviour
     private GameObject calibrationMenu;
 
     private bool menuActive = false;
+
+    // Monobehaviour Methods
     void Update()
     {
         if (Input.GetKeyDown("e"))

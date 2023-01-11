@@ -7,25 +7,30 @@ public class Ring : MonoBehaviour, IScore,IInteractable
 {
     [SerializeField]
     ParticleSystem HitParticles;
+
     [SerializeField]
     Material DefaultMaterial;
+
     [SerializeField]
     Material ClearedMaterial;
 
     [SerializeField]
     [Range(0,45)]
     float ResetDelay = 5f;
+
     [SerializeField]
     int score = 5;
 
-
     [SerializeField]
     TextMeshProUGUI scoreField;
-    public int Score { get { return score; }} 
 
     const string PLAYERTAG = "Player";
     private MeshRenderer MeshRenderer;
 
+    // Public Properties
+    public int Score { get { return score; }} 
+
+    // Monobehaviour Methods
     void Start()
     {
         MeshRenderer = GetComponentInChildren<MeshRenderer>();
@@ -42,12 +47,7 @@ public class Ring : MonoBehaviour, IScore,IInteractable
         }
     }
 
-    private void SpawnParticles()
-    {
-        ParticleSystem system = Instantiate(HitParticles, gameObject.transform);
-        system.Play();
-        Destroy(system, ResetDelay);
-    }
+    // Public Methods
     public void Trigger()
     {
         ScoreManager.Add(Score);
@@ -56,16 +56,6 @@ public class Ring : MonoBehaviour, IScore,IInteractable
         if(HitParticles != null) SpawnParticles();
         StartCoroutine(PrepareReset());
         scoreField.text = "Score: " + ScoreManager.Score;
-    }
-
-    private void SwitchToDefaultMaterial()
-    {
-        MeshRenderer.material = DefaultMaterial;
-    }
-
-    private void SwitchToClearedMaterial()
-    {
-        MeshRenderer.material = ClearedMaterial;
     }
 
     public IEnumerator PrepareReset()
@@ -77,5 +67,23 @@ public class Ring : MonoBehaviour, IScore,IInteractable
     public void Reset()
     {
         SwitchToDefaultMaterial();
+    }
+
+    // Private Methods
+    private void SpawnParticles()
+    {
+        ParticleSystem system = Instantiate(HitParticles, gameObject.transform);
+        system.Play();
+        Destroy(system, ResetDelay);
+    }
+
+    private void SwitchToDefaultMaterial()
+    {
+        MeshRenderer.material = DefaultMaterial;
+    }
+
+    private void SwitchToClearedMaterial()
+    {
+        MeshRenderer.material = ClearedMaterial;
     }
 }

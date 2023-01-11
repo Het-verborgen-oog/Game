@@ -12,6 +12,8 @@ public class RandomEventTrigger : MonoBehaviour, IInteractable
 
     const string PLAYERTAG = "Player";
     private RandomEventController randomEventController;
+
+    // Monobehaviour Methods
     private void Start()
     {
         randomEventController = GetComponentInParent<RandomEventController>();
@@ -25,15 +27,17 @@ public class RandomEventTrigger : MonoBehaviour, IInteractable
         }
     }
 
+    // Public Methods
+    public void Trigger()
+    {
+        randomEventController?.Trigger();
+    }
+
+    // Private Methods
     private void CheckForChance()
     {
         int randomNumber = Random.Range(0, 100);
         if (randomNumber > activationPercentage) return;
         Trigger();
-    }
-
-    public void Trigger()
-    {
-        randomEventController?.Trigger();
     }
 }

@@ -6,18 +6,24 @@ using System;
 
 public class TrackSideController : MonoBehaviour
 {
-    [SerializeField] public string trackSide;
-    [SerializeField] public GameObject arrowLeft;
-    [SerializeField] public GameObject arrowRight;
+    [SerializeField] 
+    public string trackSide;
+    [SerializeField] 
+    public GameObject arrowLeft;
+
+    [SerializeField] 
+    public GameObject arrowRight;
 
     private CinemachineSmoothPath path;
 
+    // Monobehaviour Methods
     void Start()
     {
         trackSide = trackSide.ToLower();
         path = GetComponent<CinemachineSmoothPath>();
     }
 
+    // Public Methods
     public void ActivateArrow(string side)
     {
         if(side is null)
@@ -34,6 +40,4 @@ public class TrackSideController : MonoBehaviour
             arrowRight.GetComponent<ArrowMover>().activateArrow = false;
         }
     }
-
-
 }
