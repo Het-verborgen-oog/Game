@@ -39,14 +39,16 @@ public class Calibrator : MonoBehaviour
     private float WaitUntilCapture = 6f;
 
     private float newMinimum = 0f, newMaximum = 0f;
-    private bool isCalibrating = false;
-    private bool isIdle = true;
-    private LastCalibrationState state = LastCalibrationState.None;
 
     // Monobehaviour Methods
     void Update()
     {
         UpdateText();
+    }
+
+    private void OnEnable()
+    {
+        UpdateSliders();
     }
 
     // Public Methods
@@ -77,6 +79,22 @@ public class Calibrator : MonoBehaviour
     private void UpdateText()
     {
         ValueText.text = arduino.GrabRawProperty(RequestedData).ToString();
+    }
+
+    private enum Input_Data
+    {
+        Minimum = 0,
+        Maximum = 1,
+    }
+
+    // Needs an enum.
+    private void UpdateSliders()
+    {
+        float[] arr = arduino.DataCollection[(int)RequestedData].GetPropertyValues();
+        MinimumText.text = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Minimum)].ToString();
+        MinimumSlider.value = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Minimum)];
+        MaximumText.text = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Maximum)].ToString();
+        MaximumSlider.value = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Maximum)];
     }
 
     private IEnumerator IngestMaximum()
@@ -111,6 +129,7 @@ public class Calibrator : MonoBehaviour
         DisplayInstruction("Calibration Complete");
 
         PrepareMaximumData(result);
+        UpdateSliders();
         yield return null;
     }
 
@@ -146,6 +165,8 @@ public class Calibrator : MonoBehaviour
         DisplayInstruction("Calibration Complete");
 
         PrepareMinimumData(result);
+
+        UpdateSliders();
         yield return null;
     }
 
@@ -171,15 +192,5 @@ public class Calibrator : MonoBehaviour
     private void DisplayInstruction(string text)
     {
         InstructionText.text = text;
-        Debug.Log(text);
-    }
-
-
-    // Support Structures
-    enum LastCalibrationState
-    {
-        Minimum = 0,
-        Maximum = 1,
-        None = 2
     }
 }
