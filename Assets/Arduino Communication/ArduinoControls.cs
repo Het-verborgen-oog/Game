@@ -59,8 +59,8 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         serialPort.BaudRate = baudRate;
 
         PrepareCommands();
-        PrepareExternal();
         GrabSettings();
+        PrepareExternal();
         Connect();
 
         if (serialPort.IsOpen == false)
@@ -147,7 +147,6 @@ public class ArduinoControls : MonoBehaviour, IArduinoData
         {
             values.Add(LoadData(dataSet, item));
         }
-
         //Should be an enum, but at this stage of the project I physically do not care enough.
         return new MeasureData(values[0], values[1], values[2], values[3]);
     }

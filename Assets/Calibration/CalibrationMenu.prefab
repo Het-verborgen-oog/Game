@@ -1021,6 +1021,7 @@ MonoBehaviour:
   InstructionText: {fileID: 1354880743}
   arduino: {fileID: 0}
   RequestedData: 0
+  WaitUntilCapture: 6
 --- !u!1 &996534371485855606
 GameObject:
   m_ObjectHideFlags: 0
