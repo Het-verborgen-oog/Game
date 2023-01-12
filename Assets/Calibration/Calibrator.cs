@@ -87,7 +87,6 @@ public class Calibrator : MonoBehaviour
         Maximum = 1,
     }
 
-    // Needs an enum.
     private void UpdateSliders()
     {
         float[] arr = arduino.DataCollection[(int)RequestedData].GetPropertyValues();
@@ -95,6 +94,7 @@ public class Calibrator : MonoBehaviour
         MinimumSlider.value = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Minimum)];
         MaximumText.text = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Maximum)].ToString();
         MaximumSlider.value = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Maximum)];
+        
     }
 
     private IEnumerator IngestMaximum()
