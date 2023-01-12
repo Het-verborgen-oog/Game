@@ -49,6 +49,9 @@ public class Calibrator : MonoBehaviour
     private void OnEnable()
     {
         UpdateSliders();
+        float[] arr = arduino.DataCollection[(int)RequestedData].GetPropertyValues();
+        newMinimum = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Minimum)];
+        newMaximum = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Maximum)];
     }
 
     // Public Methods
