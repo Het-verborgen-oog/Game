@@ -31,11 +31,13 @@ public class GodrayGuidance : ParticleGuidance
     // Public Methods
     public override void HidePath()
     {
+        particleSystem.Stop();
         SetAlphaOfGodray(hiddenColor);
     }
 
     public override void ShowPath()
     {
+        particleSystem.Play();
         SetAlphaOfGodray(showColor);
     }
 

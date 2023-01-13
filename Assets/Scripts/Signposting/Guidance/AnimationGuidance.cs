@@ -23,6 +23,11 @@ public class AnimationGuidance : MonoBehaviour, IVisualGuidance
         animator.SetBool(animationHash, false);
     }
 
+    public void PausePath()
+    {
+        return;
+    }
+
     public void ShowPath()
     {
         animator.SetBool(animationHash, true);

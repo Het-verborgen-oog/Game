@@ -17,6 +17,11 @@ public class DiagonalPlayerGuider : PlayerGuider
             if (savedDirectionV == playerDirectionVertical && savedDirectionH == playerDirectionHorizontal) return;
             visualGuidance.ShowPath();
         }
+        else if (playerDirectionHorizontal == TrackSide.neutral && playerDirectionVertical == TrackSide.neutral)
+        {
+            if (savedDirectionV == TrackSide.neutral && savedDirectionH == TrackSide.neutral) return;
+            visualGuidance.PausePath();
+        }
         else
         {
             if (savedDirectionV != playerDirectionVertical || savedDirectionH != playerDirectionHorizontal) return;

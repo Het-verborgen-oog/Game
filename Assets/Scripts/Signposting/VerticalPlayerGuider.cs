@@ -18,6 +18,11 @@ public class VerticalPlayerGuider : PlayerGuider
             if (savedDirection == playerDirectionVertical) return;
             visualGuidance.ShowPath();
         }
+        else if(playerDirectionVertical == TrackSide.neutral)
+        {
+            if (savedDirection == TrackSide.neutral) return;
+            visualGuidance.PausePath();
+        }
         else
         {
             if (savedDirection != playerDirectionVertical) return;
