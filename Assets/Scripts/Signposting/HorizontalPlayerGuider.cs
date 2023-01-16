@@ -17,15 +17,9 @@ public class HorizontalPlayerGuider : PlayerGuider
             if (savedDirection == playerDirectionHorizontal ) return;
             visualGuidance.ShowPath();
         }
-        else if(playerDirectionHorizontal == TrackSide.neutral)
-        {
-            if (savedDirection == TrackSide.neutral) return;
-            visualGuidance.PausePath();
-        }
-
         else
         {
-            if (savedDirection != playerDirectionHorizontal) return;
+            if (savedDirection != TrackSide.neutral) return;
             visualGuidance.HidePath();
         }
         savedDirection = playerDirectionHorizontal;
