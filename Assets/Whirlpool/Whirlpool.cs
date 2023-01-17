@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Whirlpool : MonoBehaviour
 {
-    
+    AnimatorController animatorController;
     [SerializeField]
     private float spinOutTime = 1f;
 
@@ -16,7 +16,7 @@ public class Whirlpool : MonoBehaviour
     {
         if (other.CompareTag(PLAYERTAG))
         {
-            //AnimatorController animatorController = other.GetComponentInChildren<AnimatorController>();
+            animatorController = other.GetComponentInChildren<AnimatorController>();
             DolphinMovement dolf = other.GetComponentInChildren<DolphinMovement>();
             StartCoroutine(Spinout(dolf));
         }
@@ -26,7 +26,7 @@ public class Whirlpool : MonoBehaviour
     private IEnumerator Spinout(DolphinMovement player)
     {
         player.ToggleMovement(false);
-        //animatorController.PlayAnimationTrigger(spinningTrigger);
+        animatorController?.PlayAnimationTrigger(spinningTrigger);
         yield return new WaitForSeconds(spinOutTime);
         player.ToggleMovement(true);
     }
