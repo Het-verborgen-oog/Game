@@ -84,7 +84,6 @@ GameObject:
   - component: {fileID: 1807574620}
   - component: {fileID: 1807574617}
   - component: {fileID: 137379548}
-  - component: {fileID: 137379559}
   m_Layer: 0
   m_Name: DolphinPrefab
   m_TagString: Player
@@ -135,7 +134,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436693213748347101}
   m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: b0d24fb7b412a6341bb5d3cd70d92312, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: af938f2e9d0f8054dae0fdc1800537e7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -189,7 +188,7 @@ MonoBehaviour:
     m_Bits: 577
   maxBankAngle: 30
   maxPitchAngle: 20
-  rotationAnglePerFrame: 0.1
+  rotationAnglePerFrame: 0.05
 --- !u!54 &137379548
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -206,18 +205,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &137379559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436693213748347101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064064d9345ba7d4db1b599f73c97e43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2302626679267707630
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +302,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1144412207913889883}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -7.518697, y: -0.000006016248, z: -0.0000009982726}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4673517962953473019
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +491,7 @@ Transform:
   - {fileID: 3713706582578533157}
   m_Father: {fileID: 7938083966093449643}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 7.3349304, y: -90.000015, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6830596456570293566
 GameObject:
   m_ObjectHideFlags: 0
