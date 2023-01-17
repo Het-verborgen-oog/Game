@@ -7,7 +7,7 @@ public class ParticleGuidance : MonoBehaviour, IVisualGuidance
 {
     [SerializeField]
     protected ParticleSystem particleSystem;
-    
+
     // Monobehaviour Methods
     protected void Start()
     {
@@ -17,8 +17,7 @@ public class ParticleGuidance : MonoBehaviour, IVisualGuidance
     // Public Methods
     public virtual void HidePath()
     {
-        particleSystem.Clear();
-        particleSystem.Stop();
+        if (particleSystem.isPlaying) particleSystem.Stop();
     }
 
     public virtual void ShowPath()

@@ -13,11 +13,6 @@ public class GodrayGuidance : ParticleGuidance
     [SerializeField]
     private Color hiddenColor;
 
-
-    private float startAlpha;
-    private const float SELECTEDALPHA = 250;
-    private const float STARTALPHA = 50;
-
     private Color godrayColor;
 
     // Monobehaviour Methods
@@ -31,11 +26,13 @@ public class GodrayGuidance : ParticleGuidance
     // Public Methods
     public override void HidePath()
     {
+        particleSystem.Stop();
         SetAlphaOfGodray(hiddenColor);
     }
 
     public override void ShowPath()
     {
+        particleSystem.Play();
         SetAlphaOfGodray(showColor);
     }
 
