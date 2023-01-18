@@ -48,10 +48,10 @@ public class Calibrator : MonoBehaviour
 
     private void OnEnable()
     {
-        UpdateSliders();
         float[] arr = arduino.DataCollection[(int)RequestedData].GetPropertyValues();
         newMinimum = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Minimum)];
         newMaximum = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Maximum)];
+        UpdateSliders();
     }
 
     // Public Methods
@@ -93,11 +93,10 @@ public class Calibrator : MonoBehaviour
     // Needs an enum.
     private void UpdateSliders()
     {
-        float[] arr = arduino.DataCollection[(int)RequestedData].GetPropertyValues();
-        MinimumText.text = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Minimum)].ToString();
-        MinimumSlider.value = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Minimum)];
-        MaximumText.text = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Maximum)].ToString();
-        MaximumSlider.value = arr[(int)Enum.ToObject(typeof(Input_Data), Input_Data.Maximum)];
+        MinimumText.text = newMinimum.ToString();
+        MinimumSlider.value = newMinimum;
+        MaximumText.text = newMaximum.ToString();
+        MaximumSlider.value = newMaximum;
     }
 
     private IEnumerator IngestMaximum()
@@ -132,7 +131,9 @@ public class Calibrator : MonoBehaviour
         DisplayInstruction("Calibration Complete");
 
         PrepareMaximumData(result);
+
         UpdateSliders();
+
         yield return null;
     }
 
