@@ -12,10 +12,12 @@ public static class ScoreManager
     public static void Add(int amount)
     {
         Score += amount;
+        GameObject.Find("Score").GetComponent<TextMeshProUGUI>().text = "Score: " + Score.ToString();
     }
 
     public static void Reset()
     {
         Score = 0;
+        GameObject.Find("Score").GetComponent<TextMeshProUGUI>().text = "Score: " + Score.ToString();
     }
 }

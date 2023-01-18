@@ -32,6 +32,7 @@ public class IdleBehaviour : MonoBehaviour
 
 
     private float timeSinceStationairy;
+
     private List<IIdleAction> idleActions;
 
     // Public Properties
@@ -49,7 +50,6 @@ public class IdleBehaviour : MonoBehaviour
         arduinoControls = GetComponent<ArduinoControls>();
         idleActions = new(FindObjectsOfType<MonoBehaviour>().OfType<IIdleAction>());
         
-
         StartCoroutine(GetMeasurments());
         StartCoroutine(CallIdleActions());
     }
@@ -63,17 +63,13 @@ public class IdleBehaviour : MonoBehaviour
         float pitch = arduinoControls.Pitch;
         float roll = arduinoControls.Roll;
 
-        if (
-            IsWithinRange(pitch, GetAverage(pitchMeasurements), AllowedDeviation) &&
-            IsWithinRange(roll, GetAverage(rollMeasurements), AllowedDeviation)
-        ) 
+        if (IsWithinRange(roll, GetAverage(rollMeasurements), AllowedDeviation)) 
         {
             // Controller is not moving
             if (!stationairy) 
             {
                 stationairy = true;
-                timeSinceStationairy = Time.timeSinceLevelLoad;
-                ScoreManager.Reset();
+                timeSinceStationairy = Time.timeSinceLevelLoad;            
             }
         } else {
             // Controller moved
