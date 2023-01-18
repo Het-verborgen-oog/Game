@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using TMPro;
 
 public class IdleZoom : MonoBehaviour, IIdleAction
 {
@@ -17,9 +18,13 @@ public class IdleZoom : MonoBehaviour, IIdleAction
     private bool zoomedIn;
     private Vector3 defaultPosition;
 
+    [SerializeField]
+    TextMeshProUGUI scoreField;
+
     // Monobehaviour Methods
     private void Start() {
         defaultPosition = virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
+        scoreField = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
     }
 
     // Public Methods
@@ -38,6 +43,9 @@ public class IdleZoom : MonoBehaviour, IIdleAction
         }
 
         zoomedIn = isIdle;
+        if (scoreField == null) return;
+        ScoreManager.Reset();
+        scoreField.text = "Score: " + ScoreManager.Score;
     }
 
     // Private Methods

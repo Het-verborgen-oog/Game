@@ -615,6 +615,7 @@ MonoBehaviour:
   zoomPosition: {x: -1.5, y: 2, z: -3}
   transitionTime: 1
   virtualCamera: {fileID: 0}
+  scoreField: {fileID: 0}
 --- !u!1 &6333665997788413257
 GameObject:
   m_ObjectHideFlags: 0

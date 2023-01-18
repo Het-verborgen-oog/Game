@@ -73,7 +73,6 @@ public class IdleBehaviour : MonoBehaviour
             {
                 stationairy = true;
                 timeSinceStationairy = Time.timeSinceLevelLoad;
-                ScoreManager.Reset();
             }
         } else {
             // Controller moved
