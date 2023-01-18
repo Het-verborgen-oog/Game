@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1426550518108078323}
   - component: {fileID: 2622216167497158486}
   - component: {fileID: 254186197518433180}
+  - component: {fileID: 4022161379446858539}
   m_Layer: 0
   m_Name: ArrowedSign
   m_TagString: Untagged
@@ -84,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4022161379446858539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767645879215004233}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.005625566, y: 0.041746996, z: 0.049810924}
+  m_Center: {x: 0.00000023841858, y: 0.00000002868596, z: 0.023503622}
 --- !u!1001 &554917218371000847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,6 +108,10 @@ PrefabInstance:
     - target: {fileID: 1595484403700178, guid: 4b73867a59bc0da47a67c6619e4a5183, type: 3}
       propertyPath: m_Name
       value: SM_Icon_Arrow_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595484403700178, guid: 4b73867a59bc0da47a67c6619e4a5183, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4338769054944016, guid: 4b73867a59bc0da47a67c6619e4a5183, type: 3}
       propertyPath: m_RootOrder
@@ -159,7 +177,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 48abeb740b74fa643a210c8eff823aac, type: 2}
+      objectReference: {fileID: 2100000, guid: d1938729dfe46cb46a7d29208344ec2c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b73867a59bc0da47a67c6619e4a5183, type: 3}
 --- !u!4 &557351597844730143 stripped
