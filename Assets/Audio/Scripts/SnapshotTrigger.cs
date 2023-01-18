@@ -32,7 +32,6 @@ public class SnapshotTrigger : MonoBehaviour
     
     // MonoBehaviour Methods
     private void OnTriggerEnter(Collider collider) {
-        Debug.Log("Enter: " + collider.name);
         if (!collider.CompareTag(playerTag)) { return; }
         if (enterSnapshot != null)
         {
@@ -41,7 +40,6 @@ public class SnapshotTrigger : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider collider) {
-        Debug.Log("Exit: " + collider.name);
         if (!collider.CompareTag(playerTag)) { return; }
         if (exitSnapshot != null)
         {

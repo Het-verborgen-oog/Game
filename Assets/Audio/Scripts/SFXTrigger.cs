@@ -25,7 +25,6 @@ public class SFXTrigger : MonoBehaviour
 
     // MonoBehaviour Methods
     private void OnTriggerEnter(Collider collider) {
-        Debug.Log(collider.name);
         if (!collider.CompareTag(playerTag)) { return; }
         if (enterSFX.audioClips.Length > 0 && audioSource != null)
         {
