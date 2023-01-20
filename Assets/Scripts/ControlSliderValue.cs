@@ -7,11 +7,14 @@ public class ControlSliderValue : MonoBehaviour
 {
     [SerializeField]
     private Slider slider;
+
     [SerializeField]
     private Slider minSlider;
+
     [SerializeField]
     private Slider maxSlider;
 
+    // Public Methods
     public void ControlValues()
     {
         if (minSlider != null)

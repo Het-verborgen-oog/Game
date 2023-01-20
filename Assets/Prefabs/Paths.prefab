@@ -1,0 +1,1519 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6356956342973757912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956342973757913}
+  m_Layer: 0
+  m_Name: Paths
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956342973757913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956342973757912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6356956343901245385}
+  - {fileID: 6356956343838224733}
+  - {fileID: 6356956344218255417}
+  - {fileID: 6356956343684162989}
+  - {fileID: 6356956343311079665}
+  - {fileID: 6356956344792954487}
+  - {fileID: 6356956343623769584}
+  - {fileID: 6356956343251149441}
+  - {fileID: 6356956344430985171}
+  - {fileID: 6356956343889135795}
+  - {fileID: 6356956343900976690}
+  - {fileID: 6356956343424132938}
+  - {fileID: 6356956344165125425}
+  - {fileID: 6356956344139032409}
+  - {fileID: 6356956343197988493}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6356956343197988494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343197988493}
+  - component: {fileID: 6356956343197988492}
+  - component: {fileID: 6356956343197988495}
+  m_Layer: 0
+  m_Name: Deep Sea Kelp Cliff Climb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343197988493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343197988494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343197988492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343197988494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 506.5, y: 65, z: 540}
+    tangent: {x: 0, y: 0, z: -20}
+    roll: 0
+  - position: {x: 488.76077, y: 75, z: 497.8368}
+    tangent: {x: -5, y: 10, z: -15}
+    roll: 0
+  - position: {x: 483.54285, y: 115, z: 467.3584}
+    tangent: {x: 0, y: 30, z: -15}
+    roll: 0
+  - position: {x: 486.68704, y: 175, z: 434.7168}
+    tangent: {x: 0, y: 20, z: -15}
+    roll: 0
+  - position: {x: 480.30505, y: 205, z: 399.27}
+    tangent: {x: -5, y: 10, z: -15}
+    roll: 0
+  - position: {x: 458.2957, y: 220, z: 377.76752}
+    tangent: {x: -15, y: 0, z: -5}
+    roll: 0
+  - position: {x: 429.83463, y: 220, z: 342.39844}
+    tangent: {x: -5, y: 0, z: -15}
+    roll: 0
+  - position: {x: 427, y: 220, z: 309}
+    tangent: {x: 2.5, y: 0, z: -15}
+    roll: 0
+--- !u!114 &6356956343197988495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343197988494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956343197988492}
+  trackSide: 2
+  unlocked: 1
+  transferToPos: 112.06
+  transferBackPos: 465.19
+  trackToSwitchFrom: {fileID: 6356956343424132941}
+  trackToSwitchBackTo: {fileID: 6356956343311079664}
+--- !u!1 &6356956343251149442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343251149441}
+  - component: {fileID: 6356956343251149440}
+  - component: {fileID: 6356956343251149443}
+  m_Layer: 0
+  m_Name: Shipwreck CaveEntry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343251149441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343251149442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343251149440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343251149442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 295, y: 210, z: 475}
+    tangent: {x: 0, y: 0, z: 10}
+    roll: 0
+  - position: {x: 280, y: 210, z: 513}
+    tangent: {x: -10, y: 0, z: 10}
+    roll: 0
+  - position: {x: 259.4649, y: 170, z: 539.4328}
+    tangent: {x: -6, y: -30, z: 8}
+    roll: 0
+  - position: {x: 262.62262, y: 130, z: 595.48175}
+    tangent: {x: 5, y: -5, z: 20}
+    roll: 0
+  - position: {x: 292.23737, y: 115, z: 651.73175}
+    tangent: {x: 20, y: 0, z: 10}
+    roll: 0
+  - position: {x: 337, y: 120, z: 661}
+    tangent: {x: 15, y: 5, z: 0}
+    roll: 0
+--- !u!114 &6356956343251149443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343251149442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956343251149440}
+  trackSide: 1
+  unlocked: 1
+  transferToPos: 81.2
+  transferBackPos: 469.65
+  trackToSwitchFrom: {fileID: 6356956343623769587}
+  trackToSwitchBackTo: {fileID: 6356956344430985170}
+--- !u!1 &6356956343311079667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343311079665}
+  - component: {fileID: 6356956343311079664}
+  - component: {fileID: 6356956343311079630}
+  m_Layer: 0
+  m_Name: Kelp Forest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343311079665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343311079667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343311079664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343311079667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 170, y: 244, z: 205}
+    tangent: {x: 15, y: -1, z: 15}
+    roll: 0
+  - position: {x: 200, y: 240, z: 265}
+    tangent: {x: 5, y: -5, z: 15}
+    roll: 0
+  - position: {x: 213, y: 220, z: 296}
+    tangent: {x: 5, y: 0, z: 15}
+    roll: 0
+  - position: {x: 231, y: 220, z: 370}
+    tangent: {x: 10, y: 0, z: 10}
+    roll: 0
+  - position: {x: 278, y: 220, z: 401}
+    tangent: {x: 15, y: 0, z: 5}
+    roll: 0
+  - position: {x: 335, y: 220, z: 413}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 380, y: 220, z: 410}
+    tangent: {x: 10, y: 0, z: -5}
+    roll: 0
+  - position: {x: 415, y: 220, z: 382}
+    tangent: {x: 5, y: 0, z: -15}
+    roll: 0
+  - position: {x: 427, y: 220, z: 309}
+    tangent: {x: 2.5, y: 0, z: -15}
+    roll: 0
+  - position: {x: 428, y: 230, z: 275}
+    tangent: {x: -1, y: 0, z: -10}
+    roll: 0
+  - position: {x: 436, y: 230, z: 252}
+    tangent: {x: 10, y: 0, z: -5}
+    roll: 0
+  - position: {x: 465, y: 231, z: 250}
+    tangent: {x: 15, y: 1, z: 5}
+    roll: 0
+--- !u!114 &6356956343311079630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343311079667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956343311079664}
+  trackSide: 1
+  unlocked: 1
+  transferToPos: 795.4
+  transferBackPos: 140.95
+  trackToSwitchFrom: {fileID: 6356956343901245384}
+  trackToSwitchBackTo: {fileID: 6356956343684162988}
+--- !u!1 &6356956343424132940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343424132938}
+  - component: {fileID: 6356956343424132941}
+  - component: {fileID: 6356956343424132939}
+  m_Layer: 0
+  m_Name: Deep Sea Cliffside
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343424132938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343424132940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343424132941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343424132940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 518, y: 65, z: 634}
+    tangent: {x: 5, y: 0, z: -1}
+    roll: 0
+  - position: {x: 535, y: 65, z: 608}
+    tangent: {x: -10, y: 0, z: -20}
+    roll: 0
+  - position: {x: 506.5, y: 65, z: 540}
+    tangent: {x: 0, y: 0, z: -20}
+    roll: 0
+  - position: {x: 540, y: 65, z: 480}
+    tangent: {x: 0, y: 0, z: -20}
+    roll: 0
+  - position: {x: 571, y: 75, z: 395}
+    tangent: {x: 15, y: 10, z: -15}
+    roll: 0
+  - position: {x: 631, y: 145, z: 342}
+    tangent: {x: 5, y: 30, z: -15}
+    roll: 0
+--- !u!114 &6356956343424132939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343424132940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956343424132941}
+  trackSide: 2
+  unlocked: 1
+  transferToPos: 10.3
+  transferBackPos: 514.64
+  trackToSwitchFrom: {fileID: 6356956343900976693}
+  trackToSwitchBackTo: {fileID: 6356956343900976693}
+--- !u!1 &6356956343623769586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343623769584}
+  - component: {fileID: 6356956343623769587}
+  - component: {fileID: 6356956343623769585}
+  m_Layer: 0
+  m_Name: Shipwreck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343623769584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343623769586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343623769587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343623769586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 278, y: 220, z: 401}
+    tangent: {x: 15, y: 0, z: 5}
+    roll: 0
+  - position: {x: 294, y: 215, z: 441}
+    tangent: {x: 0, y: -5, z: 15}
+    roll: 0
+  - position: {x: 295, y: 210, z: 475}
+    tangent: {x: 0, y: 0, z: 10}
+    roll: 0
+  - position: {x: 339.60254, y: 210, z: 529.17236}
+    tangent: {x: 3, y: 0, z: 15}
+    roll: 0
+  - position: {x: 324.7614, y: 210, z: 571.5705}
+    tangent: {x: -10, y: 0, z: 7.5}
+    roll: 0
+  - position: {x: 282.8261, y: 210, z: 586.2907}
+    tangent: {x: -15, y: 0, z: -5}
+    roll: 0
+  - position: {x: 230.49832, y: 210, z: 591.7891}
+    tangent: {x: -5, y: 0, z: 10}
+    roll: 0
+  - position: {x: 251.99286, y: 210, z: 638.2818}
+    tangent: {x: 10, y: 0, z: 10}
+    roll: 0
+  - position: {x: 296.57883, y: 210, z: 661.9428}
+    tangent: {x: 15, y: 0, z: -5}
+    roll: 0
+  - position: {x: 390.32, y: 210, z: 627.43506}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 430.7431, y: 170, z: 631.664}
+    tangent: {x: 15, y: -40, z: 3}
+    roll: 0
+  - position: {x: 465, y: 95, z: 638}
+    tangent: {x: 15, y: -20, z: 0}
+    roll: 0
+  - position: {x: 508, y: 65, z: 636}
+    tangent: {x: 15, y: 0, z: -3}
+    roll: 0
+--- !u!114 &6356956343623769585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343623769586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956343623769587}
+  trackSide: 1
+  unlocked: 1
+  transferToPos: 241.35
+  transferBackPos: 0
+  trackToSwitchFrom: {fileID: 6356956343311079664}
+  trackToSwitchBackTo: {fileID: 6356956343900976693}
+--- !u!1 &6356956343684162991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343684162989}
+  - component: {fileID: 6356956343684162988}
+  - component: {fileID: 6356956343684162986}
+  m_Layer: 0
+  m_Name: Coral Reef
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343684162989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343684162991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343684162988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343684162991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 330, y: 230, z: 230}
+    tangent: {x: 10, y: 0, z: -10}
+    roll: 0
+  - position: {x: 367, y: 230, z: 235}
+    tangent: {x: 15, y: 0, z: 5}
+    roll: 0
+  - position: {x: 420, y: 230, z: 235}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 465, y: 231, z: 250}
+    tangent: {x: 15, y: 1, z: 5}
+    roll: 0
+  - position: {x: 515, y: 235, z: 255}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 565.7757, y: 231, z: 263.72903}
+    tangent: {x: 15, y: -1, z: 0}
+    roll: 0
+  - position: {x: 611.0304, y: 230, z: 251.43567}
+    tangent: {x: 10, y: 0, z: -10}
+    roll: 0
+  - position: {x: 645, y: 230, z: 240}
+    tangent: {x: 15, y: 1, z: 5}
+    roll: 0
+  - position: {x: 690, y: 231, z: 253}
+    tangent: {x: 10, y: 1, z: -10}
+    roll: 0
+  - position: {x: 722.14594, y: 239, z: 208.43626}
+    tangent: {x: 2.5, y: 0, z: -20}
+    roll: 0
+  - position: {x: 690, y: 240, z: 160}
+    tangent: {x: -15, y: 0, z: -10}
+    roll: 0
+  - position: {x: 675, y: 240, z: 130}
+    tangent: {x: 5, y: 0, z: -15}
+    roll: 0
+--- !u!114 &6356956343684162986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343684162991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956343684162988}
+  trackSide: 1
+  unlocked: 1
+  transferToPos: 970
+  transferBackPos: 1414.5
+  trackToSwitchFrom: {fileID: 6356956343901245384}
+  trackToSwitchBackTo: {fileID: 6356956343901245384}
+--- !u!1 &6356956343838224734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343838224733}
+  - component: {fileID: 6356956343838224732}
+  - component: {fileID: 6356956343838224735}
+  m_Layer: 0
+  m_Name: Beach Side
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343838224733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343838224734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343838224732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343838224734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 620, y: 262, z: -82.5}
+    tangent: {x: -20, y: 1, z: -7.5}
+    roll: 0
+  - position: {x: 560, y: 260, z: -30}
+    tangent: {x: -10, y: -2, z: 15}
+    roll: 0
+  - position: {x: 505, y: 250, z: 25}
+    tangent: {x: -15, y: -1, z: 7.5}
+    roll: 0
+  - position: {x: 430, y: 245, z: 40}
+    tangent: {x: -15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 350, y: 250, z: 35}
+    tangent: {x: -22.5, y: 1, z: -2.5}
+    roll: 0
+  - position: {x: 250, y: 255, z: 20}
+    tangent: {x: -20, y: 1, z: 0}
+    roll: 0
+  - position: {x: 170, y: 260, z: 32.5}
+    tangent: {x: -20, y: -2, z: 15}
+    roll: 0
+--- !u!114 &6356956343838224735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343838224734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956343838224732}
+  trackSide: 2
+  unlocked: 1
+  transferToPos: 67
+  transferBackPos: 582
+  trackToSwitchFrom: {fileID: 6356956343901245384}
+  trackToSwitchBackTo: {fileID: 6356956343901245384}
+--- !u!1 &6356956343889135796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343889135795}
+  - component: {fileID: 6356956343889135794}
+  - component: {fileID: 6356956343889135797}
+  m_Layer: 0
+  m_Name: Cave Kelp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343889135795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343889135796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343889135794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343889135796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 229, y: 115, z: 500.6}
+    tangent: {x: 4, y: 0, z: 10}
+    roll: 0
+  - position: {x: 267.7624, y: 115, z: 510.04028}
+    tangent: {x: 10, y: 0, z: 5}
+    roll: 0
+  - position: {x: 300.56107, y: 115, z: 556.74146}
+    tangent: {x: 0, y: 0, z: 30}
+    roll: 0
+  - position: {x: 315.60425, y: 118, z: 628.3142}
+    tangent: {x: 15, y: 3, z: 20}
+    roll: 0
+  - position: {x: 367, y: 130, z: 661}
+    tangent: {x: 15, y: 5, z: 0}
+    roll: 0
+--- !u!114 &6356956343889135797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343889135796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956343889135794}
+  trackSide: 2
+  unlocked: 1
+  transferToPos: 209.83
+  transferBackPos: 501.29
+  trackToSwitchFrom: {fileID: 6356956344430985170}
+  trackToSwitchBackTo: {fileID: 6356956344430985170}
+--- !u!1 &6356956343900976692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343900976690}
+  - component: {fileID: 6356956343900976693}
+  - component: {fileID: 6356956343900976691}
+  m_Layer: 0
+  m_Name: Deep Sea Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343900976690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343900976692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343900976693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343900976692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 508, y: 65, z: 636}
+    tangent: {x: 5, y: 0, z: -1}
+    roll: 0
+  - position: {x: 518, y: 65, z: 634}
+    tangent: {x: 5, y: 0, z: -1}
+    roll: 0
+  - position: {x: 540, y: 65, z: 631}
+    tangent: {x: 10, y: 0, z: 0}
+    roll: 0
+  - position: {x: 575, y: 65, z: 650}
+    tangent: {x: 10, y: 0, z: 2}
+    roll: 0
+  - position: {x: 631, y: 65, z: 642}
+    tangent: {x: 10, y: 0, z: -2.5}
+    roll: 0
+  - position: {x: 697, y: 65, z: 612}
+    tangent: {x: 7.5, y: 0, z: -15}
+    roll: 0
+  - position: {x: 705, y: 65, z: 563}
+    tangent: {x: -5, y: 0, z: -15}
+    roll: 0
+  - position: {x: 670, y: 65, z: 504}
+    tangent: {x: -7.5, y: 0, z: -15}
+    roll: 0
+  - position: {x: 640, y: 90, z: 412}
+    tangent: {x: -3, y: 6, z: -15}
+    roll: 0
+  - position: {x: 631, y: 145, z: 342}
+    tangent: {x: 5, y: 30, z: -15}
+    roll: 0
+  - position: {x: 640, y: 190, z: 321}
+    tangent: {x: 5, y: 30, z: -15}
+    roll: 0
+  - position: {x: 654, y: 230, z: 283}
+    tangent: {x: 5, y: 0, z: -15}
+    roll: 0
+  - position: {x: 690, y: 231, z: 253}
+    tangent: {x: 10, y: 1, z: -10}
+    roll: 0
+--- !u!114 &6356956343900976691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343900976692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956343900976693}
+  trackSide: 0
+  unlocked: 1
+  transferToPos: 0
+  transferBackPos: 379
+  trackToSwitchFrom: {fileID: 6356956343623769587}
+  trackToSwitchBackTo: {fileID: 6356956343684162988}
+--- !u!1 &6356956343901245387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956343901245385}
+  - component: {fileID: 6356956343901245384}
+  m_Layer: 0
+  m_Name: Beach Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956343901245385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343901245387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956343901245384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956343901245387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 1
+  m_Waypoints:
+  - position: {x: 685, y: 260, z: -65}
+    tangent: {x: -20, y: 1, z: -7.5}
+    roll: 0
+  - position: {x: 620, y: 262, z: -82.5}
+    tangent: {x: -20, y: 1, z: -5}
+    roll: 0
+  - position: {x: 565, y: 264, z: -115}
+    tangent: {x: -20, y: 1, z: -7.5}
+    roll: 0
+  - position: {x: 380, y: 265, z: -115}
+    tangent: {x: -20, y: 0, z: 2.5}
+    roll: 0
+  - position: {x: 285, y: 264, z: -85}
+    tangent: {x: -20, y: -1, z: 15}
+    roll: 0
+  - position: {x: 170, y: 260, z: 32.5}
+    tangent: {x: -20, y: -2, z: 15}
+    roll: 0
+  - position: {x: 115, y: 250, z: 90}
+    tangent: {x: 0, y: -1, z: 20}
+    roll: 0
+  - position: {x: 125, y: 248, z: 140}
+    tangent: {x: 10, y: -1, z: 15}
+    roll: 0
+  - position: {x: 170, y: 244, z: 205}
+    tangent: {x: 15, y: -1, z: 15}
+    roll: 0
+  - position: {x: 230, y: 240, z: 240}
+    tangent: {x: 15, y: -2, z: 5}
+    roll: 0
+  - position: {x: 290, y: 231, z: 245}
+    tangent: {x: 15, y: -1, z: -2.5}
+    roll: 0
+  - position: {x: 330, y: 230, z: 230}
+    tangent: {x: 10, y: 0, z: -10}
+    roll: 0
+  - position: {x: 365, y: 240, z: 180}
+    tangent: {x: 7.5, y: 2, z: -15}
+    roll: 0
+  - position: {x: 410, y: 245, z: 125}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 460, y: 244, z: 145}
+    tangent: {x: 15, y: 0, z: 10}
+    roll: 0
+  - position: {x: 530, y: 243, z: 180}
+    tangent: {x: 15, y: 0, z: 5}
+    roll: 0
+  - position: {x: 600, y: 242, z: 195}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 650, y: 241, z: 170}
+    tangent: {x: 10, y: 0, z: -10}
+    roll: 0
+  - position: {x: 675, y: 240, z: 130}
+    tangent: {x: 5, y: 0, z: -15}
+    roll: 0
+  - position: {x: 695, y: 245, z: 70}
+    tangent: {x: 10, y: 1, z: -15}
+    roll: 0
+  - position: {x: 720, y: 250, z: 30}
+    tangent: {x: 5, y: 1, z: -10}
+    roll: 0
+  - position: {x: 725, y: 255, z: -25}
+    tangent: {x: -7.5, y: 1, z: -15}
+    roll: 0
+--- !u!1 &6356956344139032410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956344139032409}
+  - component: {fileID: 6356956344139032408}
+  - component: {fileID: 6356956344139032411}
+  m_Layer: 0
+  m_Name: Deep Sea Eroded Forest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956344139032409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344139032410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956344139032408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344139032410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 540, y: 65, z: 631}
+    tangent: {x: 10, y: 0, z: 0}
+    roll: 0
+  - position: {x: 591.94574, y: 76, z: 591.0199}
+    tangent: {x: 6, y: 3, z: -8}
+    roll: 0
+  - position: {x: 602.1973, y: 81.57643, z: 573.8134}
+    tangent: {x: 2, y: 1.5, z: -6}
+    roll: 0
+  - position: {x: 603.5629, y: 86.24144, z: 554.79877}
+    tangent: {x: -2, y: 1.5, z: -6}
+    roll: 0
+  - position: {x: 589.6543, y: 90, z: 539.35486}
+    tangent: {x: -10, y: 0, z: -5}
+    roll: 0
+  - position: {x: 557, y: 70, z: 521}
+    tangent: {x: -6, y: -3, z: -7}
+    roll: 0
+  - position: {x: 540, y: 65, z: 480}
+    tangent: {x: 0, y: 0, z: -20}
+    roll: 0
+--- !u!114 &6356956344139032411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344139032410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956344139032408}
+  trackSide: 2
+  unlocked: 1
+  transferToPos: 32.48
+  transferBackPos: 182.18
+  trackToSwitchFrom: {fileID: 6356956343900976693}
+  trackToSwitchBackTo: {fileID: 6356956343424132941}
+--- !u!1 &6356956344165125426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956344165125425}
+  - component: {fileID: 6356956344165125424}
+  - component: {fileID: 6356956344165125427}
+  m_Layer: 0
+  m_Name: Deep Sea Ringisland
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956344165125425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344165125426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956344165125424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344165125426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 575, y: 65, z: 650}
+    tangent: {x: 10, y: 0, z: 2}
+    roll: 0
+  - position: {x: 630.8158, y: 90.657234, z: 689.17114}
+    tangent: {x: 20, y: 0, z: 7.5}
+    roll: 0
+  - position: {x: 677.98914, y: 75, z: 687.3458}
+    tangent: {x: 15, y: -10, z: -10}
+    roll: 0
+  - position: {x: 697, y: 65, z: 612}
+    tangent: {x: 7.5, y: 0, z: -15}
+    roll: 0
+--- !u!114 &6356956344165125427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344165125426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956344165125424}
+  trackSide: 1
+  unlocked: 1
+  transferToPos: 72.7
+  transferBackPos: 203.2
+  trackToSwitchFrom: {fileID: 6356956343900976693}
+  trackToSwitchBackTo: {fileID: 6356956343900976693}
+--- !u!1 &6356956344218255418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956344218255417}
+  - component: {fileID: 6356956344218255416}
+  - component: {fileID: 6356956344218255419}
+  m_Layer: 0
+  m_Name: Beach Above Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956344218255417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344218255418}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956344218255416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344218255418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 410, y: 245, z: 125}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 479.02856, y: 280, z: 159.20094}
+    tangent: {x: 15, y: 20, z: 8}
+    roll: 0
+  - position: {x: 504.56317, y: 310, z: 170.89207}
+    tangent: {x: 10, y: 0, z: 4}
+    roll: 0
+  - position: {x: 533.19965, y: 280, z: 181.50455}
+    tangent: {x: 15, y: -20, z: 4}
+    roll: 0
+  - position: {x: 600, y: 242, z: 195}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+--- !u!114 &6356956344218255419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344218255418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956344218255416}
+  trackSide: 3
+  unlocked: 1
+  transferToPos: 1105.3
+  transferBackPos: 1310.01
+  trackToSwitchFrom: {fileID: 6356956343901245384}
+  trackToSwitchBackTo: {fileID: 6356956343901245384}
+--- !u!1 &6356956344430985173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956344430985171}
+  - component: {fileID: 6356956344430985170}
+  - component: {fileID: 6356956344430985168}
+  m_Layer: 0
+  m_Name: Cave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956344430985171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344430985173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956344430985170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344430985173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 231, y: 220, z: 370}
+    tangent: {x: 10, y: 0, z: 10}
+    roll: 0
+  - position: {x: 240, y: 217, z: 407}
+    tangent: {x: -10, y: -3, z: 10}
+    roll: 0
+  - position: {x: 214.50206, y: 205.3334, z: 434.10007}
+    tangent: {x: -6.743515, y: -6, z: 5}
+    roll: -30
+  - position: {x: 212.42542, y: 160, z: 452.77097}
+    tangent: {x: 5, y: -40, z: 10}
+    roll: 0
+  - position: {x: 219, y: 120, z: 475.6}
+    tangent: {x: 4, y: -5, z: 10}
+    roll: 0
+  - position: {x: 229, y: 115, z: 500.6}
+    tangent: {x: 4, y: 0, z: 10}
+    roll: 0
+  - position: {x: 208.30083, y: 115, z: 530.69836}
+    tangent: {x: -10, y: 0, z: 10}
+    roll: 0
+  - position: {x: 198.9895, y: 115, z: 564.118}
+    tangent: {x: 0, y: 0, z: 10}
+    roll: 0
+  - position: {x: 211.97511, y: 115, z: 597.8453}
+    tangent: {x: 5, y: 0, z: 10}
+    roll: 0
+  - position: {x: 247.94916, y: 115, z: 638.52057}
+    tangent: {x: 15, y: 0, z: 10}
+    roll: 0
+  - position: {x: 307, y: 115, z: 661}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 337, y: 120, z: 661}
+    tangent: {x: 15, y: 5, z: 0}
+    roll: 0
+  - position: {x: 367, y: 130, z: 661}
+    tangent: {x: 15, y: 5, z: 0}
+    roll: 0
+  - position: {x: 415, y: 135, z: 653.5}
+    tangent: {x: 22.5, y: 0, z: -7.5}
+    roll: 0
+  - position: {x: 465, y: 95, z: 638}
+    tangent: {x: 15, y: -20, z: 0}
+    roll: 0
+--- !u!114 &6356956344430985168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344430985173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956344430985170}
+  trackSide: 1
+  unlocked: 1
+  transferToPos: 184.66
+  transferBackPos: 651.2
+  trackToSwitchFrom: {fileID: 6356956343311079664}
+  trackToSwitchBackTo: {fileID: 6356956343623769587}
+--- !u!1 &6356956344792954488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356956344792954487}
+  - component: {fileID: 6356956344792954486}
+  - component: {fileID: 6356956344792954489}
+  m_Layer: 0
+  m_Name: Kelp Forest Shortcut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356956344792954487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344792954488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6356956342973757913}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356956344792954486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344792954488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0, g: 1, b: 0, a: 1}
+    width: 3
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 213, y: 220, z: 296}
+    tangent: {x: 5, y: 0, z: 15}
+    roll: 0
+  - position: {x: 245, y: 220, z: 313}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 273, y: 220, z: 311}
+    tangent: {x: 10, y: 0, z: -2.5}
+    roll: 0
+  - position: {x: 303, y: 220, z: 305}
+    tangent: {x: 15, y: 0, z: 0}
+    roll: 0
+  - position: {x: 370, y: 220, z: 326}
+    tangent: {x: 20, y: 0, z: 0}
+    roll: 0
+  - position: {x: 408, y: 220, z: 325}
+    tangent: {x: 5, y: 0, z: -1}
+    roll: 0
+  - position: {x: 427, y: 220, z: 309}
+    tangent: {x: 2.5, y: 0, z: -15}
+    roll: 0
+--- !u!114 &6356956344792954489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356956344792954488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91903d0a29244248875acd718d6e33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 6356956344792954486}
+  trackSide: 2
+  unlocked: 1
+  transferToPos: 108.05
+  transferBackPos: 465.2
+  trackToSwitchFrom: {fileID: 6356956343311079664}
+  trackToSwitchBackTo: {fileID: 6356956343311079664}

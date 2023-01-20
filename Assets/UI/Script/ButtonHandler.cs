@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonHandler : MonoBehaviour
 {
+    // Public Methods
     public void StartGame()
     {
         Time.timeScale = 1;

@@ -6,11 +6,13 @@ public class DestroyAfter : MonoBehaviour
 {
     public float DestroyAfterSeconds;
 
+    // Monobehaviour Methods
     void Start()
     {
         StartCoroutine(BeginCountdown());
     }
 
+    // Private Methods
     IEnumerator BeginCountdown()
     {
         yield return new WaitForSeconds(DestroyAfterSeconds);
