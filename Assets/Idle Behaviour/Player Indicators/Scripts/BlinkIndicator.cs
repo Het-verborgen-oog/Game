@@ -33,6 +33,11 @@ public class BlinkIndicator : MonoBehaviour, IIdleAction
         }
 
         enabled = false;
+
+        foreach(GameObject indicator in indicators)
+        {
+            indicator.SetActive(false);
+        }
     }
 
     private void OnDisable() {
